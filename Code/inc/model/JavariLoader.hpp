@@ -23,7 +23,7 @@ class JavariLoader : public ModelInterface
 	public:
 		JavariLoader();
 		virtual ~JavariLoader();
-		bool startCalibration(int _mode, cv::Mat * _view, string * _message);
+		virtual bool startCalibration(int _mode, cv::Mat * _view, string * _message);
 		bool stopCalibration();
 
 	private:

@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <opencv2/core/core.hpp>
 
 #include <ViewInterface.hpp>
 
@@ -31,6 +32,7 @@ class ModelInterface
 		 * @brief Update all observers.
 		 **/
 		void updateObserver();
+		virtual bool startCalibration(int _mode, cv::Mat * _view, string * _message) = 0;
 
 	protected:
 		vector<ViewInterface *> listOfObserver;

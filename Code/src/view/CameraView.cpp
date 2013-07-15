@@ -14,7 +14,7 @@ using namespace std;
 
 CameraView :: CameraView(ControllerInterface * _control, ModelInterface * _model)
 {
-	this->model = (JavariLoader *)_model;
+	this->model = _model;
 	this->control = _control;
 	this->model->registerObserver(this);
 	nameWindow = "SACAI";
@@ -50,7 +50,7 @@ bool CameraView :: display()
 		//If calibration starts
 		if(stopCalibration)
 		{
-			stopCalibration = this->model->startCalibration(this->mode, &(this->frameView), &(this->message));
+			stopCalibration = this->model->startCalibration(mode, &(this->frameView), &(this->message));
 		}
 
 		cv::Point textOrigin(this->frameView.cols - 2 * textSize.width - 10, this->frameView.rows - 2 * baseLine - 10);
