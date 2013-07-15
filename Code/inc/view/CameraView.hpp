@@ -31,9 +31,10 @@ class CameraView : public ViewInterface
 		virtual ~CameraView();
 
 		virtual bool display();
-		virtual void update();
+		virtual void update(string _message, cv::Mat _frame, cv::Size _textSize);
 
 	private:
+		bool operation;
 		string nameWindow, message;
 		cv::Mat frameView;
 		cv::Size textSize;

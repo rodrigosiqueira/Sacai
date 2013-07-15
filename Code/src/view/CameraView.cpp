@@ -29,7 +29,6 @@ bool CameraView :: display()
 	cv::Scalar GREEN(0, 255, 0), RED(0, 0, 255);
 	int waitTime = 0, mode = 0, baseLine = 0;
 	char key = 0;
-	bool stopCalibration = false;
 
 	Setting& setting = Setting :: getInstance();
 
@@ -48,9 +47,9 @@ bool CameraView :: display()
 	{
 		this->frameView = setting.nextImage();
 		//If calibration starts
-		if(stopCalibration)
+		if(this->operation)
 		{
-			stopCalibration = this->model->startCalibration(mode, &(this->frameView), &(this->message));
+			this->model->startCalibration(mode, &(this->frameView), &(this->message));
 		}
 
 		cv::Point textOrigin(this->frameView.cols - 2 * textSize.width - 10, this->frameView.rows - 2 * baseLine - 10);
@@ -75,7 +74,7 @@ bool CameraView :: display()
 		if(setting.inputCapture.isOpened() && key == 'g')
 		{
 			//Disparar a ação de calibrar
-			stopCalibration = true;
+			this->operation = true;
 			mode = jvr::CAPTURING;
 			//calibration->resetPoint();
 		}
@@ -84,7 +83,9 @@ bool CameraView :: display()
 	return true;
 }
 
-void CameraView :: update()
+void CameraView :: update(string _message, cv::Mat _frame, cv::Size _textSize)
 {
-
+	this->message = _message;
+	this->frameView = _frame;
+	this->textSize = _textSize;
 }

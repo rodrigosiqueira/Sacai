@@ -36,6 +36,9 @@ class ModelInterface
 
 	protected:
 		vector<ViewInterface *> listOfObserver;
+		string message;
+		cv::Mat frame;
+		cv::Size textSize;
 
 		ModelInterface();
 		virtual ~ModelInterface();

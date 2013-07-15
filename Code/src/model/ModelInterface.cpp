@@ -10,9 +10,7 @@
 using namespace std;
 
 ModelInterface :: ModelInterface()
-{
-
-}
+{}
 
 ModelInterface :: ~ModelInterface()
 {
@@ -29,7 +27,6 @@ void ModelInterface :: updateObserver()
 	vector<ViewInterface *>::iterator it;
 	for (it = this->listOfObserver.begin() ; it != this->listOfObserver.end(); ++it)
 	{
-		(*it)->update();
-		cout << "ATUALIZANDO OBSERVADORES" << endl;
+		(*it)->update(this->message, this->frame, this->textSize);
 	}
 }

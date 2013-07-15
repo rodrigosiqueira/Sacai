@@ -27,6 +27,7 @@ bool JavariLoader :: startCalibration(int _mode, cv::Mat * _view, string * _mess
 {
 	this->calibration->setParam(_mode, _view, _message);
 	this->commandControl->startCommandWasActivated(jvr::CALIBRATION_COMMAND);
+	this->updateObserver();
 
 	return true;
 }

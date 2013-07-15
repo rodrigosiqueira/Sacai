@@ -4,8 +4,14 @@
 #ifndef _VIEW_INTERFACE_HPP_
 #define _VIEW_INTERFACE_HPP_
 
+#include <string>
+
+#include <opencv2/core/core.hpp>
+
 #include <ModelInterface.hpp>
 #include <ControllerInterface.hpp>
+
+using namespace std;
 
 class ModelInterface;
 class ControllerInterface;
@@ -19,7 +25,7 @@ class ViewInterface
 		/**
 		 * @brief Update image for specific situation.
 		 **/
-		virtual void update() = 0;
+		virtual void update(string _message, cv::Mat _frame, cv::Size _textSize) = 0;
 		/**
 		 * @return If all right return true, otherwise false.
 		 * @brief Implements specific visualization.
