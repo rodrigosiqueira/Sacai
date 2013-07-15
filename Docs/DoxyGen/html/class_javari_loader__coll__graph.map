@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" href="$class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="5,216,112,245"/>
+<area shape="rect" href="$class_calibration_start.html" title="Encapsulate Command that start calibration." alt="" coords="275,216,384,245"/>
+<area shape="rect" href="$class_command.html" title="Abstract class responsible for commands execution in inherited classes." alt="" coords="281,101,361,131"/>
+<area shape="rect" href="$class_javari_command.html" title="Encapsulate commands." alt="" coords="136,216,251,245"/>
+<area shape="rect" href="$class_calibration_stop.html" title="Encapsulate stop action." alt="" coords="424,216,533,245"/>
+<area shape="rect" href="$class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="447,101,529,131"/>
+<area shape="rect" href="$class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="407,5,468,35"/>
+<area shape="rect" href="$class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="492,5,583,35"/>
+</map>

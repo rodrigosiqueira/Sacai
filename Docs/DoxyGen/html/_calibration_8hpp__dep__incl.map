@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" href="$_calibration_start_8hpp.html" title="inc/model/CalibrationStart.hpp" alt="" coords="133,83,328,112"/>
+<area shape="rect" href="$_javari_loader_8hpp.html" title="inc/model/JavariLoader.hpp" alt="" coords="7,160,185,189"/>
+<area shape="rect" href="$_calibration_start_8cpp.html" title="src/model/CalibrationStart.cpp" alt="" coords="209,160,404,189"/>
+<area shape="rect" href="$_calibration_stop_8hpp.html" title="inc/model/CalibrationStop.hpp" alt="" coords="403,83,597,112"/>
+<area shape="rect" href="$_calibration_8cpp.html" title="Implementation of calibration functions." alt="" coords="621,83,789,112"/>
+<area shape="rect" href="$_javari_loader_8cpp.html" title="src/model/JavariLoader.cpp" alt="" coords="5,237,187,267"/>
+<area shape="rect" href="$_calibration_stop_8cpp.html" title="src/model/CalibrationStop.cpp" alt="" coords="428,160,623,189"/>
+</map>

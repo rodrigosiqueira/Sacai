@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" href="$_calibration_8hpp.html" title="Class responsable for doing calibration and save the result." alt="" coords="355,160,523,189"/>
+<area shape="rect" href="$_calibration_8cpp.html" title="Implementation of calibration functions." alt="" coords="569,237,737,267"/>
+<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="632,83,808,112"/>
+<area shape="rect" href="$_setting_8cpp.html" title="Keeps some function that doing some operations with files. This code was based on..." alt="" coords="832,83,979,112"/>
+<area shape="rect" href="$_camera_view_8cpp.html" title="src/view/CameraView.cpp" alt="" coords="1003,83,1173,112"/>
+<area shape="rect" href="$_calibration_start_8hpp.html" title="inc/model/CalibrationStart.hpp" alt="" coords="300,237,495,267"/>
+<area shape="rect" href="$_javari_loader_8hpp.html" title="inc/model/JavariLoader.hpp" alt="" coords="443,315,621,344"/>
+<area shape="rect" href="$_calibration_start_8cpp.html" title="src/model/CalibrationStart.cpp" alt="" coords="224,315,419,344"/>
+<area shape="rect" href="$_calibration_stop_8hpp.html" title="inc/model/CalibrationStop.hpp" alt="" coords="17,237,212,267"/>
+<area shape="rect" href="$_javari_loader_8cpp.html" title="src/model/JavariLoader.cpp" alt="" coords="441,392,623,421"/>
+<area shape="rect" href="$_calibration_stop_8cpp.html" title="src/model/CalibrationStop.cpp" alt="" coords="5,315,200,344"/>
+<area shape="rect" href="$_chess_board_8hpp.html" title="inc/model/ChessBoard.hpp" alt="" coords="888,160,1064,189"/>
+<area shape="rect" href="$_chess_board_8cpp.html" title="src/model/ChessBoard.cpp" alt="" coords="949,237,1128,267"/>
+<area shape="rect" href="$_asymmetric_circles_8cpp.html" title="src/model/AsymmetricCircles.cpp" alt="" coords="648,160,864,189"/>
+<area shape="rect" href="$_circles_grid_8cpp.html" title="src/model/CirclesGrid.cpp" alt="" coords="1139,160,1309,189"/>
+</map>

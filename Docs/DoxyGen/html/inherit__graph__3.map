@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,5,133,35"/>
+<area shape="rect" href="$class_javari_controller.html" title="Keeps the reference for model class for execute actions. Note that interface view..." alt="" coords="181,5,293,35"/>
+</map>

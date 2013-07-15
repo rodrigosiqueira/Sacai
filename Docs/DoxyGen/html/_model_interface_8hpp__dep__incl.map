@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" href="$_controller_interface_8hpp.html" title="inc/control/ControllerInterface.hpp" alt="" coords="204,83,420,112"/>
+<area shape="rect" href="$_javari_controller_8hpp.html" title="inc/control/JavariController.hpp" alt="" coords="337,315,537,344"/>
+<area shape="rect" href="$_javari_controller_8cpp.html" title="src/control/JavariController.cpp" alt="" coords="5,392,205,421"/>
+<area shape="rect" href="$_camera_view_8hpp.html" title="inc/view/CameraView.hpp" alt="" coords="104,237,275,267"/>
+<area shape="rect" href="$_view_interface_8hpp.html" title="inc/view/ViewInterface.hpp" alt="" coords="349,160,525,189"/>
+<area shape="rect" href="$_javari_loader_8hpp.html" title="inc/model/JavariLoader.hpp" alt="" coords="600,83,779,112"/>
+<area shape="rect" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="389,392,485,421"/>
+<area shape="rect" href="$_camera_view_8cpp.html" title="src/view/CameraView.cpp" alt="" coords="143,315,313,344"/>
+<area shape="rect" href="$_javari_loader_8cpp.html" title="src/model/JavariLoader.cpp" alt="" coords="600,160,781,189"/>
+</map>

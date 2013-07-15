@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" href="$_calibration_8hpp.html" title="Class responsable for doing calibration and save the result." alt="" coords="348,83,516,112"/>
+<area shape="rect" href="$_calibration_8cpp.html" title="Implementation of calibration functions." alt="" coords="621,160,789,189"/>
+<area shape="rect" href="$_chess_board_8hpp.html" title="inc/model/ChessBoard.hpp" alt="" coords="689,83,865,112"/>
+<area shape="rect" href="$_chess_board_8cpp.html" title="src/model/ChessBoard.cpp" alt="" coords="813,160,992,189"/>
+<area shape="rect" href="$_asymmetric_circles_8cpp.html" title="src/model/AsymmetricCircles.cpp" alt="" coords="940,83,1156,112"/>
+<area shape="rect" href="$_circles_grid_8cpp.html" title="src/model/CirclesGrid.cpp" alt="" coords="1180,83,1351,112"/>
+<area shape="rect" href="$_calibration_start_8hpp.html" title="inc/model/CalibrationStart.hpp" alt="" coords="133,160,328,189"/>
+<area shape="rect" href="$_javari_loader_8hpp.html" title="inc/model/JavariLoader.hpp" alt="" coords="7,237,185,267"/>
+<area shape="rect" href="$_calibration_start_8cpp.html" title="src/model/CalibrationStart.cpp" alt="" coords="209,237,404,267"/>
+<area shape="rect" href="$_calibration_stop_8hpp.html" title="inc/model/CalibrationStop.hpp" alt="" coords="403,160,597,189"/>
+<area shape="rect" href="$_javari_loader_8cpp.html" title="src/model/JavariLoader.cpp" alt="" coords="5,315,187,344"/>
+<area shape="rect" href="$_calibration_stop_8cpp.html" title="src/model/CalibrationStop.cpp" alt="" coords="428,237,623,267"/>
+</map>

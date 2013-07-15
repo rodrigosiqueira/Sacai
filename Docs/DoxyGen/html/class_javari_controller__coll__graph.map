@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,101,133,131"/>
+<area shape="rect" href="$class_view_interface.html" title="Abstract class used in MVC which Subject." alt="" coords="107,197,205,227"/>
+<area shape="rect" href="$class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="87,5,193,35"/>
+<area shape="rect" href="$class_camera_view.html" title="Concrete class that handles display camera and specific operation." alt="" coords="107,277,200,307"/>
+</map>
