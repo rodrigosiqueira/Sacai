@@ -6,28 +6,30 @@
 
 #include <InputPattern.hpp>
 #include <CirclesGrid.hpp>
-#include <dataType.hpp>
 
-CirclesGrid :: CirclesGrid() : InputPattern()
-{
+//namespace model
+//{
+	CirclesGrid :: CirclesGrid() : InputPattern()
+	{
 
-}
+	}
 
-CirclesGrid :: ~CirclesGrid()
-{
+	CirclesGrid :: ~CirclesGrid()
+	{
 
-}
+	}
 
-bool CirclesGrid :: findGeometry(
-					cv::Mat& _source,
-					vector<cv::Point2f>& _output,
-					cv::Size& _sizePattern)
-{
+	bool CirclesGrid :: findGeometry(
+						cv::Mat& _source,
+						vector<cv::Point2f>& _output,
+						cv::Size& _sizePattern)
+	{
 
-	bool found = false;
-	cv::Mat viewGray;
+		bool found = false;
+		cv::Mat viewGray;
 
-	found = cv::findCirclesGrid(_source, _sizePattern, _output);
+		found = cv::findCirclesGrid(_source, _sizePattern, _output);
 
-	return found;
-}
+		return found;
+	}
+//}

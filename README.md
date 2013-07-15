@@ -2,3 +2,12 @@ Sacai
 =====
 
 This project aims main to help cyclists and make their ride more safer. 
+
+About Name
+==========
+The name of project was inspired in Tupi language (Tribe from Brazil). The original 
+name is "ça-cai" and means restless eyes, the natives called some species of monkeys 
+by this name. The ideia of restless eyes reflects the main objective of this project, 
+in case give more "eyes" for cyclists in their bikes. Finally this project isn't 
+restrict for bike, any people that wish to use this project in other local are free 
+to do this.

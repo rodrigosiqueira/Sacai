@@ -8,26 +8,29 @@
 #include <AsymmetricCircles.hpp>
 #include <dataType.hpp>
 
-AsymmetricCircles :: AsymmetricCircles() : InputPattern()
-{
+//namespace model
+//{
+	AsymmetricCircles :: AsymmetricCircles() : InputPattern()
+	{
 
-}
+	}
 
-AsymmetricCircles :: ~AsymmetricCircles()
-{
+	AsymmetricCircles :: ~AsymmetricCircles()
+	{
 
-}
+	}
 
-bool AsymmetricCircles :: findGeometry(
-					cv::Mat& _source,
-					vector<cv::Point2f>& _output,
-					cv::Size& _sizePattern)
-{
+	bool AsymmetricCircles :: findGeometry(
+						cv::Mat& _source,
+						vector<cv::Point2f>& _output,
+						cv::Size& _sizePattern)
+	{
 
-	bool found = false;
-	cv::Mat viewGray;
+		bool found = false;
+		cv::Mat viewGray;
 
-	found = cv::findCirclesGrid(_source, _sizePattern, _output, cv::CALIB_CB_ASYMMETRIC_GRID);
+		found = cv::findCirclesGrid(_source, _sizePattern, _output, cv::CALIB_CB_ASYMMETRIC_GRID);
 
-	return found;
-}
+		return found;
+	}
+//};

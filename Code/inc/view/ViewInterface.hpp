@@ -15,29 +15,33 @@ using namespace std;
 
 class ModelInterface;
 class ControllerInterface;
-/**
- * @class ViewInterface
- * @brief Abstract class used in MVC which Subject. 
- **/
-class ViewInterface
-{
-	public:
-		/**
-		 * @brief Update image for specific situation.
-		 **/
-		virtual void update(string _message, cv::Mat _frame, cv::Size _textSize) = 0;
-		/**
-		 * @return If all right return true, otherwise false.
-		 * @brief Implements specific visualization.
-		 **/
-		virtual bool display() = 0;
 
-	protected:
-		ModelInterface * model;
-		ControllerInterface * control;
+//namespace view
+//{
+	/**
+	 * @class ViewInterface
+	 * @brief Abstract class used in MVC which Subject. 
+	 **/
+	class ViewInterface
+	{
+		public:
+			/**
+			 * @brief Update image for specific situation.
+			 **/
+			virtual void update(string _message, cv::Mat _frame, cv::Size _textSize) = 0;
+			/**
+			 * @return If all right return true, otherwise false.
+			 * @brief Implements specific visualization.
+			 **/
+			virtual bool display() = 0;
 
-		ViewInterface(){}
-		virtual ~ViewInterface(){}
-};
+		protected:
+			ModelInterface * modelView;
+			ControllerInterface * controlView;
+
+			ViewInterface(){}
+			virtual ~ViewInterface(){}
+	};
+//};
 
 #endif

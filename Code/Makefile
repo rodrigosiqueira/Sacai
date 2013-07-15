@@ -24,7 +24,7 @@ TESTPACK	= 	test
 
 #Flags
 CC			= g++ -Wall
-IFLAG		= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util
+IFLAG		= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
 CVFLAG		= `pkg-config --cflags opencv pkg-config --libs opencv`
 CPPUNITFLAG	= -lcppunit -ldl
 #Create one list with all sources
@@ -36,31 +36,37 @@ TESTSOURCE		= $(wildcard test/*cpp)
 
 # TRAGETS
 
-all: javari
+all: sacai
 
 # Main target, whose the objective is generate binary files. 
 # Dependencies are inserted by: $(CSOURCES:src/%.c=obj/%.o)
 #	*Basically capture all the elements of list and change the pieces
 #	 with "src/%.c" by "obj/%.o".
-javari: modelObj controllerObj viewObj
+sacai: modelObj controllerObj viewObj utilObj
 	$(CC) $(IFLAG) $(CVFLAG) obj/*.o src/main.cpp -o bin/app/$@ $(IFLAG)
 
 # Model
 modelObj: $(MODELSOURCES:src/model/%.cpp=obj/%.o)
 
 obj/%.o: src/model/%.cpp
-	$(CC) -c $< -o $@ $(IFLAG)/model
+	$(CC) -c $< -o $@ $(IFLAG)
 
 # Controller
 controllerObj: $(CONTROLSOURCES:src/control/%.cpp=obj/%.o)
 obj/%.o: src/control/%.cpp
-	$(CC) -c $< -o $@ $(IFLAG)/control
+	$(CC) -c $< -o $@ $(IFLAG)
 
 # View
 viewObj: $(VIEWSOURCES:src/view/%.cpp=obj/%.o)
 obj/%.o: src/view/%.cpp
-	$(CC) -c $< -o $@ $(IFLAG)/view
+	$(CC) -c $< -o $@ $(IFLAG)
 
+# Util
+utilObj: $(UTILSSOURCES:src/util/%.cpp=obj/%.o)
+obj/%.o: src/util/%.cpp
+	$(CC) -c $< -o $@ $(IFLAG)
+
+#####################################
 #Test
 obj/mainTest.o: test/mainTest.cpp
 	$(CC) -c $< -o $@ $(IFLAG) $(CPPUNITFLAG)

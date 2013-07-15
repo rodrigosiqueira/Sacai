@@ -1,26 +1,25 @@
 /**
- * @file JavariController.cpp
+ * @file SacaiController.cpp
  **/
 
-#include <JavariController.hpp>
-#include <ModelInterface.hpp>
+#include <SacaiController.hpp>
+#include <SacaiLoader.hpp>
 #include <CameraView.hpp>
 
-JavariController :: JavariController(JavariLoader * _model)
-{
-	this->model = _model;
-	this->view = new CameraView(this, this->model);
-	this->view->display();
-}
+//using namespace view;
+//using namespace model;
 
-JavariController :: ~JavariController()
-{
-	delete this->view;
-}
-/*
-bool JavariController :: startCalibration()
-{
-	this->model->startCalibration();
-	return true;
-}
-*/
+//namespace control
+//{
+	SacaiController :: SacaiController(SacaiLoader * _model)
+	{
+		this->modelSacai = _model;
+		this->viewSacai = new CameraView(this, _model);
+		this->viewSacai->display();
+	}
+
+	SacaiController :: ~SacaiController()
+	{
+		delete this->viewSacai;
+	}
+//}

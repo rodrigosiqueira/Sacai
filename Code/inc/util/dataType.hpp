@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace jvr
+namespace util
 {
 	/**
 	 * @enum Pattern
@@ -59,5 +59,6 @@ namespace jvr
 	};
 
 	const std::string CONFIG_CALIB_DEFAULT = "default.yaml";
-}
+};
+
 #endif

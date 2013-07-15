@@ -11,15 +11,15 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include <JavariLoader.hpp>
-#include <JavariController.hpp>
+#include <SacaiLoader.hpp>
+#include <SacaiController.hpp>
 
 using namespace cv;
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-	JavariLoader * model = new JavariLoader();
-	JavariController * control = new JavariController(model);
+	SacaiLoader * model = new SacaiLoader();
+	SacaiController * control = new SacaiController(model);
 	return 0;
 }

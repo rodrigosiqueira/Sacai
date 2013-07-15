@@ -1,11 +1,10 @@
 /**
  * @file ModelInterface.hpp
  **/
-
 #include <iostream>
 
 #include <ModelInterface.hpp>
-#include <ViewInterface.hpp>
+//#include <ViewInterface.hpp>
 
 using namespace std;
 
@@ -30,3 +29,7 @@ void ModelInterface :: updateObserver()
 		(*it)->update(this->message, this->frame, this->textSize);
 	}
 }
+
+//namespace model
+//{
+//};
