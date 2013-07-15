@@ -1,6 +1,7 @@
 /**
  * @file JavariLoader.cpp
  **/
+#include <opencv2/core/core.hpp>
 
 #include <JavariLoader.hpp>
 #include <dataType.hpp>
@@ -22,9 +23,11 @@ JavariLoader :: ~JavariLoader()
 	delete this->calibrationStartCommand;
 }
 
-bool JavariLoader :: startCalibration()
+bool JavariLoader :: startCalibration(int _mode, cv::Mat * _view, string * _message)
 {
+	this->calibration->setParam(_mode, _view, _message);
 	this->commandControl->startCommandWasActivated(jvr::CALIBRATION_COMMAND);
+
 	return true;
 }
 

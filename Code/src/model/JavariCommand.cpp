@@ -2,6 +2,7 @@
  * @file JavariCommand.hpp
  **/
 
+#include <iostream>
 #include <JavariCommand.hpp>
 #include <Command.hpp>
 #include <NoCommand.hpp>
@@ -19,8 +20,8 @@ JavariCommand :: ~JavariCommand()
 
 void JavariCommand :: setCommand(unsigned int _slot, Command * _start, Command * _stop)
 {
-	this->startCommand.at(_slot) = _start;
-	this->stopCommand.at(_slot) = _stop;
+	this->startCommand.push_back(_start);
+	this->stopCommand.push_back(_stop);
 }
 
 void JavariCommand :: startCommandWasActivated(unsigned int _slot)

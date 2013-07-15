@@ -21,16 +21,25 @@ class Calibration
 	public:
 		Setting& settings;
 		InputPattern * recognitionPattern;
+		int mode;
 		vector<vector<cv::Point2f> > imagePoints;
 		cv::Size imageSize;
-		int mode;
 		clock_t previousTimeStamp;
+		cv::Mat * view;
 		cv::Mat cameraMatrix;
 		cv::Mat distortionCoefficients;
+		string * message;
 
 		Calibration(string _pathConfigFile = jvr::CONFIG_CALIB_DEFAULT);
 		virtual ~Calibration();
-		int executeCalibration(int _model, cv::Mat& _view);
+		bool executeCalibration();
+		void resetPoint();
+		inline void setParam(int _mode, cv::Mat * _view, string * _message)
+		{
+			this->mode = _mode;
+			this->view = _view;
+			this->message = _message;
+		}
 		int stopCalibration();
 
 	protected:

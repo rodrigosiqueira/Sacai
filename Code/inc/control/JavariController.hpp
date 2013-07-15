@@ -24,7 +24,7 @@ class JavariController : ControllerInterface
 		JavariController(JavariLoader * _model);
 		virtual ~JavariController();
 
-		virtual bool startCalibration();
+		//virtual bool startCalibration();
 
 	private:
 		CameraView * view;

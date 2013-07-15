@@ -17,9 +17,10 @@ JavariController :: ~JavariController()
 {
 	delete this->view;
 }
-
+/*
 bool JavariController :: startCalibration()
 {
 	this->model->startCalibration();
 	return true;
 }
+*/

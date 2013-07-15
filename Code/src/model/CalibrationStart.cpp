@@ -16,6 +16,5 @@ CalibrationStart :: ~CalibrationStart()
 
 void CalibrationStart :: execute()
 {
-	//ATTTTTTTTTENNNÇÃO... PARÂMETROS.
-	//this->calibration->executeCalibration();
+	this->calibration->executeCalibration();
 }

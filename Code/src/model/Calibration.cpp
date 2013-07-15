@@ -21,16 +21,6 @@ Calibration :: Calibration(string _pathConfigFile) : settings(Setting::getInstan
 {
 	this->previousTimeStamp = 0;
 	this->settings.loadCalibrationFile(_pathConfigFile);
-
-	if(this->settings.inputType == jvr::IMAGE_LIST)
-	{
-		this->mode = jvr::CAPTURING;
-	}
-	else
-	{
-		this->mode = jvr::DETECTION;
-	}
-
 	this->setInputPatter();
 }
 
@@ -39,7 +29,7 @@ Calibration :: ~Calibration()
 	delete this->recognitionPattern;
 }
 
-bool Calibration :: runCalibrationAndSave()
+inline bool Calibration :: runCalibrationAndSave()
 {
 	vector<cv::Mat> rotationVector, translationVector;
 	vector<float> reprojectionError;
@@ -72,155 +62,98 @@ bool Calibration :: runCalibrationAndSave()
 	return rc;
 }
 
-int Calibration :: executeCalibration(int _mode, cv::Mat& _view)
+bool Calibration :: executeCalibration()
 {
-	int i = 0;
-	cv::Mat view;
-	bool blinkOutput = false, found;
+	bool found, blinkOutput = false;
+	int baseLine = 0;
+	cv::Size textSize;
 
-	for(i = 0; ; ++i)
+	//Conditions for stop calibration
+	if(this->mode == jvr::CAPTURING &&
+		this->imagePoints.size() >= (unsigned)this->settings.numFrameForCalibration)
 	{
-		blinkOutput = false;
+		if(this->runCalibrationAndSave())
+		{
+			this->mode = jvr::CALIBRATED;
+		}
+		else
+		{
+			this->mode = jvr::DETECTION;
+		}
+	}
+	//Verify if no more images
+	if(this->view->empty())
+	{
+		if(this->imagePoints.size() > 0)
+		{
+			this->runCalibrationAndSave();
+		}
+		return false;
+	}
+	this->imageSize = this->view->size();
+	if(this->settings.flipAroundHorizonAxis)
+	{
+		cv::flip(*(this->view), *(this->view), 0);
+	}
 
-		view = this->settings.nextImage();
-		//Conditions for stop calibration
+	vector<cv::Point2f> detectedGeometry;
+	found = this->recognitionPattern->findGeometry(
+				*(this->view),
+				detectedGeometry,
+				this->settings.boardSize);
+	//Draw the chessboard
+	if(found)
+	{
 		if(this->mode == jvr::CAPTURING &&
-			this->imagePoints.size() >= (unsigned)this->settings.numFrameForCalibration)
+			(!this->settings.inputCapture.isOpened() ||
+			clock() - this->previousTimeStamp >
+			this->settings.delayForVideoInput * 1e-3*CLOCKS_PER_SEC))
 		{
-			if(this->runCalibrationAndSave())
-			{
-				this->mode = jvr::CALIBRATED;
-			}
-			else
-			{
-				this->mode = jvr::DETECTION;
-			}
+			this->imagePoints.push_back(detectedGeometry);
+			this->previousTimeStamp = clock();
+			blinkOutput = this->settings.inputCapture.isOpened();
 		}
-		//Verify if no more images
-		if(view.empty())
-		{
-			if(this->imagePoints.size() > 0)
-			{
-				this->runCalibrationAndSave();
-			}
-			break;
-		}
-		this->imageSize = view.size();
-		if(this->settings.flipAroundHorizonAxis)
-		{
-			cv::flip(view, view, 0);
-		}
-
-		vector<cv::Point2f> detectedGeometry;
-		found = this->recognitionPattern->findGeometry(
-					view,
-					detectedGeometry,
-					this->settings.boardSize);
-		//Draw the chessboard
-		if(found)
-		{
-			if(this->mode == jvr::CAPTURING &&
-				(!this->settings.inputCapture.isOpened() ||
-				clock() - this->previousTimeStamp >
-				this->settings.delayForVideoInput * 1e-3*CLOCKS_PER_SEC))
-			{
-				this->imagePoints.push_back(detectedGeometry);
-				this->previousTimeStamp = clock();
-				blinkOutput = this->settings.inputCapture.isOpened();
-			}
-
-			cv::drawChessboardCorners(view, this->settings.boardSize, cv::Mat(detectedGeometry), found);
-		}
-		//Output text
-		string msg = (this->mode == jvr::CAPTURING) ? "100/100" : this->mode == jvr::CALIBRATED ? "Calibrated" : "Press 'g' to start";
-
-		int baseLine = 0;
-		cv::Size textSize = cv::getTextSize(msg, 1, 1, 1, &baseLine);
-		cv::Point textOrigin(view.cols - 2*textSize.width - 10, view.rows - 2*baseLine - 10);
-
-		if(this->mode == jvr::CAPTURING)
-		{
-			if(this->settings.showUndistorsed)
-			{
-				msg = cv::format( "%d/%d Undist", (int)this->imagePoints.size(), this->settings.numFrameForCalibration);
-			}
-			else
-			{
-				msg = cv::format( "%d/%d", (int)this->imagePoints.size(), this->settings.numFrameForCalibration);
-			}
-		}
-		cv::Scalar GREEN(0, 255, 0), RED(0, 0, 255);
-		cv::putText(view, msg, textOrigin, 1, 1, this->mode == jvr::CALIBRATED ?  GREEN : RED);
-
-		if(blinkOutput)
-		{
-			cv::bitwise_not(view, view);
-		}
-
-		//------------------------- Video capture  output  undistorted ------------------------------
-		if(this->mode == jvr::CALIBRATED && this->settings.showUndistorsed)
-		{
-			cv::Mat temp = view.clone();
-			cv::undistort(temp, view, this->cameraMatrix, this->distortionCoefficients);
-		}
-
-		//------------------------------ Show image and check for input commands -------------------
-		cv::imshow("Image View", view);
-		char key = (char)cv::waitKey(this->settings.inputCapture.isOpened() ? 50 : this->settings.delayForVideoInput);
-
-		if(key == jvr::ESC_KEY)
-		{
-			break;
-		}
-
-		if(key == 'u' && this->mode == jvr::CALIBRATED)
-		{
-			this->settings.showUndistorsed = !this->settings.showUndistorsed;
-		}
-
-		if(this->settings.inputCapture.isOpened() && key == 'g')
-		{
-			this->mode = jvr::CAPTURING;
-			this->imagePoints.clear();
-		}
+		cv::drawChessboardCorners(*(this->view), this->settings.boardSize, cv::Mat(detectedGeometry), found);
 	}
+	//Output text
+	*(this->message) = (this->mode == jvr::CAPTURING) ? "100/100" : this->mode == jvr::CALIBRATED ? "Calibrated" : "Press 'g' to start";
 
-	// -----------------------Show the undistorted image for the image list ------------------------
-	if(this->settings.inputType == jvr::IMAGE_LIST && this->settings.showUndistorsed)
+	textSize = cv::getTextSize(*(this->message), 1, 1, 1, &baseLine);
+	cv::Point textOrigin(this->view->cols - 2*textSize.width - 10, this->view->rows - 2*baseLine - 10);
+
+	if(this->mode == jvr::CAPTURING)
 	{
-		cv::Mat view, rview, map1, map2;
-		cv::initUndistortRectifyMap(
-			this->cameraMatrix,
-			this->distortionCoefficients,
-			cv::Mat(),
-			cv::getOptimalNewCameraMatrix(
-					this->cameraMatrix,
-					this->distortionCoefficients,
-					this->imageSize, 1,
-					this->imageSize, 0),
-					this->imageSize, CV_16SC2, map1, map2);
-
-		for(int i = 0; i < (int)this->settings.imageList.size(); i++ )
+		if(this->settings.showUndistorsed)
 		{
-			view = cv::imread(this->settings.imageList[i], 1);
-			if(view.empty())
-			{
-				continue;
-			}
-			cv::remap(view, rview, map1, map2, cv::INTER_LINEAR);
-			cv::imshow("Image View", rview);
-			char c = (char)cv::waitKey();
-			if(c == jvr::ESC_KEY || c == 'q' || c == 'Q' )
-			{
-				break;
-			}
+			*(this->message) = cv::format( "%d/%d Undist", (int)this->imagePoints.size(), this->settings.numFrameForCalibration);
+		}
+		else
+		{
+			*(this->message) = cv::format( "%d/%d", (int)this->imagePoints.size(), this->settings.numFrameForCalibration);
 		}
 	}
 
-	return -1;
+	if(blinkOutput)
+	{
+		cv::bitwise_not(*(this->view), *(this->view));
+	}
+
+	//Video capture  output  undistorted
+	if(this->mode == jvr::CALIBRATED && this->settings.showUndistorsed)
+	{
+		cv::Mat temp = this->view->clone();
+		cv::undistort(temp, *(this->view), this->cameraMatrix, this->distortionCoefficients);
+	}
+
+	return true;
 }
 
-double Calibration :: computeReprojectionErrors(
+void Calibration :: resetPoint()
+{
+	this->imagePoints.clear();
+}
+
+inline double Calibration :: computeReprojectionErrors(
 				const vector<vector<cv::Point3f> >& _objectPoint,
 				const vector<vector<cv::Point2f> >& _imagePoint,
 				const vector<cv::Mat>& _rotationVector,
@@ -252,7 +185,7 @@ double Calibration :: computeReprojectionErrors(
 	return std::sqrt(totalError/totalPoints);
 }
 
-void Calibration :: calcBoardCornerPositions(vector<cv::Point3f>& _corners)
+inline void Calibration :: calcBoardCornerPositions(vector<cv::Point3f>& _corners)
 {
 	register int i = 0, j = 0;
 	float xCoordinate = 0.0, yCoordinate = 0.0;
@@ -290,7 +223,7 @@ void Calibration :: calcBoardCornerPositions(vector<cv::Point3f>& _corners)
 	}
 }
 
-bool Calibration :: runCalibration(
+inline bool Calibration :: runCalibration(
 			vector<cv::Mat>& _rotationVector,
 			vector<cv::Mat>& _translationVector,
 			vector<float>& _reprojErrs,
@@ -340,7 +273,7 @@ bool Calibration :: runCalibration(
 	return (checkCameraMatrix && checkDistortionMatrix);
 }
 
-void Calibration :: saveCameraParams(
+inline void Calibration :: saveCameraParams(
 			const vector<cv::Mat>& _rotationVector,
 			const vector<cv::Mat>& _translationVector,
 			const vector<float>& _reprojErrs,
@@ -426,7 +359,7 @@ void Calibration :: saveCameraParams(
 	}
 }
 
-bool Calibration :: setInputPatter()
+inline bool Calibration :: setInputPatter()
 {
 	switch(this->settings.calibrationPattern)
 	{

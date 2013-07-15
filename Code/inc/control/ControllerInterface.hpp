@@ -20,7 +20,7 @@ class ControllerInterface
 		 * @return If all right return true, otherwise false.
 		 * @brief Call the methods that execute calibration.
 		 **/
-		virtual bool startCalibration() = 0;
+		//virtual bool startCalibration() = 0;
 
 	protected:
 		JavariLoader * model;
