@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,293,133,323"/>
+<area shape="rect" href="$class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers..." alt="" coords="107,389,205,419"/>
+<area shape="rect" href="$class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="25,197,113,227"/>
+<area shape="rect" href="$class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="125,101,232,131"/>
+<area shape="rect" href="$class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="19,101,101,131"/>
+<area shape="rect" href="$class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="208,5,269,35"/>
+<area shape="rect" href="$class_camera_view.html" title="Concrete class that handles camera visualization. This class is observer for the..." alt="" coords="109,469,203,499"/>
+<area shape="rect" href="$class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="15,5,105,35"/>
+</map>

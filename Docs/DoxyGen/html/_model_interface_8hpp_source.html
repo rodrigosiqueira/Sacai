@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Javari: inc/model/ModelInterface.hpp Source File</title>
+<title>Sacai: inc/model/ModelInterface.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -19,7 +19,6 @@
   <div class="tabs">
     <ul>
       <li><a href="files.html"><span>File&nbsp;List</span></a></li>
-      <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
 <h1>inc/model/ModelInterface.hpp</h1><a href="_model_interface_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
@@ -29,26 +28,36 @@
 <a name="l00008"></a>00008 <span class="preprocessor">#include &lt;iostream&gt;</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#include &lt;vector&gt;</span>
 <a name="l00010"></a>00010 
-<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;<a class="code" href="_view_interface_8hpp.html">ViewInterface.hpp</a>&gt;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;opencv2/core/core.hpp&gt;</span>
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013 <span class="keyword">using namespace </span>std;
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;<a class="code" href="_view_interface_8hpp.html">ViewInterface.hpp</a>&gt;</span>
 <a name="l00014"></a>00014 
-<a name="l00020"></a><a class="code" href="class_model_interface.html">00020</a> <span class="keyword">class </span><a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a>
-<a name="l00021"></a>00021 {
-<a name="l00022"></a>00022         <span class="keyword">public</span>:
-<a name="l00028"></a>00028                 <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_model_interface.html#abe25b45dcd0747cdbdb781d9637940d7" title="This method belongs for Pattern Observer. It register the observer of actions.">registerObserver</a>(<a class="code" href="class_view_interface.html" title="Abstract class used in MVC which Subject.">ViewInterface</a> * _observer);
-<a name="l00032"></a>00032                 <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_model_interface.html#a5ce954f33b61e537f7a5b127903d029c" title="Update all observers.">updateObserver</a>();
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034         <span class="keyword">protected</span>:
-<a name="l00035"></a>00035                 vector&lt;ViewInterface *&gt; listOfObserver;
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037                 <a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a>();
-<a name="l00038"></a>00038                 <span class="keyword">virtual</span> ~<a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a>();
-<a name="l00039"></a>00039 };
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="preprocessor">#endif</span>
+<a name="l00015"></a>00015 <span class="keyword">using namespace </span>std;
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="keyword">class </span><a class="code" href="class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers...">ViewInterface</a>;
+<a name="l00018"></a>00018 <span class="comment">//namespace model</span>
+<a name="l00019"></a>00019 <span class="comment">//{     </span>
+<a name="l00025"></a><a class="code" href="class_model_interface.html">00025</a> <span class="comment"></span>        <span class="keyword">class </span><a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a>
+<a name="l00026"></a>00026         {
+<a name="l00027"></a>00027                 <span class="keyword">public</span>:
+<a name="l00033"></a>00033                         <span class="keywordtype">void</span> <a class="code" href="class_model_interface.html#abe25b45dcd0747cdbdb781d9637940d7" title="This method belongs for Pattern Observer. It register the observer of actions.">registerObserver</a>(<a class="code" href="class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers...">ViewInterface</a> * _observer);
+<a name="l00037"></a>00037                         <span class="keywordtype">void</span> <a class="code" href="class_model_interface.html#a5ce954f33b61e537f7a5b127903d029c" title="Update all observers.">updateObserver</a>();
+<a name="l00045"></a>00045                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_model_interface.html#af1041a0990a6afb762eeb0c467f2cfb2" title="Method that encapsulate the action of call calibration.">startCalibration</a>(<span class="keywordtype">int</span> _mode, cv::Mat * _view, <span class="keywordtype">int</span> _frameElapsed) = 0;
+<a name="l00050"></a>00050                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_model_interface.html#a0c1b3537e0c7bfd2d862a95f80b03119" title="Reset the vector of points.">resetPoint</a>() = 0;
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052                 <span class="keyword">protected</span>:
+<a name="l00053"></a><a class="code" href="class_model_interface.html#a04617dc69eeac44b8fd6a71c99a6dfa0">00053</a>                         vector&lt;ViewInterface *&gt; <a class="code" href="class_model_interface.html#a04617dc69eeac44b8fd6a71c99a6dfa0">listOfObserver</a>; 
+<a name="l00054"></a><a class="code" href="class_model_interface.html#abe22e66a2047249b0a45fcfc1de20a8c">00054</a>                         cv::Mat * <a class="code" href="class_model_interface.html#abe22e66a2047249b0a45fcfc1de20a8c">frameCalibration</a>;     
+<a name="l00055"></a><a class="code" href="class_model_interface.html#aade9ba12110bedcde455fe87a88b33c7">00055</a>                         <span class="keywordtype">int</span> <a class="code" href="class_model_interface.html#aade9ba12110bedcde455fe87a88b33c7">modeCalibration</a>;            
+<a name="l00056"></a><a class="code" href="class_model_interface.html#adfcafc30fb94adcc6f6d4f31d3d150f0">00056</a>                         <span class="keywordtype">int</span> <a class="code" href="class_model_interface.html#adfcafc30fb94adcc6f6d4f31d3d150f0">frameElapsedCalibration</a>;
+<a name="l00058"></a>00058                         <a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a>();
+<a name="l00059"></a>00059                         <span class="keyword">virtual</span> ~<a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a>();
+<a name="l00060"></a>00060         };
+<a name="l00061"></a>00061 <span class="comment">//};</span>
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Jul 14 13:25:24 2013 for Javari by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

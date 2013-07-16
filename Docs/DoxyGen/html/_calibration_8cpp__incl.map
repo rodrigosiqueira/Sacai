@@ -1,7 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="481,315,580,344"/>
-<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="500,237,588,267"/>
-<area shape="rect" href="$_calibration_8hpp.html" title="Class responsable for doing calibration and save the result." alt="" coords="691,83,797,112"/>
-<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="499,160,613,189"/>
-<area shape="rect" href="$_chess_board_8hpp.html" title="ChessBoard.hpp" alt="" coords="499,83,616,112"/>
+<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="487,237,585,267"/>
+<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="360,160,448,189"/>
+<area shape="rect" href="$_calibration_8hpp.html" title="Class responsable for doing calibration and save the result." alt="" coords="528,83,635,112"/>
+<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="771,160,885,189"/>
+<area shape="rect" href="$_chess_board_8hpp.html" title="ChessBoard.hpp" alt="" coords="821,83,939,112"/>
 </map>

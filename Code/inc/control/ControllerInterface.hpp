@@ -4,9 +4,9 @@
 #ifndef _CONTROLLER_INTERFACE_HPP_
 #define _CONTROLLER_INTERFACE_HPP_
 
-//#include <SacaiLoader.hpp>
+//#include <SacaiModel.hpp>
 #include <opencv2/core/core.hpp>
-class SacaiLoader;
+class SacaiModel;
 
 //namespace control
 //{
@@ -18,16 +18,12 @@ class SacaiLoader;
 	class ControllerInterface
 	{
 		public:
-			virtual bool callCalibration(
-						int * _mode,
-						cv::Mat * _view,
-						std::string * _message,
-						int * _frameElapsed) = 0;
+			virtual bool callCalibration() = 0;
 			virtual bool showWindow(bool _show) = 0;
 			virtual bool callResetPoint() = 0;
 
 		protected:
-			SacaiLoader * modelSacai;
+			SacaiModel * modelSacai;
 	};
 //};
 

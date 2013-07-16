@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Javari: Class Members</title>
+<title>Sacai: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -35,10 +35,10 @@
       <li><a href="#index_b"><span>b</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
-      <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
-      <li><a href="#index_j"><span>j</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
@@ -62,13 +62,7 @@ Here is a list of all documented class members with links to the class documenta
 : <a class="el" href="class_calibration.html#a0e315321794a3e5ec6a9bf6cb19b4db7">Calibration</a>
 </li>
 <li>calibrationPattern
-: <a class="el" href="class_setting.html#a3c738e05ea188d4647ca9c96021f36c4">Setting</a>
-</li>
-<li>CalibrationStart()
-: <a class="el" href="class_calibration_start.html#a936d8bdf35c5feb7ab79798f48734ff4">CalibrationStart</a>
-</li>
-<li>CalibrationStop()
-: <a class="el" href="class_calibration_stop.html#ae04a4a18bd09452a9c9cb5e6343a2090">CalibrationStop</a>
+: <a class="el" href="class_setting.html#a324eb25827c63209be5ec63553fbb208">Setting</a>
 </li>
 <li>CameraView()
 : <a class="el" href="class_camera_view.html#ab2be6046099b7b910f68e778c4ac66de">CameraView</a>
@@ -76,23 +70,16 @@ Here is a list of all documented class members with links to the class documenta
 <li>computeReprojectionErrors()
 : <a class="el" href="class_calibration.html#a4ab5f5388fe7fd147c3facf38b1968e3">Calibration</a>
 </li>
+<li>controlView
+: <a class="el" href="class_view_interface.html#adcaf6311b6ed9350bdc03df68a140018">ViewInterface</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_d">- d -</a></h3><ul>
 <li>display()
-: <a class="el" href="class_camera_view.html#a1730024cec0955e3041cf72bcea851b7">CameraView</a>
+: <a class="el" href="class_camera_view.html#acbacbf42c2ab0b40123e37cac3215b02">CameraView</a>
 , <a class="el" href="class_view_interface.html#af16f075b1e4f8a2df6793c7747456693">ViewInterface</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_e">- e -</a></h3><ul>
-<li>execute()
-: <a class="el" href="class_calibration_start.html#aa31757eff68e0c59bf76561a5b59c257">CalibrationStart</a>
-, <a class="el" href="class_no_command.html#ad0e5f985051b70ac456f746a3cc75498">NoCommand</a>
-, <a class="el" href="class_command.html#a1f73a16e8706aec4c4db746f710b88d9">Command</a>
-, <a class="el" href="class_calibration_stop.html#a22a9c74dbd74385a08e1815ebf5a4b5b">CalibrationStop</a>
 </li>
 </ul>
 
@@ -100,23 +87,51 @@ Here is a list of all documented class members with links to the class documenta
 <h3><a class="anchor" id="index_f">- f -</a></h3><ul>
 <li>findGeometry()
 : <a class="el" href="class_asymmetric_circles.html#a3a26c6f2bf59179e8a3719c1bd9dd51b">AsymmetricCircles</a>
+, <a class="el" href="class_chess_board.html#a38a5fc1286ca4a5a0a3709668112f8f4">ChessBoard</a>
 , <a class="el" href="class_input_pattern.html#a0912105a9ff568f747a3effa5e10e659">InputPattern</a>
 , <a class="el" href="class_circles_grid.html#a08a516c3b895f1ff1298bb37382334db">CirclesGrid</a>
-, <a class="el" href="class_chess_board.html#a38a5fc1286ca4a5a0a3709668112f8f4">ChessBoard</a>
+</li>
+<li>frameCalibration
+: <a class="el" href="class_model_interface.html#abe22e66a2047249b0a45fcfc1de20a8c">ModelInterface</a>
+</li>
+<li>frameElapsedCalibration
+: <a class="el" href="class_model_interface.html#adfcafc30fb94adcc6f6d4f31d3d150f0">ModelInterface</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_g">- g -</a></h3><ul>
+<li>getFrame()
+: <a class="el" href="class_camera_view.html#a74988c0d75d867881a3a6b0dd4ad2795">CameraView</a>
+, <a class="el" href="class_view_interface.html#a20ee2e619160358b539304a3c9e9fe0f">ViewInterface</a>
+</li>
+<li>getFrameElapse()
+: <a class="el" href="class_view_interface.html#a3e1219726a0ce607531f7b944b5071ee">ViewInterface</a>
+, <a class="el" href="class_camera_view.html#ab8996062b6a24bf7dfd0f6bc7c0ad554">CameraView</a>
+</li>
+<li>getMode()
+: <a class="el" href="class_view_interface.html#ad73af4217333275b3f8745488457f5c4">ViewInterface</a>
+, <a class="el" href="class_camera_view.html#ac18239ca7020687a09ea88975f5f5d4f">CameraView</a>
+</li>
 <li>goodInput
 : <a class="el" href="class_setting.html#a20ff72ea340fa456c5a9d8c37f26ada1">Setting</a>
 </li>
 </ul>
 
 
-<h3><a class="anchor" id="index_j">- j -</a></h3><ul>
-<li>JavariController()
-: <a class="el" href="class_javari_controller.html#ab49cce7f905bb07d420028ce5918ef72">JavariController</a>
+<h3><a class="anchor" id="index_l">- l -</a></h3><ul>
+<li>listOfObserver
+: <a class="el" href="class_model_interface.html#a04617dc69eeac44b8fd6a71c99a6dfa0">ModelInterface</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m">- m -</a></h3><ul>
+<li>modeCalibration
+: <a class="el" href="class_model_interface.html#aade9ba12110bedcde455fe87a88b33c7">ModelInterface</a>
+</li>
+<li>modelView
+: <a class="el" href="class_view_interface.html#a1112c7d56261a04b65b45fda5a9fdcbe">ViewInterface</a>
 </li>
 </ul>
 
@@ -138,6 +153,10 @@ Here is a list of all documented class members with links to the class documenta
 <li>registerObserver()
 : <a class="el" href="class_model_interface.html#abe25b45dcd0747cdbdb781d9637940d7">ModelInterface</a>
 </li>
+<li>resetPoint()
+: <a class="el" href="class_sacai_model.html#a43168750e8a66478c0cc9e76680e9e91">SacaiModel</a>
+, <a class="el" href="class_model_interface.html#a0c1b3537e0c7bfd2d862a95f80b03119">ModelInterface</a>
+</li>
 <li>runCalibration()
 : <a class="el" href="class_calibration.html#a57cce86a1563c0da86a4e0dd5a6c5d58">Calibration</a>
 </li>
@@ -148,11 +167,11 @@ Here is a list of all documented class members with links to the class documenta
 
 
 <h3><a class="anchor" id="index_s">- s -</a></h3><ul>
+<li>SacaiController()
+: <a class="el" href="class_sacai_controller.html#a592fd2677c2e38c4b50d946ffd67a2c6">SacaiController</a>
+</li>
 <li>saveCameraParams()
 : <a class="el" href="class_calibration.html#ae54d3605a8fb2e7197da3df60123240c">Calibration</a>
-</li>
-<li>setCommand()
-: <a class="el" href="class_javari_command.html#a382a3f98c8e9ea1077bc4e6460cb9ade">JavariCommand</a>
 </li>
 <li>setInputPatter()
 : <a class="el" href="class_calibration.html#a6d1cb8136dd74fb61ab72a15304bfffd">Calibration</a>
@@ -161,22 +180,16 @@ Here is a list of all documented class members with links to the class documenta
 : <a class="el" href="class_setting.html#a49c8421e3b81be19113cb7117f0fe0cf">Setting</a>
 </li>
 <li>startCalibration()
-: <a class="el" href="class_controller_interface.html#a119d70eae5ad0bc5b4f37cb5f3017e19">ControllerInterface</a>
-, <a class="el" href="class_javari_controller.html#a52feb304655d1dac3965c80220544f9b">JavariController</a>
-</li>
-<li>startCommandWasActivated()
-: <a class="el" href="class_javari_command.html#a468cff86a8dff17a4914e48e1b9c04c2">JavariCommand</a>
-</li>
-<li>stopCommandWasActivated()
-: <a class="el" href="class_javari_command.html#aab430dbbef26a828f2bb8bec802245ea">JavariCommand</a>
+: <a class="el" href="class_model_interface.html#af1041a0990a6afb762eeb0c467f2cfb2">ModelInterface</a>
+, <a class="el" href="class_sacai_model.html#aedef59561c2537755385d053905f39ef">SacaiModel</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_u">- u -</a></h3><ul>
 <li>update()
-: <a class="el" href="class_camera_view.html#a99ad0663241ec0dd2e864360351e91fc">CameraView</a>
-, <a class="el" href="class_view_interface.html#aee58944c784a9fe161b89228b767d9a0">ViewInterface</a>
+: <a class="el" href="class_camera_view.html#adfc907494469d5563312e0735a243acb">CameraView</a>
+, <a class="el" href="class_view_interface.html#aca4e329e50bb31e23cc26321f0d5a0f9">ViewInterface</a>
 </li>
 <li>updateObserver()
 : <a class="el" href="class_model_interface.html#a5ce954f33b61e537f7a5b127903d029c">ModelInterface</a>
@@ -193,7 +206,7 @@ Here is a list of all documented class members with links to the class documenta
 </li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Jul 14 13:25:25 2013 for Javari by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Javari: Calibration Class Reference</title>
+<title>Sacai: Calibration Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -41,12 +41,12 @@ Collaboration diagram for Calibration:</div>
 <p><a href="class_calibration-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c1fe7b9fc91117d8db274dc06a36bd9"></a><!-- doxytag: member="Calibration::Calibration" ref="a3c1fe7b9fc91117d8db274dc06a36bd9" args="(string _pathConfigFile=jvr::CONFIG_CALIB_DEFAULT)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>Calibration</b> (string _pathConfigFile=jvr::CONFIG_CALIB_DEFAULT)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6c8a5bb80fd455b711e488453135e9a"></a><!-- doxytag: member="Calibration::executeCalibration" ref="aa6c8a5bb80fd455b711e488453135e9a" args="(int _model, cv::Mat &amp;_view)" -->
-int&nbsp;</td><td class="memItemRight" valign="bottom"><b>executeCalibration</b> (int _model, cv::Mat &amp;_view)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90018490ba15fe1cbb992ebce3e34086"></a><!-- doxytag: member="Calibration::stopCalibration" ref="a90018490ba15fe1cbb992ebce3e34086" args="()" -->
-int&nbsp;</td><td class="memItemRight" valign="bottom"><b>stopCalibration</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61e46b175ae79fbe9fc31abad7c98062"></a><!-- doxytag: member="Calibration::Calibration" ref="a61e46b175ae79fbe9fc31abad7c98062" args="(string _pathConfigFile=util::CONFIG_CALIB_DEFAULT)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><b>Calibration</b> (string _pathConfigFile=util::CONFIG_CALIB_DEFAULT)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a4ebc9fa5972603bc02906f4720e079"></a><!-- doxytag: member="Calibration::executeCalibration" ref="a1a4ebc9fa5972603bc02906f4720e079" args="(int *_mode, cv::Mat *_view, int *_frameElapsed)" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>executeCalibration</b> (int *_mode, cv::Mat *_view, int *_frameElapsed)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb9801c7a01a1210455cb9e0d0ba0c67"></a><!-- doxytag: member="Calibration::resetPoint" ref="afb9801c7a01a1210455cb9e0d0ba0c67" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>resetPoint</b> ()</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67c93d72c9654fa1066490eb310498fb"></a><!-- doxytag: member="Calibration::settings" ref="a67c93d72c9654fa1066490eb310498fb" args="" -->
 <a class="el" href="class_setting.html">Setting</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><b>settings</b></td></tr>
@@ -56,8 +56,6 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>stopCalibration</b> ()
 vector&lt; vector&lt; cv::Point2f &gt; &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>imagePoints</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7929a77bfe07ccac9eda8066c9af5715"></a><!-- doxytag: member="Calibration::imageSize" ref="a7929a77bfe07ccac9eda8066c9af5715" args="" -->
 cv::Size&nbsp;</td><td class="memItemRight" valign="bottom"><b>imageSize</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf0b2e787abae635d0acc2d1693d6c34"></a><!-- doxytag: member="Calibration::mode" ref="abf0b2e787abae635d0acc2d1693d6c34" args="" -->
-int&nbsp;</td><td class="memItemRight" valign="bottom"><b>mode</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9863de8d1e7adb2c863ce540a36c8da8"></a><!-- doxytag: member="Calibration::previousTimeStamp" ref="a9863de8d1e7adb2c863ce540a36c8da8" args="" -->
 clock_t&nbsp;</td><td class="memItemRight" valign="bottom"><b>previousTimeStamp</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfdb0febaa5407a669b612ba280ea552"></a><!-- doxytag: member="Calibration::cameraMatrix" ref="acfdb0febaa5407a669b612ba280ea552" args="" -->
@@ -88,7 +86,7 @@ cv::Mat&nbsp;</td><td class="memItemRight" valign="bottom"><b>distortionCoeffici
           <td class="paramtype">vector&lt; cv::Point3f &gt; &amp;&nbsp;</td>
           <td class="paramname"> <em>_corners</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [protected]</code></td>
+          <td><code> [inline, protected]</code></td>
         </tr>
       </table>
 </div>
@@ -148,7 +146,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td><code> [protected]</code></td>
+          <td></td><td></td><td><code> [inline, protected]</code></td>
         </tr>
       </table>
 </div>
@@ -207,7 +205,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td><code> [protected]</code></td>
+          <td></td><td></td><td><code> [inline, protected]</code></td>
         </tr>
       </table>
 </div>
@@ -250,7 +248,7 @@ Here is the caller graph for this function:</div>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [protected]</code></td>
+          <td><code> [inline, protected]</code></td>
         </tr>
       </table>
 </div>
@@ -303,7 +301,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td><code> [protected]</code></td>
+          <td></td><td></td><td><code> [inline, protected]</code></td>
         </tr>
       </table>
 </div>
@@ -335,7 +333,7 @@ Here is the caller graph for this function:</div>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [protected, virtual]</code></td>
+          <td><code> [inline, protected, virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -349,7 +347,7 @@ Here is the caller graph for this function:</div>
 <li>src/model/<a class="el" href="_calibration_8cpp.html">Calibration.cpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Jul 14 13:25:25 2013 for Javari by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

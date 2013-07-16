@@ -1,6 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="297,83,412,112"/>
-<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="659,237,757,267"/>
-<area shape="rect" href="$_asymmetric_circles_8hpp.html" title="AsymmetricCircles.hpp" alt="" coords="487,83,641,112"/>
-<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="295,160,383,189"/>
+<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="292,160,407,189"/>
+<area shape="rect" href="$_asymmetric_circles_8hpp.html" title="AsymmetricCircles.hpp" alt="" coords="225,83,380,112"/>
+<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="455,83,553,112"/>
 </map>

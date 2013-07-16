@@ -7,7 +7,7 @@
 
 #include <opencv2/core/core.hpp>
 
-#include <SacaiLoader.hpp>
+#include <SacaiModel.hpp>
 #include <ControllerInterface.hpp>
 #include <CameraView.hpp>
 
@@ -24,21 +24,13 @@
 			/**
 			 * @param _model Reference for model layer.
 			 **/
-			SacaiController(SacaiLoader * _model);
+			SacaiController(SacaiModel * _model);
 			virtual ~SacaiController();
 
-			virtual bool callCalibration(
-						int * _mode,
-						cv::Mat * _view,
-						std::string * _message,
-						int * _frameElapsed);
+			virtual bool callCalibration();
 			
 			virtual bool showWindow(bool _show);
 			virtual bool callResetPoint();
-			virtual bool calibDone()
-			{
-				return this->modelSacai->getCalibrationDone();
-			}
 
 		private:
 			CameraView * viewSacai;

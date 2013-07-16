@@ -1,6 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$class_command.html" title="Abstract class responsible for commands execution in inherited classes." alt="" coords="5,59,85,88"/>
-<area shape="rect" href="$class_calibration_start.html" title="Encapsulate Command that start calibration." alt="" coords="135,5,244,35"/>
-<area shape="rect" href="$class_calibration_stop.html" title="Encapsulate stop action." alt="" coords="135,59,244,88"/>
-<area shape="rect" href="$class_no_command.html" title="No command for initialize object." alt="" coords="141,112,237,141"/>
+<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,5,133,35"/>
+<area shape="rect" href="$class_sacai_controller.html" title="Keeps the reference for model class for execute actions. Note that interface view..." alt="" coords="181,5,291,35"/>
 </map>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Javari: ControllerInterface Class Reference</title>
+<title>Sacai: ControllerInterface Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -31,54 +31,35 @@
 
 <p><code>#include &lt;<a class="el" href="_controller_interface_8hpp_source.html">ControllerInterface.hpp</a>&gt;</code></p>
 
-<p>Inherited by <a class="el" href="class_javari_controller.html">JavariController</a><code> [private]</code>.</p>
+<p>Inherited by <a class="el" href="class_sacai_controller.html">SacaiController</a>.</p>
 <div class="dynheader">
 Collaboration diagram for ControllerInterface:</div>
 <div class="dynsection">
 <div class="center"><img src="class_controller_interface__coll__graph.png" border="0" usemap="#_controller_interface_coll__map" alt="Collaboration graph"/></div>
 <map name="_controller_interface_coll__map" id="_controller_interface_coll__map">
-<area shape="rect" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="16,5,123,35"/></map>
+<area shape="rect" href="class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="55,197,143,227"/><area shape="rect" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="5,101,112,131"/><area shape="rect" href="class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="136,101,219,131"/><area shape="rect" href="class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="96,5,157,35"/><area shape="rect" href="class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="181,5,272,35"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="class_controller_interface-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller_interface.html#a119d70eae5ad0bc5b4f37cb5f3017e19">startCalibration</a> ()=0</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Call the methods that execute calibration.  <a href="#a119d70eae5ad0bc5b4f37cb5f3017e19"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c9ce930a0b6054d50afb226a63abafb"></a><!-- doxytag: member="ControllerInterface::callCalibration" ref="a6c9ce930a0b6054d50afb226a63abafb" args="()=0" -->
+virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>callCalibration</b> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63d6d0282005b0a191f0f196184259e0"></a><!-- doxytag: member="ControllerInterface::showWindow" ref="a63d6d0282005b0a191f0f196184259e0" args="(bool _show)=0" -->
+virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>showWindow</b> (bool _show)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a006924dfce8c8b13f0c5970ac7d35414"></a><!-- doxytag: member="ControllerInterface::callResetPoint" ref="a006924dfce8c8b13f0c5970ac7d35414" args="()=0" -->
+virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>callResetPoint</b> ()=0</td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3589484909c39b79fe65b265e78a656c"></a><!-- doxytag: member="ControllerInterface::model" ref="a3589484909c39b79fe65b265e78a656c" args="" -->
-<a class="el" href="class_model_interface.html">ModelInterface</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4eb863539d94d765df21c31f8335389b"></a><!-- doxytag: member="ControllerInterface::modelSacai" ref="a4eb863539d94d765df21c31f8335389b" args="" -->
+<a class="el" href="class_sacai_model.html">SacaiModel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>modelSacai</b></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Abstract class that works in MVC pattern. This class was specialized in controller interface. </p>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a119d70eae5ad0bc5b4f37cb5f3017e19"></a><!-- doxytag: member="ControllerInterface::startCalibration" ref="a119d70eae5ad0bc5b4f37cb5f3017e19" args="()=0" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool ControllerInterface::startCalibration </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [pure virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Call the methods that execute calibration. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>If all right return true, otherwise false. </dd></dl>
-
-<p>Implemented in <a class="el" href="class_javari_controller.html#a52feb304655d1dac3965c80220544f9b">JavariController</a>.</p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>inc/control/<a class="el" href="_controller_interface_8hpp_source.html">ControllerInterface.hpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Jul 14 13:25:25 2013 for Javari by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

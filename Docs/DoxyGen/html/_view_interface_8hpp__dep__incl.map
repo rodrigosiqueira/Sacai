@@ -1,11 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" href="$_javari_controller_8hpp.html" title="inc/control/JavariController.hpp" alt="" coords="25,315,225,344"/>
-<area shape="rect" href="$_model_interface_8hpp.html" title="Keeps the class Subject for interface,." alt="" coords="332,83,524,112"/>
-<area shape="rect" href="$_camera_view_8hpp.html" title="inc/view/CameraView.hpp" alt="" coords="300,237,471,267"/>
-<area shape="rect" href="$_javari_controller_8cpp.html" title="src/control/JavariController.cpp" alt="" coords="357,392,557,421"/>
-<area shape="rect" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="77,392,173,421"/>
-<area shape="rect" href="$_controller_interface_8hpp.html" title="inc/control/ControllerInterface.hpp" alt="" coords="17,160,233,189"/>
-<area shape="rect" href="$_javari_loader_8hpp.html" title="inc/model/JavariLoader.hpp" alt="" coords="545,160,724,189"/>
-<area shape="rect" href="$_camera_view_8cpp.html" title="src/view/CameraView.cpp" alt="" coords="249,315,420,344"/>
-<area shape="rect" href="$_javari_loader_8cpp.html" title="src/model/JavariLoader.cpp" alt="" coords="545,237,727,267"/>
+<area shape="rect" href="$_model_interface_8hpp.html" title="Keeps the class Subject for interface,." alt="" coords="348,83,540,112"/>
+<area shape="rect" href="$_camera_view_8hpp.html" title="inc/view/CameraView.hpp" alt="" coords="489,160,660,189"/>
+<area shape="rect" href="$_sacai_model_8hpp.html" title="inc/model/SacaiModel.hpp" alt="" coords="144,160,317,189"/>
+<area shape="rect" href="$_camera_view_8cpp.html" title="src/view/CameraView.cpp" alt="" coords="489,237,660,267"/>
+<area shape="rect" href="$_sacai_controller_8hpp.html" title="inc/control/SacaiController.hpp" alt="" coords="268,237,465,267"/>
+<area shape="rect" href="$_sacai_controller_8cpp.html" title="src/control/SacaiController.cpp" alt="" coords="267,315,467,344"/>
+<area shape="rect" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="40,315,136,344"/>
+<area shape="rect" href="$_sacai_model_8cpp.html" title="src/model/SacaiModel.cpp" alt="" coords="17,237,193,267"/>
 </map>

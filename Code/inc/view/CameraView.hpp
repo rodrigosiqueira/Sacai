@@ -11,14 +11,14 @@
 #include <ViewInterface.hpp>
 #include <ControllerInterface.hpp>
 #include <ModelInterface.hpp>
-
-using namespace std;
+#include <Setting.hpp>
 
 //namespace view
 //{
 	/**
 	 * @class CameraView
-	 * @brief Concrete class that handles display camera and specific operation.
+	 * @brief Concrete class that handles camera visualization. This
+	 * class is observer for the model.
 	 **/
 	class CameraView : public ViewInterface
 	{
@@ -34,12 +34,29 @@ using namespace std;
 			virtual ~CameraView();
 
 			virtual bool display();
-			virtual void update(int _mode, cv::Mat * _view, std::string * _message);
+			virtual void update(int _mode, cv::Mat& _view, int _frameElapsed);
+
+			virtual int getMode()
+			{
+				return this->mode;
+			}
+			virtual cv::Mat * getFrame()
+			{
+				return &(this->frameView);
+			}
+			virtual int getFrameElapse()
+			{
+				return this->frameElapsed;
+			}
 
 		private:
-			string nameWindow, message;
+			std::string nameWindow;
+			std::string message;
 			cv::Mat frameView;
 			cv::Size textSize;
+			int mode;
+			int frameElapsed;
+			Setting& settings;
 	};
 //}
 

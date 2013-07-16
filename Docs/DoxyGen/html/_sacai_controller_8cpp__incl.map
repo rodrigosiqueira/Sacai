@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" href="$_sacai_controller_8hpp.html" title="SacaiController.hpp" alt="" coords="249,83,383,112"/>
+<area shape="rect" href="$_sacai_model_8hpp.html" title="SacaiModel.hpp" alt="" coords="413,160,528,189"/>
+<area shape="rect" href="$_camera_view_8hpp.html" title="CameraView.hpp" alt="" coords="263,160,383,189"/>
+<area shape="rect" href="$_controller_interface_8hpp.html" title="ControllerInterface.hpp" alt="" coords="45,392,197,421"/>
+<area shape="rect" href="$_model_interface_8hpp.html" title="Keeps the class Subject for interface,." alt="" coords="309,237,440,267"/>
+<area shape="rect" href="$_calibration_8hpp.html" title="Class responsable for doing calibration and save the result." alt="" coords="581,237,688,267"/>
+<area shape="rect" href="$_view_interface_8hpp.html" title="ViewInterface.hpp" alt="" coords="209,315,335,344"/>
+<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="745,315,833,344"/>
+<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="1161,392,1260,421"/>
+<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="556,315,671,344"/>
+</map>

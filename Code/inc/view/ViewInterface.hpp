@@ -20,24 +20,43 @@ class ControllerInterface;
 //{
 	/**
 	 * @class ViewInterface
-	 * @brief Abstract class used in MVC which Subject. 
+	 * @brief Abstract class used in MVC pattern. This class represents
+	 * the interface for observers, in this case the GUI.
 	 **/
 	class ViewInterface
 	{
 		public:
 			/**
-			 * @brief Update image for specific situation.
+			 * @param _mode Current Mode of operation of calibration.
+			 * @param _view Target Frame used in some operation.
+			 * @param _frameElapsed Number of frames computed.
+			 * @brief This method is a part of "Observer pattern", it
+			 * represents the observer. Basically, this observer update the screen.
 			 **/
-			virtual void update(int _mode, cv::Mat * _view, std::string * _message) = 0;
+			virtual void update(int _mode, cv::Mat& _view, int _frameElapsed) = 0;
 			/**
 			 * @return If all right return true, otherwise false.
 			 * @brief Implements specific visualization.
 			 **/
 			virtual bool display() = 0;
+			/**
+			 * @return Return the current mode.
+			 **/
+			virtual int getMode() = 0;
+			/**
+			 * @return Current reference to frame.
+			 * @brief Commonly used for return the reference for make some
+			 * modifications in current frame by another method.
+			 **/
+			virtual cv::Mat * getFrame() = 0;
+			/**
+			 * @return Return the total of frame calculated.
+			 **/
+			virtual int getFrameElapse() = 0;
 
 		protected:
-			ModelInterface * modelView;
-			ControllerInterface * controlView;
+			ModelInterface * modelView;			/**< Reference to model.*/
+			ControllerInterface * controlView;	/**< Reference to control.*/
 
 			ViewInterface(){}
 			virtual ~ViewInterface(){}

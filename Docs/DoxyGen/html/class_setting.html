@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Javari: Setting Class Reference</title>
+<title>Sacai: Setting Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -45,7 +45,7 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>loadCalibrationFile</
 static <a class="el" href="class_setting.html">Setting</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> ()</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">cv::Size&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_setting.html#ae23da6bb8a8399ef92b8b2a79a052a64">boardSize</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">jvr::Pattern&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_setting.html#a3c738e05ea188d4647ca9c96021f36c4">calibrationPattern</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">util::Pattern&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_setting.html#a324eb25827c63209be5ec63553fbb208">calibrationPattern</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_setting.html#a49c8421e3b81be19113cb7117f0fe0cf">squareSize</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_setting.html#ab0d46f33321eb74c01205878158c703a">numFrameForCalibration</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31a71d710acd4ca19ef150279f162029"></a><!-- doxytag: member="Setting::aspectRatio" ref="a31a71d710acd4ca19ef150279f162029" args="" -->
@@ -75,8 +75,8 @@ vector&lt; string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>ima
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>atImageList</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada9a42b7272299afe9be8e26e6510d6c"></a><!-- doxytag: member="Setting::inputCapture" ref="ada9a42b7272299afe9be8e26e6510d6c" args="" -->
 cv::VideoCapture&nbsp;</td><td class="memItemRight" valign="bottom"><b>inputCapture</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2caa9dcb595ef27b39bbcfc1016d474b"></a><!-- doxytag: member="Setting::inputType" ref="a2caa9dcb595ef27b39bbcfc1016d474b" args="" -->
-jvr::InputType&nbsp;</td><td class="memItemRight" valign="bottom"><b>inputType</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afbd0b67eaae4b671336870e2c5332415"></a><!-- doxytag: member="Setting::inputType" ref="afbd0b67eaae4b671336870e2c5332415" args="" -->
+util::InputType&nbsp;</td><td class="memItemRight" valign="bottom"><b>inputType</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_setting.html#a20ff72ea340fa456c5a9d8c37f26ada1">goodInput</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92ac8dbfb3cfc1e76c5eb22b51c1b72a"></a><!-- doxytag: member="Setting::flag" ref="a92ac8dbfb3cfc1e76c5eb22b51c1b72a" args="" -->
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>flag</b></td></tr>
@@ -101,6 +101,15 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>flag</b></td></tr>
 
 <p>Capture the next frame and return it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Return next frame. </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<div class="center"><img src="class_setting_ad724e84e07600a8b32173cbcea6bd085_icgraph.png" border="0" usemap="#class_setting_ad724e84e07600a8b32173cbcea6bd085_icgraph_map" alt=""></div>
+<map name="class_setting_ad724e84e07600a8b32173cbcea6bd085_icgraph_map" id="class_setting_ad724e84e07600a8b32173cbcea6bd085_icgraph">
+<area shape="rect" href="class_camera_view.html#acbacbf42c2ab0b40123e37cac3215b02" title="Implements specific visualization." alt="" coords="187,5,331,35"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -167,12 +176,12 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>flag</b></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3c738e05ea188d4647ca9c96021f36c4"></a><!-- doxytag: member="Setting::calibrationPattern" ref="a3c738e05ea188d4647ca9c96021f36c4" args="" -->
+<a class="anchor" id="a324eb25827c63209be5ec63553fbb208"></a><!-- doxytag: member="Setting::calibrationPattern" ref="a324eb25827c63209be5ec63553fbb208" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">jvr::Pattern <a class="el" href="class_setting.html#a3c738e05ea188d4647ca9c96021f36c4">Setting::calibrationPattern</a></td>
+          <td class="memname">util::Pattern <a class="el" href="class_setting.html#a324eb25827c63209be5ec63553fbb208">Setting::calibrationPattern</a></td>
         </tr>
       </table>
 </div>
@@ -238,11 +247,11 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>flag</b></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>inc/model/<a class="el" href="_setting_8hpp_source.html">Setting.hpp</a></li>
-<li>src/model/<a class="el" href="_setting_8cpp.html">Setting.cpp</a></li>
+<li>inc/util/<a class="el" href="_setting_8hpp_source.html">Setting.hpp</a></li>
+<li>src/util/<a class="el" href="_setting_8cpp.html">Setting.cpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Jul 14 13:25:25 2013 for Javari by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:05 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

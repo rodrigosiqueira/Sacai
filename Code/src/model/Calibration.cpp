@@ -64,7 +64,7 @@ using namespace std;
 		return rc;
 	}
 
-	bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, string * _message, int * _frameElapsed)
+	bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed)
 	{
 		bool found, blinkOutput = false;
 		cv::Size textSize;

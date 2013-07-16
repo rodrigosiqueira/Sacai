@@ -32,7 +32,7 @@
 
 			Calibration(string _pathConfigFile = util::CONFIG_CALIB_DEFAULT);
 			virtual ~Calibration();
-			bool executeCalibration(int * _mode, cv::Mat * _view, string * _message, int * _frameElapsed);
+			bool executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed);
 			void resetPoint();
 
 		protected:

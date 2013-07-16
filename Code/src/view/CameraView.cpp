@@ -16,12 +16,22 @@ using namespace std;
 
 //namespace view
 //{
-	CameraView :: CameraView(ControllerInterface * _control, ModelInterface * _model)
+	CameraView :: CameraView(ControllerInterface * _control, ModelInterface * _model) : settings(Setting::getInstance())
 	{
 		this->modelView = _model;
 		this->controlView = _control;
 		this->modelView->registerObserver(this);
+		this->frameElapsed = 0;
 		nameWindow = "SACAI";
+		//Initial mode
+		if(this->settings.inputType == util::IMAGE_LIST)
+		{
+			this->mode = util::CAPTURING;
+		}
+		else
+		{
+			this->mode = util::DETECTION;
+		}
 	}
 
 	CameraView :: ~CameraView()
@@ -31,38 +41,26 @@ using namespace std;
 	bool CameraView :: display()
 	{
 		cv::Scalar GREEN(0, 255, 0), RED(0, 0, 255);
-		int waitTime = 0, mode = 0, baseLine = 0, frameElapsed = 0;
+		int waitTime = 0, baseLine = 0;
 		char key = 0;
 		cv::Size textSize;
-
-		Setting& settings = Setting :: getInstance();
-
-		//Initial mode
-		if(settings.inputType == util::IMAGE_LIST)
-		{
-			mode = util::CAPTURING;
-		}
-		else
-		{
-			mode = util::DETECTION;
-		}
 
 		//Main loop
 		for(;;)
 		{
-			this->frameView = settings.nextImage();
+			this->frameView = this->settings.nextImage();
 			//If calibration starts
-			if(mode == util::CAPTURING)
+			if(this->mode == util::CAPTURING)
 			{
-				this->controlView->callCalibration(&mode, &(this->frameView), &(this->message), &frameElapsed);
+				this->controlView->callCalibration();
 			}
 
 			//Output text
-			if(mode == util::CAPTURING)
+			if(this->mode == util::CAPTURING)
 			{
 				this->message = "100/100";
 			}
-			else if(mode == util::CALIBRATED)
+			else if(this->mode == util::CALIBRATED)
 			{
 				this->message = "Calibrated";
 			}
@@ -75,19 +73,19 @@ using namespace std;
 			textSize = cv::getTextSize(this->message, 1, 1, 1, &baseLine);
 			cv::Point textOrigin(this->frameView.cols - 2 * textSize.width - 10, this->frameView.rows - 2 * baseLine - 10);
 
-			if(mode == util::CAPTURING)
+			if(this->mode == util::CAPTURING)
 			{
-				if(settings.showUndistorsed)
+				if(this->settings.showUndistorsed)
 				{
-					this->message = cv::format( "%d/%d Undist", frameElapsed, settings.numFrameForCalibration);
+					this->message = cv::format( "%d/%d Undist", this->frameElapsed, this->settings.numFrameForCalibration);
 				}
 				else
 				{
-					this->message = cv::format( "%d/%d", frameElapsed, settings.numFrameForCalibration);
+					this->message = cv::format( "%d/%d", this->frameElapsed, this->settings.numFrameForCalibration);
 				}
 			}
 
-			cv::putText(this->frameView, this->message, textOrigin, 1, 1, mode == util::CALIBRATED ?  GREEN : RED);
+			cv::putText(this->frameView, this->message, textOrigin, 1, 1, this->mode == util::CALIBRATED ?  GREEN : RED);
 
 			cv::imshow(nameWindow, this->frameView);
 			waitTime = settings.inputCapture.isOpened() ? 50 : settings.delayForVideoInput;
@@ -99,15 +97,14 @@ using namespace std;
 				break;
 			}
 
-			if(key == 'u' && mode == util::CALIBRATED)
+			if(key == 'u' && this->mode == util::CALIBRATED)
 			{
-				//Disparar a ação de distorcer
-				settings.showUndistorsed = !settings.showUndistorsed;
+				this->settings.showUndistorsed = !this->settings.showUndistorsed;
 			}
 
-			if(settings.inputCapture.isOpened() && key == 'g')
+			if(this->settings.inputCapture.isOpened() && key == 'g')
 			{
-				mode = util::CAPTURING;
+				this->mode = util::CAPTURING;
 				this->controlView->callResetPoint();
 			}
 		}
@@ -115,10 +112,10 @@ using namespace std;
 		return true;
 	}
 
-	void CameraView :: update(int _mode, cv::Mat * _view, std::string * _message)
+	void CameraView :: update(int _mode, cv::Mat& _view, int _frameElapsed)
 	{
-		//this->message = _message;
-		//this->frameView = _frame;
-		//this->textSize = _textSize;
+		this->mode = _mode;
+		this->frameView = _view;
+		this->frameElapsed = _frameElapsed;
 	}
 //}

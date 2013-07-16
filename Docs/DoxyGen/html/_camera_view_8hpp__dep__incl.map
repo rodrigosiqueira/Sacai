@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$_javari_controller_8hpp.html" title="inc/control/JavariController.hpp" alt="" coords="143,83,343,112"/>
-<area shape="rect" href="$_javari_controller_8cpp.html" title="src/control/JavariController.cpp" alt="" coords="5,160,205,189"/>
-<area shape="rect" href="$_camera_view_8cpp.html" title="src/view/CameraView.cpp" alt="" coords="367,83,537,112"/>
+<area shape="rect" href="$_sacai_controller_8hpp.html" title="inc/control/SacaiController.hpp" alt="" coords="143,83,340,112"/>
+<area shape="rect" href="$_sacai_controller_8cpp.html" title="src/control/SacaiController.cpp" alt="" coords="5,160,205,189"/>
+<area shape="rect" href="$_camera_view_8cpp.html" title="src/view/CameraView.cpp" alt="" coords="364,83,535,112"/>
 <area shape="rect" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="229,160,325,189"/>
 </map>

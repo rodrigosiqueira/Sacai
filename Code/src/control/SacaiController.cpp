@@ -4,7 +4,7 @@
 #include <opencv2/core/core.hpp>
 
 #include <SacaiController.hpp>
-#include <SacaiLoader.hpp>
+#include <SacaiModel.hpp>
 #include <CameraView.hpp>
 
 //using namespace view;
@@ -12,7 +12,7 @@
 
 //namespace control
 //{
-	SacaiController :: SacaiController(SacaiLoader * _model)
+	SacaiController :: SacaiController(SacaiModel * _model)
 	{
 		this->modelSacai = _model;
 		this->viewSacai = new CameraView(this, _model);
@@ -42,10 +42,15 @@
 		return true;
 	}
 
-	bool SacaiController :: callCalibration(
-				int * _mode, cv::Mat * _view, std::string * _message, int * _frameElapsed)
+	bool SacaiController :: callCalibration()
 	{
-		this->modelSacai->startCalibration(_mode, _view, _message, _frameElapsed);
-		return true;
+		bool rc = false;
+
+		rc = this->modelSacai->startCalibration(
+				this->viewSacai->getMode(),
+				this->viewSacai->getFrame(),
+				this->viewSacai->getFrameElapse());
+
+		return rc;
 	}
 //}

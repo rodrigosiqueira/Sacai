@@ -1,6 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="276,160,391,189"/>
-<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="659,315,757,344"/>
-<area shape="rect" href="$_chess_board_8hpp.html" title="ChessBoard.hpp" alt="" coords="373,83,491,112"/>
-<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="288,237,376,267"/>
+<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="400,160,515,189"/>
+<area shape="rect" href="$_chess_board_8hpp.html" title="ChessBoard.hpp" alt="" coords="495,83,612,112"/>
+<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="636,83,735,112"/>
 </map>

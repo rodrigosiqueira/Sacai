@@ -35,20 +35,25 @@ class ViewInterface;
 			 * @brief Update all observers.
 			 **/
 			void updateObserver();
-
-			virtual bool startCalibration(int * _mode, cv::Mat * _view, std::string * _message, int * _frameElapsed) = 0;
+			/**
+			 * @param _mode Current mode of calibration.
+			 * @param _view Target frame for calibration.
+			 * @param _frameElapsed Total of frame elapsed.
+			 * @return Return true if all right and false otherwise
+			 * @brief Method that encapsulate the action of call calibration
+			 **/
+			virtual bool startCalibration(int _mode, cv::Mat * _view, int _frameElapsed) = 0;
+			/**
+			 * @return Return true if all right, and false otherwise.
+			 * @brief Reset the vector of points.
+			 **/
 			virtual bool resetPoint() = 0;
-			virtual bool getCalibrationDone()
-			{
-				return this->calibrationDone;
-			}
 
 		protected:
-			vector<ViewInterface *> listOfObserver;
-			string message;
-			cv::Mat frame;
-			cv::Size textSize;
-			bool calibrationDone;
+			vector<ViewInterface *> listOfObserver;	/**< List of observers that model knows.*/
+			cv::Mat * frameCalibration;	/**< Frame used for update observers in calibration.*/
+			int modeCalibration;		/**< Current mode of calibration.*/
+			int frameElapsedCalibration;/**< Total of frame elaspsed for calibration.*/
 
 			ModelInterface();
 			virtual ~ModelInterface();

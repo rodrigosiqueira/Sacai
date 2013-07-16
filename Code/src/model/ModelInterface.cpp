@@ -13,7 +13,6 @@ using namespace std;
 
 	ModelInterface :: ModelInterface()
 	{
-		this->calibrationDone = false;
 	}
 
 	ModelInterface :: ~ModelInterface()
@@ -31,8 +30,10 @@ using namespace std;
 		vector<ViewInterface *>::iterator it;
 		for (it = this->listOfObserver.begin() ; it != this->listOfObserver.end(); ++it)
 		{
-			//CONSERTAR ESTE PARÂMETRO
-			(*it)->update(1, &(this->frame), &(this->message));
+			(*it)->update(
+				this->modeCalibration,
+				(*this->frameCalibration),
+				this->frameElapsedCalibration);
 		}
 	}
 //};

@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="7,5,68,35"/>
+<area shape="rect" href="$class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers..." alt="" coords="7,5,105,35"/>
+<area shape="rect" href="$class_camera_view.html" title="Concrete class that handles camera visualization. This class is observer for the..." alt="" coords="156,5,249,35"/>
 </map>

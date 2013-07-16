@@ -1,3 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" href="$class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="16,5,123,35"/>
+<area shape="rect" href="$class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="55,197,143,227"/>
+<area shape="rect" href="$class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="5,101,112,131"/>
+<area shape="rect" href="$class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="136,101,219,131"/>
+<area shape="rect" href="$class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="96,5,157,35"/>
+<area shape="rect" href="$class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="181,5,272,35"/>
 </map>

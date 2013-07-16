@@ -11,7 +11,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include <SacaiLoader.hpp>
+#include <SacaiModel.hpp>
 #include <SacaiController.hpp>
 
 using namespace cv;
@@ -19,7 +19,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	SacaiLoader * _model = new SacaiLoader();
+	SacaiModel * _model = new SacaiModel();
 	SacaiController * _control = new SacaiController(_model);
 	_control->showWindow(true);
 	return 0;

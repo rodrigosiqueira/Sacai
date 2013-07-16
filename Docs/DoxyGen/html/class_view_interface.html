@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Javari: ViewInterface Class Reference</title>
+<title>Sacai: ViewInterface Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,7 +26,7 @@
 </div>
 <div class="contents">
 <h1>ViewInterface Class Reference</h1><!-- doxytag: class="ViewInterface" -->
-<p>Abstract class used in MVC which Subject.  
+<p>Abstract class used in MVC pattern. This class represents the interface for observers, in this case the GUI.  
 <a href="#_details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_view_interface_8hpp_source.html">ViewInterface.hpp</a>&gt;</code></p>
@@ -37,25 +37,26 @@ Collaboration diagram for ViewInterface:</div>
 <div class="dynsection">
 <div class="center"><img src="class_view_interface__coll__graph.png" border="0" usemap="#_view_interface_coll__map" alt="Collaboration graph"/></div>
 <map name="_view_interface_coll__map" id="_view_interface_coll__map">
-<area shape="rect" href="class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="76,101,204,131"/><area shape="rect" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="5,5,112,35"/></map>
+<area shape="rect" href="class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="96,293,224,323"/><area shape="rect" href="class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="116,197,204,227"/><area shape="rect" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="5,101,112,131"/><area shape="rect" href="class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="136,101,219,131"/><area shape="rect" href="class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="96,5,157,35"/><area shape="rect" href="class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="181,5,272,35"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="class_view_interface-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee58944c784a9fe161b89228b767d9a0"></a><!-- doxytag: member="ViewInterface::update" ref="aee58944c784a9fe161b89228b767d9a0" args="()=0" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#aee58944c784a9fe161b89228b767d9a0">update</a> ()=0</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Update image for specific situation. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#aca4e329e50bb31e23cc26321f0d5a0f9">update</a> (int _mode, cv::Mat &amp;_view, int _frameElapsed)=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This method is a part of "Observer pattern", it represents the observer. Basically, this observer update the screen.  <a href="#aca4e329e50bb31e23cc26321f0d5a0f9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#af16f075b1e4f8a2df6793c7747456693">display</a> ()=0</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Implements specific visualization.  <a href="#af16f075b1e4f8a2df6793c7747456693"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#ad73af4217333275b3f8745488457f5c4">getMode</a> ()=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual cv::Mat *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#a20ee2e619160358b539304a3c9e9fe0f">getFrame</a> ()=0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Commonly used for return the reference for make some modifications in current frame by another method.  <a href="#a20ee2e619160358b539304a3c9e9fe0f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#a3e1219726a0ce607531f7b944b5071ee">getFrameElapse</a> ()=0</td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e0c649a94d8775ea6713f464e0b8d64"></a><!-- doxytag: member="ViewInterface::model" ref="a9e0c649a94d8775ea6713f464e0b8d64" args="" -->
-<a class="el" href="class_model_interface.html">ModelInterface</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53d1a1fd446ee16294e14a9bdf4b15e1"></a><!-- doxytag: member="ViewInterface::control" ref="a53d1a1fd446ee16294e14a9bdf4b15e1" args="" -->
-<a class="el" href="class_controller_interface.html">ControllerInterface</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>control</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_model_interface.html">ModelInterface</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#a1112c7d56261a04b65b45fda5a9fdcbe">modelView</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_controller_interface.html">ControllerInterface</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_interface.html#adcaf6311b6ed9350bdc03df68a140018">controlView</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>Abstract class used in MVC which Subject. </p>
+<p>Abstract class used in MVC pattern. This class represents the interface for observers, in this case the GUI. </p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="af16f075b1e4f8a2df6793c7747456693"></a><!-- doxytag: member="ViewInterface::display" ref="af16f075b1e4f8a2df6793c7747456693" args="()=0" -->
 <div class="memitem">
@@ -75,7 +76,143 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>Implements specific visualization. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>If all right return true, otherwise false. </dd></dl>
 
-<p>Implemented in <a class="el" href="class_camera_view.html#a1730024cec0955e3041cf72bcea851b7">CameraView</a>.</p>
+<p>Implemented in <a class="el" href="class_camera_view.html#acbacbf42c2ab0b40123e37cac3215b02">CameraView</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a20ee2e619160358b539304a3c9e9fe0f"></a><!-- doxytag: member="ViewInterface::getFrame" ref="a20ee2e619160358b539304a3c9e9fe0f" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual cv::Mat* ViewInterface::getFrame </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Commonly used for return the reference for make some modifications in current frame by another method. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Current reference to frame. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_camera_view.html#a74988c0d75d867881a3a6b0dd4ad2795">CameraView</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e1219726a0ce607531f7b944b5071ee"></a><!-- doxytag: member="ViewInterface::getFrameElapse" ref="a3e1219726a0ce607531f7b944b5071ee" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int ViewInterface::getFrameElapse </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>Return the total of frame calculated. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_camera_view.html#ab8996062b6a24bf7dfd0f6bc7c0ad554">CameraView</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad73af4217333275b3f8745488457f5c4"></a><!-- doxytag: member="ViewInterface::getMode" ref="ad73af4217333275b3f8745488457f5c4" args="()=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int ViewInterface::getMode </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>Return the current mode. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_camera_view.html#ac18239ca7020687a09ea88975f5f5d4f">CameraView</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aca4e329e50bb31e23cc26321f0d5a0f9"></a><!-- doxytag: member="ViewInterface::update" ref="aca4e329e50bb31e23cc26321f0d5a0f9" args="(int _mode, cv::Mat &amp;_view, int _frameElapsed)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ViewInterface::update </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Mat &amp;&nbsp;</td>
+          <td class="paramname"> <em>_view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>_frameElapsed</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>This method is a part of "Observer pattern", it represents the observer. Basically, this observer update the screen. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>_mode</em>&nbsp;</td><td>Current Mode of operation of calibration. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_view</em>&nbsp;</td><td>Target Frame used in some operation. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>_frameElapsed</em>&nbsp;</td><td>Number of frames computed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_camera_view.html#adfc907494469d5563312e0735a243acb">CameraView</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="adcaf6311b6ed9350bdc03df68a140018"></a><!-- doxytag: member="ViewInterface::controlView" ref="adcaf6311b6ed9350bdc03df68a140018" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_controller_interface.html">ControllerInterface</a>* <a class="el" href="class_view_interface.html#adcaf6311b6ed9350bdc03df68a140018">ViewInterface::controlView</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Reference to control. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1112c7d56261a04b65b45fda5a9fdcbe"></a><!-- doxytag: member="ViewInterface::modelView" ref="a1112c7d56261a04b65b45fda5a9fdcbe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_model_interface.html">ModelInterface</a>* <a class="el" href="class_view_interface.html#a1112c7d56261a04b65b45fda5a9fdcbe">ViewInterface::modelView</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Reference to model. </p>
 
 </div>
 </div>
@@ -83,7 +220,7 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <li>inc/view/<a class="el" href="_view_interface_8hpp_source.html">ViewInterface.hpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Jul 14 13:25:25 2013 for Javari by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:05 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
