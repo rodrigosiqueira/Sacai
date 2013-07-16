@@ -28,7 +28,7 @@ class ControllerInterface;
 			/**
 			 * @brief Update image for specific situation.
 			 **/
-			virtual void update(string _message, cv::Mat _frame, cv::Size _textSize) = 0;
+			virtual void update(int _mode, cv::Mat * _view, std::string * _message) = 0;
 			/**
 			 * @return If all right return true, otherwise false.
 			 * @brief Implements specific visualization.

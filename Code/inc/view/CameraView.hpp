@@ -34,7 +34,7 @@ using namespace std;
 			virtual ~CameraView();
 
 			virtual bool display();
-			virtual void update(string _message, cv::Mat _frame, cv::Size _textSize);
+			virtual void update(int _mode, cv::Mat * _view, std::string * _message);
 
 		private:
 			bool operation;

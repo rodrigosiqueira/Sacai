@@ -50,10 +50,11 @@ using namespace std;
 		for(;;)
 		{
 			this->frameView = setting.nextImage();
-			//If calibration starts
+			//If calibration starts  !this->controlView->calibDone()
 			if(this->operation)
 			{
-				//this->modelView->startCalibration(mode, &(this->frameView), &(this->message));
+				//callCalibration(int _mode, cv::Mat * _view, std::string * _message) <- Lembrar param
+				this->controlView->callCalibration(mode, &(this->frameView), &(this->message));
 			}
 
 			cv::Point textOrigin(this->frameView.cols - 2 * textSize.width - 10, this->frameView.rows - 2 * baseLine - 10);
@@ -87,10 +88,10 @@ using namespace std;
 		return true;
 	}
 
-	void CameraView :: update(string _message, cv::Mat _frame, cv::Size _textSize)
+	void CameraView :: update(int _mode, cv::Mat * _view, std::string * _message)
 	{
-		this->message = _message;
-		this->frameView = _frame;
-		this->textSize = _textSize;
+		//this->message = _message;
+		//this->frameView = _frame;
+		//this->textSize = _textSize;
 	}
 //}

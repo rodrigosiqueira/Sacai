@@ -19,7 +19,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	SacaiLoader * model = new SacaiLoader();
-	SacaiController * control = new SacaiController(model);
+	SacaiLoader * _model = new SacaiLoader();
+	SacaiController * _control = new SacaiController(_model);
 	return 0;
 }

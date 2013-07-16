@@ -1,6 +1,7 @@
 /**
  * @file SacaiController.cpp
  **/
+#include <opencv2/core/core.hpp>
 
 #include <SacaiController.hpp>
 #include <SacaiLoader.hpp>
@@ -21,5 +22,11 @@
 	SacaiController :: ~SacaiController()
 	{
 		delete this->viewSacai;
+	}
+
+	bool SacaiController :: callCalibration(int _mode, cv::Mat * _view, std::string * _message)
+	{
+		this->modelSacai->calibration->executeCalibration(_mode, _view, _message);
+		return true;
 	}
 //}

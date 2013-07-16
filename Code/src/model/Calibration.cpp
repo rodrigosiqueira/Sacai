@@ -64,7 +64,7 @@ using namespace std;
 		return rc;
 	}
 
-	bool Calibration :: executeCalibration()
+	bool Calibration :: executeCalibration(int _mode, cv::Mat * _view, string * _message)
 	{
 		bool found, blinkOutput = false;
 		int baseLine = 0;

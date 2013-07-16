@@ -36,11 +36,18 @@ class ViewInterface;
 			 **/
 			void updateObserver();
 
+			virtual bool startCalibration(int _mode, cv::Mat * _view, std::string * _message) = 0;
+			virtual bool getCalibrationDone()
+			{
+				return this->calibrationDone;
+			}
+
 		protected:
 			vector<ViewInterface *> listOfObserver;
 			string message;
 			cv::Mat frame;
 			cv::Size textSize;
+			bool calibrationDone;
 
 			ModelInterface();
 			virtual ~ModelInterface();
