@@ -19,11 +19,17 @@
 		delete this->calibration;
 	}
 
-	bool SacaiLoader :: startCalibration(int _mode, cv::Mat * _view, std::string * _message)
+	bool SacaiLoader :: startCalibration(int * _mode, cv::Mat * _view, std::string * _message, int * _frameElapsed)
 	{
-		this->calibration->executeCalibration(_mode, _view, _message);
+		this->calibration->executeCalibration(_mode, _view, _message, _frameElapsed);
 		//Notify all the observers
 		this->updateObserver();
+		return true;
+	}
+
+	bool SacaiLoader :: resetPoint()
+	{
+		this->calibration->resetPoint();
 		return true;
 	}
 //}

@@ -64,27 +64,26 @@ using namespace std;
 		return rc;
 	}
 
-	bool Calibration :: executeCalibration(int _mode, cv::Mat * _view, string * _message)
+	bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, string * _message, int * _frameElapsed)
 	{
 		bool found, blinkOutput = false;
-		int baseLine = 0;
 		cv::Size textSize;
 
 		//Conditions for stop calibration
-		if(this->mode == util::CAPTURING &&
+		if((*_mode) == util::CAPTURING &&
 			this->imagePoints.size() >= (unsigned)this->settings.numFrameForCalibration)
 		{
 			if(this->runCalibrationAndSave())
 			{
-				this->mode = util::CALIBRATED;
+				(*_mode) = util::CALIBRATED;
 			}
 			else
 			{
-				this->mode = util::DETECTION;
+				(*_mode) = util::DETECTION;
 			}
 		}
 		//Verify if no more images
-		if(this->view->empty())
+		if(_view->empty())
 		{
 			if(this->imagePoints.size() > 0)
 			{
@@ -92,21 +91,21 @@ using namespace std;
 			}
 			return false;
 		}
-		this->imageSize = this->view->size();
+		this->imageSize = _view->size();
 		if(this->settings.flipAroundHorizonAxis)
 		{
-			cv::flip(*(this->view), *(this->view), 0);
+			cv::flip(*(_view), *(_view), 0);
 		}
 
 		vector<cv::Point2f> detectedGeometry;
 		found = this->recognitionPattern->findGeometry(
-					*(this->view),
+					*(_view),
 					detectedGeometry,
 					this->settings.boardSize);
 		//Draw the chessboard
 		if(found)
 		{
-			if(this->mode == util::CAPTURING &&
+			if((*_mode) == util::CAPTURING &&
 				(!this->settings.inputCapture.isOpened() ||
 				clock() - this->previousTimeStamp >
 				this->settings.delayForVideoInput * 1e-3*CLOCKS_PER_SEC))
@@ -115,36 +114,21 @@ using namespace std;
 				this->previousTimeStamp = clock();
 				blinkOutput = this->settings.inputCapture.isOpened();
 			}
-			cv::drawChessboardCorners(*(this->view), this->settings.boardSize, cv::Mat(detectedGeometry), found);
+			cv::drawChessboardCorners(*(_view), this->settings.boardSize, cv::Mat(detectedGeometry), found);
 		}
-		//Output text
-		*(this->message) = (this->mode == util::CAPTURING) ? "100/100" : this->mode == util::CALIBRATED ? "Calibrated" : "Press 'g' to start";
 
-		textSize = cv::getTextSize(*(this->message), 1, 1, 1, &baseLine);
-		cv::Point textOrigin(this->view->cols - 2*textSize.width - 10, this->view->rows - 2*baseLine - 10);
-
-		if(this->mode == util::CAPTURING)
-		{
-			if(this->settings.showUndistorsed)
-			{
-				*(this->message) = cv::format( "%d/%d Undist", (int)this->imagePoints.size(), this->settings.numFrameForCalibration);
-			}
-			else
-			{
-				*(this->message) = cv::format( "%d/%d", (int)this->imagePoints.size(), this->settings.numFrameForCalibration);
-			}
-		}
+		*_frameElapsed = (int)this->imagePoints.size();
 
 		if(blinkOutput)
 		{
-			cv::bitwise_not(*(this->view), *(this->view));
+			cv::bitwise_not(*(_view), *(_view));
 		}
 
-		//Video capture  output  undistorted
-		if(this->mode == util::CALIBRATED && this->settings.showUndistorsed)
+		//Video capture  output  undistorted --- CREATE ONE METHOD FOR THIS
+		if((*_mode) == util::CALIBRATED && this->settings.showUndistorsed)
 		{
-			cv::Mat temp = this->view->clone();
-			cv::undistort(temp, *(this->view), this->cameraMatrix, this->distortionCoefficients);
+			cv::Mat temp = _view->clone();
+			cv::undistort(temp, *(_view), this->cameraMatrix, this->distortionCoefficients);
 		}
 
 		return true;
@@ -378,10 +362,5 @@ using namespace std;
 				return false;
 		}
 		return true;
-	}
-
-	int Calibration :: stopCalibration()
-	{
-		return -1;
 	}
 //}

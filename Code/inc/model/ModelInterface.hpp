@@ -36,7 +36,8 @@ class ViewInterface;
 			 **/
 			void updateObserver();
 
-			virtual bool startCalibration(int _mode, cv::Mat * _view, std::string * _message) = 0;
+			virtual bool startCalibration(int * _mode, cv::Mat * _view, std::string * _message, int * _frameElapsed) = 0;
+			virtual bool resetPoint() = 0;
 			virtual bool getCalibrationDone()
 			{
 				return this->calibrationDone;

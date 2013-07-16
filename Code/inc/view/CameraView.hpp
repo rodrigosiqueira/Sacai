@@ -37,7 +37,6 @@ using namespace std;
 			virtual void update(int _mode, cv::Mat * _view, std::string * _message);
 
 		private:
-			bool operation;
 			string nameWindow, message;
 			cv::Mat frameView;
 			cv::Size textSize;

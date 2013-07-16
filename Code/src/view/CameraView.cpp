@@ -31,13 +31,14 @@ using namespace std;
 	bool CameraView :: display()
 	{
 		cv::Scalar GREEN(0, 255, 0), RED(0, 0, 255);
-		int waitTime = 0, mode = 0, baseLine = 0;
+		int waitTime = 0, mode = 0, baseLine = 0, frameElapsed = 0;
 		char key = 0;
+		cv::Size textSize;
 
-		Setting& setting = Setting :: getInstance();
+		Setting& settings = Setting :: getInstance();
 
 		//Initial mode
-		if(setting.inputType == util::IMAGE_LIST)
+		if(settings.inputType == util::IMAGE_LIST)
 		{
 			mode = util::CAPTURING;
 		}
@@ -49,19 +50,47 @@ using namespace std;
 		//Main loop
 		for(;;)
 		{
-			this->frameView = setting.nextImage();
-			//If calibration starts  !this->controlView->calibDone()
-			if(this->operation)
+			this->frameView = settings.nextImage();
+			//If calibration starts
+			if(mode == util::CAPTURING)
 			{
-				//callCalibration(int _mode, cv::Mat * _view, std::string * _message) <- Lembrar param
-				this->controlView->callCalibration(mode, &(this->frameView), &(this->message));
+				this->controlView->callCalibration(&mode, &(this->frameView), &(this->message), &frameElapsed);
 			}
 
+			//Output text
+			if(mode == util::CAPTURING)
+			{
+				this->message = "100/100";
+			}
+			else if(mode == util::CALIBRATED)
+			{
+				this->message = "Calibrated";
+			}
+			else
+			{
+				this->message = "Press 'g' to start";
+			}
+
+			baseLine = 0;
+			textSize = cv::getTextSize(this->message, 1, 1, 1, &baseLine);
 			cv::Point textOrigin(this->frameView.cols - 2 * textSize.width - 10, this->frameView.rows - 2 * baseLine - 10);
 
+			if(mode == util::CAPTURING)
+			{
+				if(settings.showUndistorsed)
+				{
+					this->message = cv::format( "%d/%d Undist", frameElapsed, settings.numFrameForCalibration);
+				}
+				else
+				{
+					this->message = cv::format( "%d/%d", frameElapsed, settings.numFrameForCalibration);
+				}
+			}
+
 			cv::putText(this->frameView, this->message, textOrigin, 1, 1, mode == util::CALIBRATED ?  GREEN : RED);
+
 			cv::imshow(nameWindow, this->frameView);
-			waitTime = setting.inputCapture.isOpened() ? 50 : setting.delayForVideoInput;
+			waitTime = settings.inputCapture.isOpened() ? 50 : settings.delayForVideoInput;
 
 			key = (char)cv::waitKey(waitTime);
 
@@ -73,15 +102,13 @@ using namespace std;
 			if(key == 'u' && mode == util::CALIBRATED)
 			{
 				//Disparar a ação de distorcer
-				setting.showUndistorsed = !setting.showUndistorsed;
+				settings.showUndistorsed = !settings.showUndistorsed;
 			}
 
-			if(setting.inputCapture.isOpened() && key == 'g')
+			if(settings.inputCapture.isOpened() && key == 'g')
 			{
-				//Disparar a ação de calibrar
-				this->operation = true;
 				mode = util::CAPTURING;
-				//calibration->resetPoint();
+				this->controlView->callResetPoint();
 			}
 		}
 

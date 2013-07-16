@@ -16,7 +16,6 @@
 	{
 		this->modelSacai = _model;
 		this->viewSacai = new CameraView(this, _model);
-		this->viewSacai->display();
 	}
 
 	SacaiController :: ~SacaiController()
@@ -24,9 +23,29 @@
 		delete this->viewSacai;
 	}
 
-	bool SacaiController :: callCalibration(int _mode, cv::Mat * _view, std::string * _message)
+	bool SacaiController :: showWindow(bool _show)
 	{
-		this->modelSacai->calibration->executeCalibration(_mode, _view, _message);
+		if(_show)
+		{
+			this->viewSacai->display();
+			return true;
+		}
+		else
+		{
+			return _show;
+		}
+	}
+
+	bool SacaiController :: callResetPoint()
+	{
+		this->modelSacai->resetPoint();
+		return true;
+	}
+
+	bool SacaiController :: callCalibration(
+				int * _mode, cv::Mat * _view, std::string * _message, int * _frameElapsed)
+	{
+		this->modelSacai->startCalibration(_mode, _view, _message, _frameElapsed);
 		return true;
 	}
 //}

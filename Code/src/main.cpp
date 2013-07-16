@@ -21,5 +21,6 @@ int main(int argc, char* argv[])
 {
 	SacaiLoader * _model = new SacaiLoader();
 	SacaiController * _control = new SacaiController(_model);
+	_control->showWindow(true);
 	return 0;
 }

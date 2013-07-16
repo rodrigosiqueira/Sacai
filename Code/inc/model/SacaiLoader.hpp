@@ -24,7 +24,12 @@
 			SacaiLoader();
 			virtual ~SacaiLoader();
 
-			virtual bool startCalibration(int _mode, cv::Mat * _view, std::string * _message);
+			virtual bool startCalibration(
+				int * _mode,
+				cv::Mat * _view,
+				std::string * _message,
+				int * _frameElapsed);
+			virtual bool resetPoint();
 	};
 //};
 

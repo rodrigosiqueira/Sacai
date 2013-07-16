@@ -27,7 +27,14 @@
 			SacaiController(SacaiLoader * _model);
 			virtual ~SacaiController();
 
-			virtual bool callCalibration(int _mode, cv::Mat * _view, std::string * _message);
+			virtual bool callCalibration(
+						int * _mode,
+						cv::Mat * _view,
+						std::string * _message,
+						int * _frameElapsed);
+			
+			virtual bool showWindow(bool _show);
+			virtual bool callResetPoint();
 			virtual bool calibDone()
 			{
 				return this->modelSacai->getCalibrationDone();
