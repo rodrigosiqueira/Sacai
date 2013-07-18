@@ -48,3 +48,15 @@ bool SacaiController :: callCalibration()
 
 	return rc;
 }
+
+bool SacaiController :: callFindCircle()
+{
+	bool rc = false;
+
+	rc = this->modelSacai->startFindCircle(
+			this->viewSacai->getMode(),
+			this->viewSacai->getFrame(),
+			this->viewSacai->getFrameElapse());
+
+	return rc;
+}

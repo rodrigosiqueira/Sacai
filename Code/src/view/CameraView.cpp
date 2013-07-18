@@ -45,6 +45,8 @@ bool CameraView :: display()
 	int waitTime = 0, baseLine = 0;
 	char key = 0;
 	cv::Size textSize;
+	bool detectCircle = false;
+	string circleMessage = "Press 'c' to find circle ";
 
 	//Main loop
 	for(;;)
@@ -54,6 +56,10 @@ bool CameraView :: display()
 		if(this->mode == util::CAPTURING)
 		{
 			this->controlView->callCalibration();
+		}
+		if(detectCircle)
+		{
+			this->controlView->callFindCircle();
 		}
 
 		//Output text
@@ -73,6 +79,7 @@ bool CameraView :: display()
 		baseLine = 0;
 		textSize = cv::getTextSize(this->message, 1, 1, 1, &baseLine);
 		cv::Point textOrigin(this->frameView.cols - 2 * textSize.width - 10, this->frameView.rows - 2 * baseLine - 10);
+		cv::Point textCircle(10, 10);
 
 		if(this->mode == util::CAPTURING)
 		{
@@ -87,6 +94,7 @@ bool CameraView :: display()
 		}
 
 		cv::putText(this->frameView, this->message, textOrigin, 1, 1, this->mode == util::CALIBRATED ?  GREEN : RED);
+		cv::putText(this->frameView, circleMessage, textCircle, 1, 1, GREEN);
 
 		cv::imshow(nameWindow, this->frameView);
 		waitTime = settings.inputCapture.isOpened() ? 50 : settings.delayForVideoInput;
@@ -107,6 +115,11 @@ bool CameraView :: display()
 		{
 			this->mode = util::CAPTURING;
 			this->controlView->callResetPoint();
+		}
+
+		if(key == 'c')
+		{
+			detectCircle = !detectCircle;
 		}
 	}
 

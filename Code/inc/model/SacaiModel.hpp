@@ -8,6 +8,7 @@
 
 #include <ModelInterface.hpp>
 #include <Calibration.hpp>
+#include <RecognizeCircle.hpp>
 
 /**
  * @class SacaiModel
@@ -33,8 +34,15 @@ class SacaiModel : public ModelInterface
 		 * @see ModelInterface
 		 **/
 		virtual bool resetPoint();
+
+		/**
+		 * @see ModelInterface
+		 **/
+		virtual bool startFindCircle(int _mode, cv::Mat * _view, int _frameElapsed);
+
 	private:
 		Calibration * calibration;
+		RecognizeCircle * recognizeCircle;
 };
 
 #endif

@@ -22,6 +22,10 @@ class ControllerInterface
 		 **/
 		virtual bool callCalibration() = 0;
 		/**
+		 *
+		 **/
+		virtual bool callFindCircle() = 0;
+		/**
 		 * @return Return true if all right and false otherwise.
 		 * @brief Display de window.
 		 **/

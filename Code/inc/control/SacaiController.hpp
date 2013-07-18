@@ -26,7 +26,14 @@ class SacaiController : public ControllerInterface
 		SacaiController(SacaiModel * _model);
 		virtual ~SacaiController();
 
+		/**
+		 *@see ControllerInterface
+		 **/
 		virtual bool callCalibration();
+		/**
+		 *@see ControllerInterface
+		 **/
+		virtual bool callFindCircle();
 
 		virtual bool showWindow(bool _show);
 		virtual bool callResetPoint();

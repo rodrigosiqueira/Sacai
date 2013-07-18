@@ -45,6 +45,12 @@ class ModelInterface
 		 * @brief Reset the vector of points.
 		 **/
 		virtual bool resetPoint() = 0;
+		/**
+		 * @param
+		 * @return
+		 * @brief
+		 **/
+		virtual bool startFindCircle(int _mode, cv::Mat * _view, int _frameElapsed) = 0;
 
 	protected:
 		std::vector<ViewInterface *> listOfObserver;	/**< List of observers that model knows.*/
