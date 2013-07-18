@@ -7,50 +7,44 @@
 #include <SacaiModel.hpp>
 #include <CameraView.hpp>
 
-//using namespace view;
-//using namespace model;
+SacaiController :: SacaiController(SacaiModel * _model)
+{
+	this->modelSacai = _model;
+	this->viewSacai = new CameraView(this, _model);
+}
 
-//namespace control
-//{
-	SacaiController :: SacaiController(SacaiModel * _model)
-	{
-		this->modelSacai = _model;
-		this->viewSacai = new CameraView(this, _model);
-	}
+SacaiController :: ~SacaiController()
+{
+	delete this->viewSacai;
+}
 
-	SacaiController :: ~SacaiController()
+bool SacaiController :: showWindow(bool _show)
+{
+	if(_show)
 	{
-		delete this->viewSacai;
-	}
-
-	bool SacaiController :: showWindow(bool _show)
-	{
-		if(_show)
-		{
-			this->viewSacai->display();
-			return true;
-		}
-		else
-		{
-			return _show;
-		}
-	}
-
-	bool SacaiController :: callResetPoint()
-	{
-		this->modelSacai->resetPoint();
+		this->viewSacai->display();
 		return true;
 	}
-
-	bool SacaiController :: callCalibration()
+	else
 	{
-		bool rc = false;
-
-		rc = this->modelSacai->startCalibration(
-				this->viewSacai->getMode(),
-				this->viewSacai->getFrame(),
-				this->viewSacai->getFrameElapse());
-
-		return rc;
+		return _show;
 	}
-//}
+}
+
+bool SacaiController :: callResetPoint()
+{
+	this->modelSacai->resetPoint();
+	return true;
+}
+
+bool SacaiController :: callCalibration()
+{
+	bool rc = false;
+
+	rc = this->modelSacai->startCalibration(
+			this->viewSacai->getMode(),
+			this->viewSacai->getFrame(),
+			this->viewSacai->getFrameElapse());
+
+	return rc;
+}

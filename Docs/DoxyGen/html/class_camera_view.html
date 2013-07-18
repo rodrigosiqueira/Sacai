@@ -37,13 +37,13 @@ Collaboration diagram for CameraView:</div>
 <div class="dynsection">
 <div class="center"><img src="class_camera_view__coll__graph.png" border="0" usemap="#_camera_view_coll__map" alt="Collaboration graph"/></div>
 <map name="_camera_view_coll__map" id="_camera_view_coll__map">
-<area shape="rect" href="class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers..." alt="" coords="121,389,220,419"/><area shape="rect" href="class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,293,133,323"/><area shape="rect" href="class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="25,197,113,227"/><area shape="rect" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="119,101,225,131"/><area shape="rect" href="class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="12,101,95,131"/><area shape="rect" href="class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="199,5,260,35"/><area shape="rect" href="class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="8,5,99,35"/></map>
+<area shape="rect" href="class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers..." alt="" coords="20,197,119,227"/><area shape="rect" href="class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,101,133,131"/><area shape="rect" href="class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="25,5,113,35"/><area shape="rect" href="class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="143,197,204,227"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="class_camera_view-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_view.html#ab2be6046099b7b910f68e778c4ac66de">CameraView</a> (<a class="el" href="class_controller_interface.html">ControllerInterface</a> *_control, <a class="el" href="class_model_interface.html">ModelInterface</a> *_model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_view.html#ab2be6046099b7b910f68e778c4ac66de">CameraView</a> (<a class="el" href="class_controller_interface.html">ControllerInterface</a> *_control, ModelInterface *_model)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This construct receives the maily elements for doing interface operation.  <a href="#ab2be6046099b7b910f68e778c4ac66de"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_view.html#acbacbf42c2ab0b40123e37cac3215b02">display</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Implements specific visualization.  <a href="#acbacbf42c2ab0b40123e37cac3215b02"></a><br/></td></tr>
@@ -70,7 +70,7 @@ Collaboration diagram for CameraView:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_model_interface.html">ModelInterface</a> *&nbsp;</td>
+          <td class="paramtype">ModelInterface *&nbsp;</td>
           <td class="paramname"> <em>_model</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -90,15 +90,6 @@ Collaboration diagram for CameraView:</div>
   </table>
   </dd>
 </dl>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dynsection">
-<div class="center"><img src="class_camera_view_ab2be6046099b7b910f68e778c4ac66de_cgraph.png" border="0" usemap="#class_camera_view_ab2be6046099b7b910f68e778c4ac66de_cgraph_map" alt=""></div>
-<map name="class_camera_view_ab2be6046099b7b910f68e778c4ac66de_cgraph_map" id="class_camera_view_ab2be6046099b7b910f68e778c4ac66de_cgraph">
-<area shape="rect" href="class_model_interface.html#abe25b45dcd0747cdbdb781d9637940d7" title="This method belongs for Pattern Observer. It register the observer of actions." alt="" coords="231,5,441,35"/></map>
-</div>
-</p>
 
 </div>
 </div>
@@ -128,7 +119,16 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <div class="center"><img src="class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_cgraph.png" border="0" usemap="#class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_cgraph_map" alt=""></div>
 <map name="class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_cgraph_map" id="class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_cgraph">
-<area shape="rect" href="class_setting.html#ad724e84e07600a8b32173cbcea6bd085" title="Capture the next frame and return it." alt="" coords="199,5,329,35"/></map>
+<area shape="rect" href="class_controller_interface.html#a6c9ce930a0b6054d50afb226a63abafb" title="Encapsulate the execution of calibration." alt="" coords="199,5,415,35"/><area shape="rect" href="class_controller_interface.html#a006924dfce8c8b13f0c5970ac7d35414" title="Reset the points of calibration." alt="" coords="197,59,416,88"/><area shape="rect" href="class_setting.html#ad724e84e07600a8b32173cbcea6bd085" title="Capture the next frame and return it." alt="" coords="241,112,372,141"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<div class="center"><img src="class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_icgraph.png" border="0" usemap="#class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_icgraph_map" alt=""></div>
+<map name="class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_icgraph_map" id="class_camera_view_acbacbf42c2ab0b40123e37cac3215b02_icgraph">
+<area shape="rect" href="class_sacai_controller.html#aad201def8f2f9b64c4099a19517de15b" title="Display de window." alt="" coords="197,5,389,35"/></map>
 </div>
 </p>
 
@@ -154,6 +154,15 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="class_view_interface.html#a20ee2e619160358b539304a3c9e9fe0f">ViewInterface</a>.</p>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<div class="center"><img src="class_camera_view_a74988c0d75d867881a3a6b0dd4ad2795_icgraph.png" border="0" usemap="#class_camera_view_a74988c0d75d867881a3a6b0dd4ad2795_icgraph_map" alt=""></div>
+<map name="class_camera_view_a74988c0d75d867881a3a6b0dd4ad2795_icgraph_map" id="class_camera_view_a74988c0d75d867881a3a6b0dd4ad2795_icgraph">
+<area shape="rect" href="class_sacai_controller.html#af574aad04f139a6a9caac7f9fe370669" title="Encapsulate the execution of calibration." alt="" coords="212,5,409,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ab8996062b6a24bf7dfd0f6bc7c0ad554"></a><!-- doxytag: member="CameraView::getFrameElapse" ref="ab8996062b6a24bf7dfd0f6bc7c0ad554" args="()" -->
@@ -174,6 +183,15 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="class_view_interface.html#a3e1219726a0ce607531f7b944b5071ee">ViewInterface</a>.</p>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<div class="center"><img src="class_camera_view_ab8996062b6a24bf7dfd0f6bc7c0ad554_icgraph.png" border="0" usemap="#class_camera_view_ab8996062b6a24bf7dfd0f6bc7c0ad554_icgraph_map" alt=""></div>
+<map name="class_camera_view_ab8996062b6a24bf7dfd0f6bc7c0ad554_icgraph_map" id="class_camera_view_ab8996062b6a24bf7dfd0f6bc7c0ad554_icgraph">
+<area shape="rect" href="class_sacai_controller.html#af574aad04f139a6a9caac7f9fe370669" title="Encapsulate the execution of calibration." alt="" coords="252,5,449,35"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ac18239ca7020687a09ea88975f5f5d4f"></a><!-- doxytag: member="CameraView::getMode" ref="ac18239ca7020687a09ea88975f5f5d4f" args="()" -->
@@ -193,6 +211,15 @@ Here is the call graph for this function:</div>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Return the current mode. </dd></dl>
 
 <p>Implements <a class="el" href="class_view_interface.html#ad73af4217333275b3f8745488457f5c4">ViewInterface</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<div class="center"><img src="class_camera_view_ac18239ca7020687a09ea88975f5f5d4f_icgraph.png" border="0" usemap="#class_camera_view_ac18239ca7020687a09ea88975f5f5d4f_icgraph_map" alt=""></div>
+<map name="class_camera_view_ac18239ca7020687a09ea88975f5f5d4f_icgraph_map" id="class_camera_view_ac18239ca7020687a09ea88975f5f5d4f_icgraph">
+<area shape="rect" href="class_sacai_controller.html#af574aad04f139a6a9caac7f9fe370669" title="Encapsulate the execution of calibration." alt="" coords="207,5,404,35"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -246,7 +273,7 @@ Here is the call graph for this function:</div>
 <li>src/view/<a class="el" href="_camera_view_8cpp.html">CameraView.cpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jul 18 08:11:08 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

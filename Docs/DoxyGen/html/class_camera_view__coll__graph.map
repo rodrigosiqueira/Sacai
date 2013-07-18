@@ -1,9 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers..." alt="" coords="121,389,220,419"/>
-<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,293,133,323"/>
-<area shape="rect" href="$class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="25,197,113,227"/>
-<area shape="rect" href="$class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="119,101,225,131"/>
-<area shape="rect" href="$class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="12,101,95,131"/>
-<area shape="rect" href="$class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="199,5,260,35"/>
-<area shape="rect" href="$class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="8,5,99,35"/>
+<area shape="rect" href="$class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers..." alt="" coords="20,197,119,227"/>
+<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,101,133,131"/>
+<area shape="rect" href="$class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="25,5,113,35"/>
+<area shape="rect" href="$class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="143,197,204,227"/>
 </map>

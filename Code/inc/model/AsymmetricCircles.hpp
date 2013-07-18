@@ -8,23 +8,21 @@
 
 #include <InputPattern.hpp>
 
-//namespace model
-//{
-	/**
-	 * @class AsymmetricCircles
-	 * @brief Implements specific operation for find asymmetric circle grid.
-	 **/
-	class AsymmetricCircles : public InputPattern
-	{
-		public:
-			AsymmetricCircles();
-			virtual ~AsymmetricCircles();
-			virtual bool findGeometry(
-							cv::Mat& _source,
-							vector<cv::Point2f>& _output,
-							cv::Size& _sizePattern);
-	};
-//};
+/**
+ * @class AsymmetricCircles
+ * @brief Implements specific operation for find asymmetric circle grid.
+ * @see InputPattern
+ **/
+class AsymmetricCircles : public InputPattern
+{
+	public:
+		AsymmetricCircles();
+		virtual ~AsymmetricCircles();
+		virtual bool findGeometry(
+						cv::Mat& _source,
+						std::vector<cv::Point2f>& _output,
+						cv::Size& _sizePattern);
+};
 
 #endif
 

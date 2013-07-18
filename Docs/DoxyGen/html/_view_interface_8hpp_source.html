@@ -34,7 +34,7 @@
 <a name="l00013"></a>00013 
 <a name="l00014"></a>00014 <span class="keyword">using namespace </span>std;
 <a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="keyword">class </span><a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a>;
+<a name="l00016"></a>00016 <span class="keyword">class </span>ModelInterface;
 <a name="l00017"></a>00017 <span class="keyword">class </span><a class="code" href="class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller...">ControllerInterface</a>;
 <a name="l00018"></a>00018 
 <a name="l00019"></a>00019 <span class="comment">//namespace view</span>
@@ -49,7 +49,7 @@
 <a name="l00055"></a>00055                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_view_interface.html#a3e1219726a0ce607531f7b944b5071ee">getFrameElapse</a>() = 0;
 <a name="l00056"></a>00056 
 <a name="l00057"></a>00057                 <span class="keyword">protected</span>:
-<a name="l00058"></a><a class="code" href="class_view_interface.html#a1112c7d56261a04b65b45fda5a9fdcbe">00058</a>                         <a class="code" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a> * <a class="code" href="class_view_interface.html#a1112c7d56261a04b65b45fda5a9fdcbe">modelView</a>;                     
+<a name="l00058"></a><a class="code" href="class_view_interface.html#a1112c7d56261a04b65b45fda5a9fdcbe">00058</a>                         ModelInterface * <a class="code" href="class_view_interface.html#a1112c7d56261a04b65b45fda5a9fdcbe">modelView</a>;                     
 <a name="l00059"></a><a class="code" href="class_view_interface.html#adcaf6311b6ed9350bdc03df68a140018">00059</a>                         <a class="code" href="class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller...">ControllerInterface</a> * <a class="code" href="class_view_interface.html#adcaf6311b6ed9350bdc03df68a140018">controlView</a>;      
 <a name="l00061"></a>00061                         <a class="code" href="class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers...">ViewInterface</a>(){}
 <a name="l00062"></a>00062                         <span class="keyword">virtual</span> ~<a class="code" href="class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers...">ViewInterface</a>(){}
@@ -58,7 +58,7 @@
 <a name="l00065"></a>00065 
 <a name="l00066"></a>00066 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jul 18 08:11:07 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

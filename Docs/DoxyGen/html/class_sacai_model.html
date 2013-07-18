@@ -25,55 +25,23 @@
   </div>
 </div>
 <div class="contents">
-<h1>SacaiModel Class Reference</h1><!-- doxytag: class="SacaiModel" --><!-- doxytag: inherits="ModelInterface" -->
+<h1>SacaiModel Class Reference</h1><!-- doxytag: class="SacaiModel" -->
 <p>Concrete implementation of "Model" Interface. This class encapsulate many actions and the management of observers.  
 <a href="#_details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_sacai_model_8hpp_source.html">SacaiModel.hpp</a>&gt;</code></p>
 
-<p>Inherits <a class="el" href="class_model_interface.html">ModelInterface</a>.</p>
-<div class="dynheader">
-Collaboration diagram for SacaiModel:</div>
-<div class="dynsection">
-<div class="center"><img src="class_sacai_model__coll__graph.png" border="0" usemap="#_sacai_model_coll__map" alt="Collaboration graph"/></div>
-<map name="_sacai_model_coll__map" id="_sacai_model_coll__map">
-<area shape="rect" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject..." alt="" coords="5,101,112,131"/><area shape="rect" href="class_calibration.html" title="Keeps the attribute and methods for doing calibration." alt="" coords="136,101,219,131"/><area shape="rect" href="class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="96,5,157,35"/><area shape="rect" href="class_input_pattern.html" title="This abtract class is a piece of Strategy pattern. It is the base of other classes..." alt="" coords="181,5,272,35"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-
 <p><a href="class_sacai_model-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sacai_model.html#aedef59561c2537755385d053905f39ef">startCalibration</a> (int _mode, cv::Mat *_view, int _frameElapsed)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Method that encapsulate the action of call calibration.  <a href="#aedef59561c2537755385d053905f39ef"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sacai_model.html#a43168750e8a66478c0cc9e76680e9e91">resetPoint</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset the vector of points.  <a href="#a43168750e8a66478c0cc9e76680e9e91"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43168750e8a66478c0cc9e76680e9e91"></a><!-- doxytag: member="SacaiModel::resetPoint" ref="a43168750e8a66478c0cc9e76680e9e91" args="()" -->
+virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>resetPoint</b> ()</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Concrete implementation of "Model" Interface. This class encapsulate many actions and the management of observers. </p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="class_model_interface.html" title="Interface for model with methods for pattern Observer. This class represent the Subject...">ModelInterface</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd>ModelInterface </dd></dl>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a43168750e8a66478c0cc9e76680e9e91"></a><!-- doxytag: member="SacaiModel::resetPoint" ref="a43168750e8a66478c0cc9e76680e9e91" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SacaiModel::resetPoint </td>
-          <td>(</td>
-          <td class="paramname"></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Reset the vector of points. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Return true if all right, and false otherwise. </dd></dl>
-
-<p>Implements <a class="el" href="class_model_interface.html#a0c1b3537e0c7bfd2d862a95f80b03119">ModelInterface</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="aedef59561c2537755385d053905f39ef"></a><!-- doxytag: member="SacaiModel::startCalibration" ref="aedef59561c2537755385d053905f39ef" args="(int _mode, cv::Mat *_view, int _frameElapsed)" -->
 <div class="memitem">
 <div class="memproto">
@@ -104,26 +72,14 @@ Collaboration diagram for SacaiModel:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Method that encapsulate the action of call calibration. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>_mode</em>&nbsp;</td><td>Current mode of calibration. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>_view</em>&nbsp;</td><td>Target frame for calibration. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>_frameElapsed</em>&nbsp;</td><td>Total of frame elapsed. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Return true if all right and false otherwise </dd></dl>
-
-<p>Implements <a class="el" href="class_model_interface.html#af1041a0990a6afb762eeb0c467f2cfb2">ModelInterface</a>.</p>
+<dl class="see"><dt><b>See also:</b></dt><dd>ModelInterface </dd></dl>
 
 <p><div class="dynheader">
-Here is the call graph for this function:</div>
+Here is the caller graph for this function:</div>
 <div class="dynsection">
-<div class="center"><img src="class_sacai_model_aedef59561c2537755385d053905f39ef_cgraph.png" border="0" usemap="#class_sacai_model_aedef59561c2537755385d053905f39ef_cgraph_map" alt=""></div>
-<map name="class_sacai_model_aedef59561c2537755385d053905f39ef_cgraph_map" id="class_sacai_model_aedef59561c2537755385d053905f39ef_cgraph">
-<area shape="rect" href="class_model_interface.html#a5ce954f33b61e537f7a5b127903d029c" title="Update all observers." alt="" coords="237,5,445,35"/></map>
+<div class="center"><img src="class_sacai_model_aedef59561c2537755385d053905f39ef_icgraph.png" border="0" usemap="#class_sacai_model_aedef59561c2537755385d053905f39ef_icgraph_map" alt=""></div>
+<map name="class_sacai_model_aedef59561c2537755385d053905f39ef_icgraph_map" id="class_sacai_model_aedef59561c2537755385d053905f39ef_icgraph">
+<area shape="rect" href="class_sacai_controller.html#af574aad04f139a6a9caac7f9fe370669" title="Encapsulate the execution of calibration." alt="" coords="239,5,436,35"/></map>
 </div>
 </p>
 
@@ -134,7 +90,7 @@ Here is the call graph for this function:</div>
 <li>src/model/<a class="el" href="_sacai_model_8cpp.html">SacaiModel.cpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:05 2013 for Sacai by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jul 18 08:11:08 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

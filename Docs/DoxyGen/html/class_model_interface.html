@@ -36,8 +36,8 @@
 <p><a href="class_model_interface-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#abe25b45dcd0747cdbdb781d9637940d7">registerObserver</a> (<a class="el" href="class_view_interface.html">ViewInterface</a> *_observer)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This method belongs for Pattern Observer. It register the observer of actions.  <a href="#abe25b45dcd0747cdbdb781d9637940d7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#a5ed4be69b781253124d9634c2ecc8bc8">registerObserver</a> (<a class="el" href="class_view_interface.html">ViewInterface</a> *_observer)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This method belongs for Pattern Observer. It register the observer of actions.  <a href="#a5ed4be69b781253124d9634c2ecc8bc8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ce954f33b61e537f7a5b127903d029c"></a><!-- doxytag: member="ModelInterface::updateObserver" ref="a5ce954f33b61e537f7a5b127903d029c" args="()" -->
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#a5ce954f33b61e537f7a5b127903d029c">updateObserver</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Update all observers. <br/></td></tr>
@@ -46,7 +46,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#a0c1b3537e0c7bfd2d862a95f80b03119">resetPoint</a> ()=0</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset the vector of points.  <a href="#a0c1b3537e0c7bfd2d862a95f80b03119"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_view_interface.html">ViewInterface</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#a04617dc69eeac44b8fd6a71c99a6dfa0">listOfObserver</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_view_interface.html">ViewInterface</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#ab37abd99534f59174f8ed4889c8e1af2">listOfObserver</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">cv::Mat *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#abe22e66a2047249b0a45fcfc1de20a8c">frameCalibration</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#aade9ba12110bedcde455fe87a88b33c7">modeCalibration</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_interface.html#adfcafc30fb94adcc6f6d4f31d3d150f0">frameElapsedCalibration</a></td></tr>
@@ -54,12 +54,12 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Interface for model with methods for pattern Observer. This class represent the Subject in pattern observer. </p>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="abe25b45dcd0747cdbdb781d9637940d7"></a><!-- doxytag: member="ModelInterface::registerObserver" ref="abe25b45dcd0747cdbdb781d9637940d7" args="(ViewInterface *_observer)" -->
+<a class="anchor" id="a5ed4be69b781253124d9634c2ecc8bc8"></a><!-- doxytag: member="ModelInterface::registerObserver" ref="a5ed4be69b781253124d9634c2ecc8bc8" args="(ViewInterface *_observer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelInterface::registerObserver </td>
+          <td class="memname">bool ModelInterface::registerObserver </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_view_interface.html">ViewInterface</a> *&nbsp;</td>
           <td class="paramname"> <em>_observer</em></td>
@@ -81,8 +81,8 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dynsection">
-<div class="center"><img src="class_model_interface_abe25b45dcd0747cdbdb781d9637940d7_icgraph.png" border="0" usemap="#class_model_interface_abe25b45dcd0747cdbdb781d9637940d7_icgraph_map" alt=""></div>
-<map name="class_model_interface_abe25b45dcd0747cdbdb781d9637940d7_icgraph_map" id="class_model_interface_abe25b45dcd0747cdbdb781d9637940d7_icgraph">
+<div class="center"><img src="class_model_interface_a5ed4be69b781253124d9634c2ecc8bc8_icgraph.png" border="0" usemap="#class_model_interface_a5ed4be69b781253124d9634c2ecc8bc8_icgraph_map" alt=""></div>
+<map name="class_model_interface_a5ed4be69b781253124d9634c2ecc8bc8_icgraph_map" id="class_model_interface_a5ed4be69b781253124d9634c2ecc8bc8_icgraph">
 <area shape="rect" href="class_camera_view.html#ab2be6046099b7b910f68e778c4ac66de" title="This construct receives the maily elements for doing interface operation." alt="" coords="267,5,443,35"/></map>
 </div>
 </p>
@@ -186,12 +186,12 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a class="anchor" id="a04617dc69eeac44b8fd6a71c99a6dfa0"></a><!-- doxytag: member="ModelInterface::listOfObserver" ref="a04617dc69eeac44b8fd6a71c99a6dfa0" args="" -->
+<a class="anchor" id="ab37abd99534f59174f8ed4889c8e1af2"></a><!-- doxytag: member="ModelInterface::listOfObserver" ref="ab37abd99534f59174f8ed4889c8e1af2" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt;<a class="el" href="class_view_interface.html">ViewInterface</a> *&gt; <a class="el" href="class_model_interface.html#a04617dc69eeac44b8fd6a71c99a6dfa0">ModelInterface::listOfObserver</a><code> [protected]</code></td>
+          <td class="memname">std::vector&lt;<a class="el" href="class_view_interface.html">ViewInterface</a> *&gt; <a class="el" href="class_model_interface.html#ab37abd99534f59174f8ed4889c8e1af2">ModelInterface::listOfObserver</a><code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -219,7 +219,7 @@ Here is the caller graph for this function:</div>
 <li>src/model/ModelInterface.cpp</li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Jul 17 01:16:05 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

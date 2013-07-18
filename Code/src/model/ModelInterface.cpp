@@ -4,36 +4,41 @@
 #include <iostream>
 
 #include <ModelInterface.hpp>
-//#include <ViewInterface.hpp>
 
-using namespace std;
+ModelInterface :: ModelInterface()
+{
+	this->modeCalibration = 0;
+	this->frameElapsedCalibration = 0;
+}
 
-//namespace model
-//{
+ModelInterface :: ~ModelInterface()
+{
+	delete frameCalibration;
+}
 
-	ModelInterface :: ModelInterface()
-	{
-	}
-
-	ModelInterface :: ~ModelInterface()
-	{
-
-	}
-
-	void ModelInterface :: registerObserver(ViewInterface * _observer)
+bool ModelInterface :: registerObserver(ViewInterface * _observer)
+{
+	if(_observer)
 	{
 		this->listOfObserver.push_back(_observer);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void ModelInterface :: updateObserver()
+{
+	std::vector<ViewInterface *>::iterator it;
+	for(it = this->listOfObserver.begin(); it != this->listOfObserver.end(); ++it)
+	{
+		(*it)->update(
+			this->modeCalibration,
+			(*this->frameCalibration),
+			this->frameElapsedCalibration);
 	}
 
-	void ModelInterface :: updateObserver()
-	{
-		vector<ViewInterface *>::iterator it;
-		for (it = this->listOfObserver.begin() ; it != this->listOfObserver.end(); ++it)
-		{
-			(*it)->update(
-				this->modeCalibration,
-				(*this->frameCalibration),
-				this->frameElapsedCalibration);
-		}
-	}
-//};
+	return;
+}

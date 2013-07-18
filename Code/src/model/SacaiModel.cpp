@@ -6,40 +6,42 @@
 #include <Calibration.hpp>
 #include <SacaiModel.hpp>
 
-//namespace model
-//{
-	SacaiModel :: SacaiModel()
+SacaiModel :: SacaiModel()
+{
+	this->calibration = new Calibration();
+}
+
+SacaiModel :: ~SacaiModel()
+{
+	delete this->calibration;
+}
+
+bool SacaiModel :: startCalibration(int _mode, cv::Mat * _view, int _frameElapsed)
+{
+	bool rc = false;
+
+	if(_mode < 0 || !_view || _frameElapsed < 0)
 	{
-		this->calibration = new Calibration();
+		return false;
 	}
 
-	SacaiModel :: ~SacaiModel()
-	{
-		delete this->calibration;
-	}
+	this->modeCalibration = _mode;
+	this->frameCalibration = _view;
+	this->frameElapsedCalibration = _frameElapsed;
 
-	bool SacaiModel :: startCalibration(int _mode, cv::Mat * _view, int _frameElapsed)
-	{
-		bool rc = false;
+	//Execute calibration
+	rc = this->calibration->executeCalibration(
+			&(this->modeCalibration),
+			this->frameCalibration,
+			&(this->frameElapsedCalibration));
+	//Notify all the observers
+	this->updateObserver();
 
-		this->modeCalibration = _mode;
-		this->frameCalibration = _view;
-		
-		//Execute calibration
-		this->frameElapsedCalibration = _frameElapsed;
-		rc = this->calibration->executeCalibration(
-				&(this->modeCalibration),
-				this->frameCalibration,
-				&(this->frameElapsedCalibration));
-		//Notify all the observers
-		this->updateObserver();
+	return rc;
+}
 
-		return rc;
-	}
-
-	bool SacaiModel :: resetPoint()
-	{
-		this->calibration->resetPoint();
-		return true;
-	}
-//}
+bool SacaiModel :: resetPoint()
+{
+	this->calibration->resetPoint();
+	return true;
+}

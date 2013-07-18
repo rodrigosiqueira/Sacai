@@ -34,18 +34,18 @@
 <a name="l00018"></a><a class="code" href="class_controller_interface.html">00018</a> <span class="comment"></span>        <span class="keyword">class </span><a class="code" href="class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller...">ControllerInterface</a>
 <a name="l00019"></a>00019         {
 <a name="l00020"></a>00020                 <span class="keyword">public</span>:
-<a name="l00021"></a>00021                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> callCalibration() = 0;
-<a name="l00022"></a>00022                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> showWindow(<span class="keywordtype">bool</span> _show) = 0;
-<a name="l00023"></a>00023                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> callResetPoint() = 0;
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025                 <span class="keyword">protected</span>:
-<a name="l00026"></a>00026                         <a class="code" href="class_sacai_model.html" title="Concrete implementation of &amp;quot;Model&amp;quot; Interface. This class encapsulate many...">SacaiModel</a> * modelSacai;
-<a name="l00027"></a>00027         };
-<a name="l00028"></a>00028 <span class="comment">//};</span>
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="preprocessor">#endif</span>
+<a name="l00025"></a>00025                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_controller_interface.html#a6c9ce930a0b6054d50afb226a63abafb" title="Encapsulate the execution of calibration.">callCalibration</a>() = 0;
+<a name="l00030"></a>00030                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_controller_interface.html#a63d6d0282005b0a191f0f196184259e0" title="Display de window.">showWindow</a>(<span class="keywordtype">bool</span> _show) = 0;
+<a name="l00034"></a>00034                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_controller_interface.html#a006924dfce8c8b13f0c5970ac7d35414" title="Reset the points of calibration.">callResetPoint</a>() = 0;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036                 <span class="keyword">protected</span>:
+<a name="l00037"></a><a class="code" href="class_controller_interface.html#a4eb863539d94d765df21c31f8335389b">00037</a>                         <a class="code" href="class_sacai_model.html" title="Concrete implementation of &amp;quot;Model&amp;quot; Interface. This class encapsulate many...">SacaiModel</a> * <a class="code" href="class_controller_interface.html#a4eb863539d94d765df21c31f8335389b">modelSacai</a>;        
+<a name="l00038"></a>00038         };
+<a name="l00039"></a>00039 <span class="comment">//};</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Jul 16 12:02:04 2013 for Sacai by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Jul 18 08:11:07 2013 for Sacai by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

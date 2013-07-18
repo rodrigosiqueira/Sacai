@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" href="$class_input_pattern.html#a0912105a9ff568f747a3effa5e10e659" title="This abtract method implements the operation of find geometry for calibration." alt="" coords="339,5,515,35"/>
+<area shape="rect" href="$classmodel_1_1_calibration.html#ac39727b4f57c3d072672e5fafe67637a" title="model::Calibration::runCalibrationAndSave" alt="" coords="295,59,559,88"/>
+<area shape="rect" href="$classmodel_1_1_calibration.html#ae6ac9b4135c051746794b970bf636a30" title="Run calibration and fill the parameters." alt="" coords="628,32,839,61"/>
+<area shape="rect" href="$classmodel_1_1_calibration.html#aad944da99e37b8444f7984c01939ed8d" title="model::Calibration::saveCameraParams" alt="" coords="608,85,859,115"/>
+<area shape="rect" href="$classmodel_1_1_calibration.html#ad4f4775bee8b1a0705cf1fa0dca1b379" title="This method gives some supports the use of calibrateCamera and calculates how should..." alt="" coords="911,5,1193,35"/>
+<area shape="rect" href="$classmodel_1_1_calibration.html#a044cf37f34a8e4ed2a361fcefaca8811" title="Find the average error of calibration operation." alt="" coords="907,59,1197,88"/>
+</map>

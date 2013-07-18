@@ -11,30 +11,28 @@
 #include <ControllerInterface.hpp>
 #include <CameraView.hpp>
 
-//namespace control
-//{
-	/**
-	 * @class SacaiController
-	 * @brief Keeps the reference for model class for execute actions. Note
-	 * that interface view call the methods of this class.
-	 **/
-	class SacaiController : public ControllerInterface
-	{
-		public:
-			/**
-			 * @param _model Reference for model layer.
-			 **/
-			SacaiController(SacaiModel * _model);
-			virtual ~SacaiController();
+/**
+ * @class SacaiController
+ * @brief Keeps the reference for model class for execute actions. Note
+ * that interface view call the methods of this class.
+ * @see ControllerInterface
+ **/
+class SacaiController : public ControllerInterface
+{
+	public:
+		/**
+		 * @param _model Reference for model layer.
+		 **/
+		SacaiController(SacaiModel * _model);
+		virtual ~SacaiController();
 
-			virtual bool callCalibration();
-			
-			virtual bool showWindow(bool _show);
-			virtual bool callResetPoint();
+		virtual bool callCalibration();
 
-		private:
-			CameraView * viewSacai;
-	};
-//}
+		virtual bool showWindow(bool _show);
+		virtual bool callResetPoint();
+
+	private:
+		CameraView * viewSacai;
+};
 
 #endif
