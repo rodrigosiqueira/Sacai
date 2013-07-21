@@ -39,14 +39,65 @@ CameraView :: CameraView(ControllerInterface * _control, ModelInterface * _model
 CameraView :: ~CameraView()
 {}
 
+static void stringMenu(
+	cv::Mat& _frame,
+	int _mode,
+	int _frameElapsed,
+	int _totalFrame = 100,
+	int _undistortion = 0)
+{
+	string circleMessage, calibrationMessage;
+	int baseLine = 0;
+	cv::Size textSize;
+	cv::Point textOrigin, textCircle;
+	cv::Scalar GREEN(0, 255, 0), RED(0, 0, 255);
+
+	//Find circle
+	circleMessage = "Press 'c' to detect circles";
+
+	//Output text
+	switch(_mode)
+	{
+		case util::CAPTURING:
+			calibrationMessage = "100/100";
+			if(_undistortion)
+			{
+				calibrationMessage = cv::format("%d/%d Undist", _frameElapsed, _totalFrame);
+			}
+			else
+			{
+				calibrationMessage = cv::format( "%d/%d", _frameElapsed, _totalFrame);
+			}
+			break;
+		case util::CALIBRATED:
+			calibrationMessage = "Calibrated";
+			break;
+		default:
+			calibrationMessage = "Press 'g' to start";
+			break;
+	}
+
+	textSize = cv::getTextSize(calibrationMessage, 1, 1, 1, &baseLine);
+	//Calibration menu position
+	textOrigin.x = _frame.cols - 2 * textSize.width - 10;
+	textOrigin.y = _frame.rows - 2 * baseLine - 10;
+	cv::putText(_frame, calibrationMessage, textOrigin, 1, 1, (_mode == util::CALIBRATED) ?  GREEN : RED);
+
+	//Circle menu
+	baseLine = 0;
+	textSize = cv::getTextSize(circleMessage, 1, 1, 1, &baseLine);
+	textCircle.x = textOrigin.x;
+	textCircle.y = textOrigin.y - 20;
+	cv::putText(_frame, circleMessage, textCircle, 1, 1, GREEN);
+
+	return;
+}
+
 bool CameraView :: display()
 {
-	cv::Scalar GREEN(0, 255, 0), RED(0, 0, 255);
-	int waitTime = 0, baseLine = 0;
+	int waitTime = 0;
 	char key = 0;
-	cv::Size textSize;
 	bool detectCircle = false;
-	string circleMessage = "Press 'c' to find circle ";
 
 	//Main loop
 	for(;;)
@@ -63,38 +114,11 @@ bool CameraView :: display()
 		}
 
 		//Output text
-		if(this->mode == util::CAPTURING)
-		{
-			this->message = "100/100";
-		}
-		else if(this->mode == util::CALIBRATED)
-		{
-			this->message = "Calibrated";
-		}
-		else
-		{
-			this->message = "Press 'g' to start";
-		}
-
-		baseLine = 0;
-		textSize = cv::getTextSize(this->message, 1, 1, 1, &baseLine);
-		cv::Point textOrigin(this->frameView.cols - 2 * textSize.width - 10, this->frameView.rows - 2 * baseLine - 10);
-		cv::Point textCircle(10, 10);
-
-		if(this->mode == util::CAPTURING)
-		{
-			if(this->settings.showUndistorsed)
-			{
-				this->message = cv::format( "%d/%d Undist", this->frameElapsed, this->settings.numFrameForCalibration);
-			}
-			else
-			{
-				this->message = cv::format( "%d/%d", this->frameElapsed, this->settings.numFrameForCalibration);
-			}
-		}
-
-		cv::putText(this->frameView, this->message, textOrigin, 1, 1, this->mode == util::CALIBRATED ?  GREEN : RED);
-		cv::putText(this->frameView, circleMessage, textCircle, 1, 1, GREEN);
+		stringMenu(this->frameView,
+					this->mode,
+					this->frameElapsed,
+					this->settings.numFrameForCalibration,
+					this->settings.showUndistorsed);
 
 		cv::imshow(nameWindow, this->frameView);
 		waitTime = settings.inputCapture.isOpened() ? 50 : settings.delayForVideoInput;

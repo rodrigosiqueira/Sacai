@@ -23,7 +23,11 @@ OTHERPACK	= 	others
 TESTPACK	= 	test
 
 #Flags
-CC			= g++ -Wall
+#-pedantic: Restrict to ISO C++
+#-Wextra: Extra warming
+#-Wshadow: if attribute and local variable has the same name
+#-Wredundant-decls: Warn if anything is declared more than once in the same scope
+CC			= g++ -Wall -Wextra -pedantic -Wshadow -Wredundant-decls -Woverloaded-virtual -Wsynth
 IFLAG		= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
 CVFLAG		= `pkg-config --cflags opencv pkg-config --libs opencv`
 CPPUNITFLAG	= -lcppunit -ldl

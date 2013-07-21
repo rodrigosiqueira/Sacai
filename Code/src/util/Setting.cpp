@@ -193,6 +193,8 @@ void Setting :: interpret()
 		if(this->inputType == util::CAMERA)
 		{
 			this->inputCapture.open(this->cameraId);
+			//this->inputCapture.set(CV_CAP_PROP_FRAME_WIDTH, 580);
+			//this->inputCapture.set(CV_CAP_PROP_FRAME_HEIGHT, 334);
 		}
 		else if(this->inputType == util::VIDEO_FILE)
 		{

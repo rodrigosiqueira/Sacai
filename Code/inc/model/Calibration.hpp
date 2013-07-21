@@ -87,7 +87,6 @@ class Calibration
 				const vector<cv::Mat>& _rotationVector,
 				const vector<cv::Mat>& _translationVector,
 				const vector<float>& _reprojErrs,
-				const vector<vector<cv::Point2f> >& _imagePoints,
 				double _totalAvgErr);
 		/**
 		 * @return

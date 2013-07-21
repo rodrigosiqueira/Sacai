@@ -60,5 +60,5 @@ bool SacaiModel :: startFindCircle(int _mode, cv::Mat * _view, int _frameElapsed
 	//Notify all the observers
 	this->updateObserver();
 
-	return true;
+	return rc;
 }

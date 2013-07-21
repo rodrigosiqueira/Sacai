@@ -54,7 +54,6 @@ class CameraView : public ViewInterface
 		std::string nameWindow;
 		std::string message;
 		cv::Mat frameView;
-		cv::Size textSize;
 		int mode;
 		int frameElapsed;
 		Setting& settings;

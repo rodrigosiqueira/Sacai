@@ -17,7 +17,8 @@
 using namespace cv;
 using namespace std;
 
-int main(int argc, char* argv[])
+//int argc, char* argv[]
+int main()
 {
 	SacaiModel * _model = new SacaiModel();
 	SacaiController * _control = new SacaiController(_model);

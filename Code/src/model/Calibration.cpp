@@ -56,7 +56,6 @@ inline bool Calibration :: runCalibrationAndSave()
 				rotationVector,
 				translationVector,
 				reprojectionError,
-				this->imagePoints,
 				totalAverageError);
 	}
 	else
@@ -274,7 +273,6 @@ inline void Calibration :: saveCameraParams(
 			const vector<cv::Mat>& _rotationVector,
 			const vector<cv::Mat>& _translationVector,
 			const vector<float>& _reprojErrs,
-			const vector<vector<cv::Point2f> >& _imagePoints,
 			double _totalAvgErr)
 {
 	cv::FileStorage fs(this->settings.outputFileName, cv::FileStorage::WRITE );

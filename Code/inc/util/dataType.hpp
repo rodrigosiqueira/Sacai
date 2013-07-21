@@ -59,6 +59,6 @@ namespace util
 	};
 
 	const std::string CONFIG_CALIB_DEFAULT = "default.yaml";
-};
+}
 
 #endif
