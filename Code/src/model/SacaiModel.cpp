@@ -18,24 +18,17 @@ SacaiModel :: ~SacaiModel()
 	delete this->recognizeCircle;
 }
 
-bool SacaiModel :: startCalibration(int _mode, cv::Mat * _view, int _frameElapsed)
+bool SacaiModel :: startCalibration(cv::Mat * _view)
 {
 	bool rc = false;
 
-	if(_mode < 0 || !_view || _frameElapsed < 0)
+	if(!_view)
 	{
 		return false;
 	}
-
-	this->modeCalibration = _mode;
-	this->frameCalibration = _view;
-	this->frameElapsedCalibration = _frameElapsed;
-
+	this->frameUpdate = _view;
 	//Execute calibration
-	rc = this->calibration->executeCalibration(
-			&(this->modeCalibration),
-			this->frameCalibration,
-			&(this->frameElapsedCalibration));
+	rc = this->calibration->executeCalibration(_view);
 	//Notify all the observers
 	this->updateObserver();
 
@@ -48,15 +41,13 @@ bool SacaiModel :: resetPoint()
 	return true;
 }
 
-bool SacaiModel :: startFindCircle(int _mode, cv::Mat * _view, int _frameElapsed)
+bool SacaiModel :: startFindCircle(cv::Mat * _view)
 {
 	bool rc = false;
 
-	this->modeCalibration = _mode;
-	this->frameCalibration = _view;
-	this->frameElapsedCalibration = _frameElapsed;
+	this->frameUpdate = _view;
 
-	rc = this->recognizeCircle->findCenter(this->frameCalibration);
+	rc = this->recognizeCircle->findCenter(this->frameUpdate);
 	//Notify all the observers
 	this->updateObserver();
 

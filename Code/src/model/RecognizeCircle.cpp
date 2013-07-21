@@ -8,7 +8,9 @@
 #include <vector>
 
 RecognizeCircle :: RecognizeCircle()
-{}
+{
+	this->radius = 0;
+}
 
 RecognizeCircle :: ~RecognizeCircle()
 {}
@@ -33,12 +35,15 @@ bool RecognizeCircle :: findCenter(cv::Mat * _source)
 	// Draw the circles detected
 	for(i = 0; i < circles.size(); i++ )
 	{
-		cv::Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
-		int radius = cvRound(circles[i][2]);
+		cv::Point tmp(cvRound(circles[i][0]), cvRound(circles[i][1]));
+		int tmpRadius = cvRound(circles[i][2]);
 		// circle center
-		cv::circle((*_source), center, 3, cv::Scalar(0,255,0), -1, 8, 0 );
+		cv::circle((*_source), tmp, 3, cv::Scalar(0,255,0), -1, 8, 0 );
+		this->center.x = tmp.x;
+		this->center.y = tmp.y;
+		this->radius = tmpRadius;
 		// circle outline
-		cv::circle((*_source), center, radius, cv::Scalar(0,0,255), 3, 8, 0 );
+		cv::circle((*_source), tmp, tmpRadius, cv::Scalar(0,0,255), 3, 8, 0 );
 	}
 
 	return true;

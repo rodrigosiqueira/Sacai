@@ -34,11 +34,24 @@ class Calibration
 		 * that is necessary more then one interation for end calibration.
 		 * Probably you will need to call this methods several time.
 		 **/
-		bool executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed);
+		bool executeCalibration(cv::Mat * _view);
 		/**
 		 * @brief Reset the vector of points.
 		 **/
 		void resetPoint();
+
+		inline int getMode()
+		{
+			return this->mode;
+		}
+		inline int getFrameElapse()
+		{
+			return this->frameElapsed;
+		}
+		inline bool getCalibrationDone()
+		{
+			return this->calibrationDone;
+		}
 
 	protected:
 		/**
@@ -107,6 +120,9 @@ class Calibration
 		clock_t previousTimeStamp;
 		cv::Mat cameraMatrix;
 		cv::Mat distortionCoefficients;
+		int mode;
+		int frameElapsed;
+		bool calibrationDone;
 };
 
 #endif

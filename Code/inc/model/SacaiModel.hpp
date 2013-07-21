@@ -25,10 +25,7 @@ class SacaiModel : public ModelInterface
 		/**
 		 * @see ModelInterface
 		 **/
-		virtual bool startCalibration(
-			int _mode,
-			cv::Mat * _view,
-			int _frameElapsed);
+		virtual bool startCalibration(cv::Mat * _view);
 
 		/**
 		 * @see ModelInterface
@@ -38,7 +35,28 @@ class SacaiModel : public ModelInterface
 		/**
 		 * @see ModelInterface
 		 **/
-		virtual bool startFindCircle(int _mode, cv::Mat * _view, int _frameElapsed);
+		virtual bool startFindCircle(cv::Mat * _view);
+
+		virtual int getMode()
+		{
+			return this->calibration->getMode();
+		}
+		virtual int getFrameElapse()
+		{
+			return this->calibration->getFrameElapse();
+		}
+		virtual bool getCalibrationDone()
+		{
+			return this->calibration->getCalibrationDone();
+		}
+		virtual int getRadius()
+		{
+			return this->recognizeCircle->getRadius();
+		}
+		virtual cv::Point * getCenter()
+		{
+			return this->recognizeCircle->getCenter();
+		}
 
 	private:
 		Calibration * calibration;

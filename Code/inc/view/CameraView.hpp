@@ -35,27 +35,17 @@ class CameraView : public ViewInterface
 		 * @see ViewInterface
 		 **/
 		virtual bool display();
-		virtual void update(int _mode, cv::Mat& _view, int _frameElapsed);
+		virtual void update(cv::Mat& _view);
 
-		virtual int getMode()
-		{
-			return this->mode;
-		}
 		virtual cv::Mat * getFrame()
 		{
 			return &(this->frameView);
-		}
-		virtual int getFrameElapse()
-		{
-			return this->frameElapsed;
 		}
 
 	private:
 		std::string nameWindow;
 		std::string message;
 		cv::Mat frameView;
-		int mode;
-		int frameElapsed;
 		Setting& settings;
 };
 

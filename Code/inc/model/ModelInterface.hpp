@@ -33,13 +33,11 @@ class ModelInterface
 		 **/
 		void updateObserver();
 		/**
-		 * @param _mode Current mode of calibration.
 		 * @param _view Target frame for calibration.
-		 * @param _frameElapsed Total of frame elapsed.
 		 * @return Return true if all right and false otherwise
 		 * @brief Method that encapsulate the action of call calibration
 		 **/
-		virtual bool startCalibration(int _mode, cv::Mat * _view, int _frameElapsed) = 0;
+		virtual bool startCalibration(cv::Mat * _view) = 0;
 		/**
 		 * @return Return true if all right, and false otherwise.
 		 * @brief Reset the vector of points.
@@ -50,13 +48,16 @@ class ModelInterface
 		 * @return
 		 * @brief
 		 **/
-		virtual bool startFindCircle(int _mode, cv::Mat * _view, int _frameElapsed) = 0;
+		virtual bool startFindCircle(cv::Mat * _view) = 0;
+		virtual int getMode() = 0;
+		virtual int getFrameElapse() = 0;
+		virtual bool getCalibrationDone() = 0;
+		virtual int getRadius() = 0;
+		virtual cv::Point * getCenter() = 0;
 
 	protected:
 		std::vector<ViewInterface *> listOfObserver;	/**< List of observers that model knows.*/
-		cv::Mat * frameCalibration;	/**< Frame used for update observers in calibration.*/
-		int modeCalibration;		/**< Current mode of calibration.*/
-		int frameElapsedCalibration;/**< Total of frame elaspsed for calibration.*/
+		cv::Mat * frameUpdate;	/**< Frame used for update observers in calibration.*/
 
 		ModelInterface();
 		virtual ~ModelInterface();

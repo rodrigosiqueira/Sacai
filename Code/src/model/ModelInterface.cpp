@@ -7,13 +7,12 @@
 
 ModelInterface :: ModelInterface()
 {
-	this->modeCalibration = 0;
-	this->frameElapsedCalibration = 0;
+	this->frameUpdate = 0;
 }
 
 ModelInterface :: ~ModelInterface()
 {
-	delete frameCalibration;
+	delete frameUpdate;
 }
 
 bool ModelInterface :: registerObserver(ViewInterface * _observer)
@@ -34,10 +33,7 @@ void ModelInterface :: updateObserver()
 	std::vector<ViewInterface *>::iterator it;
 	for(it = this->listOfObserver.begin(); it != this->listOfObserver.end(); ++it)
 	{
-		(*it)->update(
-			this->modeCalibration,
-			(*this->frameCalibration),
-			this->frameElapsedCalibration);
+		(*it)->update((*this->frameUpdate));
 	}
 
 	return;

@@ -21,6 +21,18 @@ class RecognizeCircle
 		 * image with Hough transform.
 		 **/
 		bool findCenter(cv::Mat * _source);
+		inline int getRadius()
+		{
+			return this->radius;
+		}
+		inline cv::Point * getCenter()
+		{
+			return &this->center;
+		}
+
+	private:
+		int radius;
+		cv::Point center;
 };
 
 #endif 

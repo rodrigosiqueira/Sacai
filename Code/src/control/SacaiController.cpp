@@ -41,10 +41,7 @@ bool SacaiController :: callCalibration()
 {
 	bool rc = false;
 
-	rc = this->modelSacai->startCalibration(
-			this->viewSacai->getMode(),
-			this->viewSacai->getFrame(),
-			this->viewSacai->getFrameElapse());
+	rc = this->modelSacai->startCalibration(this->viewSacai->getFrame());
 
 	return rc;
 }
@@ -53,10 +50,7 @@ bool SacaiController :: callFindCircle()
 {
 	bool rc = false;
 
-	rc = this->modelSacai->startFindCircle(
-			this->viewSacai->getMode(),
-			this->viewSacai->getFrame(),
-			this->viewSacai->getFrameElapse());
+	rc = this->modelSacai->startFindCircle(this->viewSacai->getFrame());
 
 	return rc;
 }

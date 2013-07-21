@@ -24,14 +24,95 @@ Calibration :: Calibration(string _pathConfigFile) : settings(Setting::getInstan
 	rc = this->settings.loadCalibrationFile(_pathConfigFile);
 	if(!rc)
 	{
-			this->settings.loadCalibrationFile(util::CONFIG_CALIB_DEFAULT);
+		this->settings.loadCalibrationFile(util::CONFIG_CALIB_DEFAULT);
 	}
 	this->setInputPatter();
+	this->calibrationDone = false;
+	//Initial mode
+	this->mode = util::CAPTURING;
+
+	this->frameElapsed = 0;
 }
 
 Calibration :: ~Calibration()
 {
 	delete this->recognitionPattern;
+}
+
+bool Calibration :: executeCalibration(cv::Mat * _view)
+{
+	bool found = false, blinkOutput = false;
+
+	if(!_view)
+	{
+		return false;
+	}
+
+	//Conditions for stop calibration  
+	if(this->mode == util::CAPTURING &&
+	this->imagePoints.size() >= (unsigned)this->settings.numFrameForCalibration)
+	{
+		if(this->runCalibrationAndSave())
+		{
+			this->mode = util::CALIBRATED;
+			this->calibrationDone = true;
+		}
+		else
+		{
+			this->mode = util::DETECTION;
+		}
+	}
+	//Verify if no more images
+	if(_view->empty())
+	{
+		if(this->imagePoints.size() > 0)
+		{
+			this->runCalibrationAndSave();
+		}
+		return false;
+	}
+
+	this->imageSize = _view->size();
+	if(this->settings.flipAroundHorizonAxis)
+	{
+		cv::flip(*(_view), *(_view), 0);
+	}
+
+	vector<cv::Point2f> detectedGeometry;
+	found = this->recognitionPattern->findGeometry(
+				*(_view),
+				detectedGeometry,
+				this->settings.boardSize);
+	//Draw the chessboard
+	if(found)
+	{
+		if(this->mode == util::CAPTURING &&
+			(!this->settings.inputCapture.isOpened() ||
+			clock() - this->previousTimeStamp >
+			this->settings.delayForVideoInput * 1e-3*CLOCKS_PER_SEC))
+		{
+			this->imagePoints.push_back(detectedGeometry);
+			this->previousTimeStamp = clock();
+			blinkOutput = this->settings.inputCapture.isOpened();
+		}
+		cv::drawChessboardCorners(*(_view), this->settings.boardSize, cv::Mat(detectedGeometry), found);
+	}
+
+	this->frameElapsed = (int)this->imagePoints.size();
+
+	if(blinkOutput)
+	{
+		cv::bitwise_not(*(_view), *(_view));
+	}
+
+	//Video capture  output  undistorted --- CREATE ONE METHOD FOR THIS
+	if(this->mode == util::CALIBRATED && this->settings.showUndistorsed)
+	{
+		cv::Mat temp = _view->clone();
+		cv::undistort(temp, *(_view), this->cameraMatrix, this->distortionCoefficients);
+	}
+
+	return true;
 }
 
 inline bool Calibration :: runCalibrationAndSave()
@@ -66,85 +147,10 @@ inline bool Calibration :: runCalibrationAndSave()
 	return rc;
 }
 
-bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed)
-{
-	bool found = false, blinkOutput = false;
-	cv::Size textSize;
-
-	if(!_mode || !_view || !_frameElapsed)
-	{
-		return false;
-	}
-
-	//Conditions for stop calibration
-	if((*_mode) == util::CAPTURING &&
-		this->imagePoints.size() >= (unsigned)this->settings.numFrameForCalibration)
-	{
-		if(this->runCalibrationAndSave())
-		{
-			(*_mode) = util::CALIBRATED;
-		}
-		else
-		{
-			(*_mode) = util::DETECTION;
-		}
-		}
-	//Verify if no more images
-	if(_view->empty())
-	{
-		if(this->imagePoints.size() > 0)
-		{
-			this->runCalibrationAndSave();
-		}
-		return false;
-	}
-
-	this->imageSize = _view->size();
-	if(this->settings.flipAroundHorizonAxis)
-	{
-		cv::flip(*(_view), *(_view), 0);
-	}
-
-	vector<cv::Point2f> detectedGeometry;
-	found = this->recognitionPattern->findGeometry(
-				*(_view),
-				detectedGeometry,
-				this->settings.boardSize);
-	//Draw the chessboard
-	if(found)
-	{
-		if((*_mode) == util::CAPTURING &&
-			(!this->settings.inputCapture.isOpened() ||
-			clock() - this->previousTimeStamp >
-			this->settings.delayForVideoInput * 1e-3*CLOCKS_PER_SEC))
-		{
-			this->imagePoints.push_back(detectedGeometry);
-			this->previousTimeStamp = clock();
-			blinkOutput = this->settings.inputCapture.isOpened();
-		}
-		cv::drawChessboardCorners(*(_view), this->settings.boardSize, cv::Mat(detectedGeometry), found);
-	}
-
-	*_frameElapsed = (int)this->imagePoints.size();
-
-	if(blinkOutput)
-	{
-		cv::bitwise_not(*(_view), *(_view));
-	}
-
-	//Video capture  output  undistorted --- CREATE ONE METHOD FOR THIS
-	if((*_mode) == util::CALIBRATED && this->settings.showUndistorsed)
-	{
-		cv::Mat temp = _view->clone();
-		cv::undistort(temp, *(_view), this->cameraMatrix, this->distortionCoefficients);
-	}
-
-	return true;
-}
-
 void Calibration :: resetPoint()
 {
 	this->imagePoints.clear();
+	this->calibrationDone = false;
 }
 
 inline double Calibration :: computeReprojectionErrors(
