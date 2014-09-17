@@ -20,6 +20,7 @@
 class Calibration
 {
 	public:
+    bool calibrationDone;
 		/**
 		 * @param _pathConfigFile Receive the string with the path of configuration file.
 		 * @brief Constructor with default value. 
@@ -35,6 +36,8 @@ class Calibration
 		 * Probably you will need to call this methods several time.
 		 **/
 		bool executeCalibration(cv::Mat * _view);
+		//bool executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed);
+		
 		/**
 		 * @brief Reset the vector of points.
 		 **/
@@ -122,7 +125,7 @@ class Calibration
 		cv::Mat distortionCoefficients;
 		int mode;
 		int frameElapsed;
-		bool calibrationDone;
+		//bool calibrationDone;
 };
 
 #endif

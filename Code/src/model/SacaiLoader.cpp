@@ -11,7 +11,8 @@
 	SacaiLoader :: SacaiLoader()
 	{
 		this->calibration = new Calibration();
-		this->calibrationDone = false;
+		//this->calibrationDone = false;
+		this->calibration->calibrationDone = false;
 	}
 
 	SacaiLoader :: ~SacaiLoader()
