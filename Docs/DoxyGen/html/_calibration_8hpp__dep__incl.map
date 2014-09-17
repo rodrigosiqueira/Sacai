@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$_sacai_model_8hpp.html" title="inc/model/SacaiModel.hpp" alt="" coords="241,83,415,112"/>
-<area shape="rect" href="$_sacai_model_8cpp.html" title="src/model/SacaiModel.cpp" alt="" coords="365,160,541,189"/>
-<area shape="rect" href="$_calibration_8cpp.html" title="Implementation of calibration functions." alt="" coords="489,83,657,112"/>
-<area shape="rect" href="$_sacai_controller_8hpp.html" title="inc/control/SacaiController.hpp" alt="" coords="93,160,291,189"/>
-<area shape="rect" href="$_sacai_controller_8cpp.html" title="src/control/SacaiController.cpp" alt="" coords="5,237,205,267"/>
-<area shape="rect" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="255,237,351,267"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$class_camera_view.html#acbacbf42c2ab0b40123e37cac3215b02" title="Implements specific visualization." alt="" coords="245,59,389,88"/>
-<area shape="rect" href="$class_controller_interface.html#a6c9ce930a0b6054d50afb226a63abafb" title="Encapsulate the execution of calibration." alt="" coords="439,5,655,35"/>
-<area shape="rect" href="$class_controller_interface.html#a006924dfce8c8b13f0c5970ac7d35414" title="Reset the points of calibration." alt="" coords="437,59,656,88"/>
-<area shape="rect" href="$class_setting.html#ad724e84e07600a8b32173cbcea6bd085" title="Capture the next frame and return it." alt="" coords="481,112,612,141"/>
-</map>

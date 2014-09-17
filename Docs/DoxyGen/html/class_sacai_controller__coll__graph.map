@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="119,101,247,131"/>
-<area shape="rect" href="$class_view_interface.html" title="Abstract class used in MVC pattern. This class represents the interface for observers..." alt="" coords="91,197,189,227"/>
-<area shape="rect" href="$class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="139,5,227,35"/>
-<area shape="rect" href="$class_camera_view.html" title="Concrete class that handles camera visualization. This class is observer for the..." alt="" coords="93,293,187,323"/>
-<area shape="rect" href="$class_setting.html" title="This class handle the input file with configuration, write one file with settings..." alt="" coords="5,197,67,227"/>
-</map>

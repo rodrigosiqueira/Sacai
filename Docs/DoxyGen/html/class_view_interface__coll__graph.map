@@ -1,4 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$class_controller_interface.html" title="Abstract class that works in MVC pattern. This class was specialized in controller..." alt="" coords="5,101,133,131"/>
-<area shape="rect" href="$class_sacai_model.html" title="Concrete implementation of &quot;Model&quot; Interface. This class encapsulate many..." alt="" coords="25,5,113,35"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$class_camera_view.html#a74988c0d75d867881a3a6b0dd4ad2795" title="Commonly used for return the reference for make some modifications in current frame..." alt="" coords="275,5,429,35"/>
-<area shape="rect" href="$class_camera_view.html#ab8996062b6a24bf7dfd0f6bc7c0ad554" title="CameraView::getFrameElapse" alt="" coords="255,59,449,88"/>
-<area shape="rect" href="$class_camera_view.html#ac18239ca7020687a09ea88975f5f5d4f" title="CameraView::getMode" alt="" coords="276,112,428,141"/>
-<area shape="rect" href="$class_sacai_model.html#aedef59561c2537755385d053905f39ef" title="SacaiModel::startCalibration" alt="" coords="260,165,444,195"/>
-</map>

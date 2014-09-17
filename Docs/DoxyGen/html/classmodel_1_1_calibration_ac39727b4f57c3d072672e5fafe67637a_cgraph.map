@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$classmodel_1_1_calibration.html#ae6ac9b4135c051746794b970bf636a30" title="Run calibration and fill the parameters." alt="" coords="340,32,551,61"/>
-<area shape="rect" href="$classmodel_1_1_calibration.html#aad944da99e37b8444f7984c01939ed8d" title="model::Calibration::saveCameraParams" alt="" coords="320,85,571,115"/>
-<area shape="rect" href="$classmodel_1_1_calibration.html#ad4f4775bee8b1a0705cf1fa0dca1b379" title="This method gives some supports the use of calibrateCamera and calculates how should..." alt="" coords="623,5,905,35"/>
-<area shape="rect" href="$classmodel_1_1_calibration.html#a044cf37f34a8e4ed2a361fcefaca8811" title="Find the average error of calibration operation." alt="" coords="619,59,909,88"/>
-</map>

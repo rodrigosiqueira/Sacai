@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$_model_interface_8hpp.html" title="Keeps the class Subject for interface,." alt="" coords="169,83,300,112"/>
-<area shape="rect" href="$_calibration_8hpp.html" title="Class responsable for doing calibration and save the result." alt="" coords="379,83,485,112"/>
-<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="603,237,691,267"/>
-<area shape="rect" href="$_view_interface_8hpp.html" title="ViewInterface.hpp" alt="" coords="123,160,248,189"/>
-<area shape="rect" href="$_controller_interface_8hpp.html" title="ControllerInterface.hpp" alt="" coords="159,237,311,267"/>
-<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="469,160,584,189"/>
-<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="995,315,1093,344"/>
-</map>

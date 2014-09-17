@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$_camera_view_8hpp.html" title="inc/view/CameraView.hpp" alt="" coords="157,83,328,112"/>
-<area shape="rect" href="$_javari_controller_8hpp.html" title="inc/control/JavariController.hpp" alt="" coords="143,160,343,189"/>
-<area shape="rect" href="$_javari_controller_8cpp.html" title="src/control/JavariController.cpp" alt="" coords="5,237,205,267"/>
-<area shape="rect" href="$_camera_view_8cpp.html" title="src/view/CameraView.cpp" alt="" coords="367,160,537,189"/>
-<area shape="rect" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="229,237,325,267"/>
-</map>

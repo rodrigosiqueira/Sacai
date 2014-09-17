@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$_view_interface_8hpp.html" title="ViewInterface.hpp" alt="" coords="179,83,304,112"/>
-<area shape="rect" href="$_model_interface_8hpp.html" title="Keeps the class Subject for interface,." alt="" coords="71,160,201,189"/>
-<area shape="rect" href="$_controller_interface_8hpp.html" title="ControllerInterface.hpp" alt="" coords="276,160,428,189"/>
-<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="692,83,780,112"/>
-<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="604,160,703,189"/>
-</map>

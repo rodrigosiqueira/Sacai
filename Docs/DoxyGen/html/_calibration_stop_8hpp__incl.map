@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$_command_8hpp.html" title="Command.hpp" alt="" coords="5,83,109,112"/>
-<area shape="rect" href="$_calibration_8hpp.html" title="Class responsable for doing calibration and save the result." alt="" coords="133,83,240,112"/>
-<area shape="rect" href="$_setting_8hpp.html" title="Definition of class Setting." alt="" coords="284,237,372,267"/>
-<area shape="rect" href="$_input_pattern_8hpp.html" title="Abstraction for the type of input. This class is a parth of strategy pattern." alt="" coords="176,160,291,189"/>
-<area shape="rect" href="$data_type_8hpp.html" title="Data definitions." alt="" coords="716,315,815,344"/>
-</map>

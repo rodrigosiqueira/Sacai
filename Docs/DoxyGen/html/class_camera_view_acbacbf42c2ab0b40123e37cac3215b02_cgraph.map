@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$class_controller_interface.html#a6c9ce930a0b6054d50afb226a63abafb" title="Encapsulate the execution of calibration." alt="" coords="199,5,415,35"/>
-<area shape="rect" href="$class_controller_interface.html#a006924dfce8c8b13f0c5970ac7d35414" title="Reset the points of calibration." alt="" coords="197,59,416,88"/>
-<area shape="rect" href="$class_setting.html#ad724e84e07600a8b32173cbcea6bd085" title="Capture the next frame and return it." alt="" coords="241,112,372,141"/>
-</map>
