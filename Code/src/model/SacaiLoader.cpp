@@ -22,7 +22,7 @@
 
 	bool SacaiLoader :: startCalibration(int * _mode, cv::Mat * _view, std::string * _message, int * _frameElapsed)
 	{
-		this->calibration->executeCalibration(_mode, _view, _message, _frameElapsed);
+		this->calibration->executeCalibration(_mode, _view, _frameElapsed);
 		//Notify all the observers
 		this->updateObserver();
 		return true;

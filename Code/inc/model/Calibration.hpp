@@ -35,8 +35,8 @@ class Calibration
 		 * that is necessary more then one interation for end calibration.
 		 * Probably you will need to call this methods several time.
 		 **/
-		bool executeCalibration(cv::Mat * _view);
-		//bool executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed);
+		//bool executeCalibration(cv::Mat * _view);
+		bool executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed);
 		
 		/**
 		 * @brief Reset the vector of points.

@@ -29,7 +29,7 @@ TESTPACK	= 	test
 #-Wredundant-decls: Warn if anything is declared more than once in the same scope
 CC			= g++ -Wall -Wextra -pedantic -Wshadow -Wredundant-decls -Woverloaded-virtual -Wsynth
 IFLAG		= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
-CVFLAG		= `pkg-config --cflags opencv pkg-config --libs opencv`
+CVFLAG		= `pkg-config --cflags --libs opencv`
 CPPUNITFLAG	= -lcppunit -ldl
 #Create one list with all sources
 MODELSOURCES	= $(wildcard src/model/*cpp)

@@ -39,8 +39,8 @@ Calibration :: ~Calibration()
 	delete this->recognitionPattern;
 }
 
-bool Calibration :: executeCalibration(cv::Mat * _view)
-//bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed)
+//bool Calibration :: executeCalibration(cv::Mat * _view)
+bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed)
 {
 	bool found = false, blinkOutput = false;
 

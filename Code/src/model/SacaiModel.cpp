@@ -28,7 +28,7 @@ bool SacaiModel :: startCalibration(cv::Mat * _view)
 	}
 	this->frameUpdate = _view;
 	//Execute calibration
-	rc = this->calibration->executeCalibration(_view);
+	rc = this->calibration->executeCalibration(NULL, _view, NULL);
 	//Notify all the observers
 	this->updateObserver();
 
