@@ -1,57 +1,49 @@
-#		Makefile - Compile a set of code in C
+#		Makefile - Sacai
 #
-#This Makefile compiles C codes based on file organization described below:
+# Compiles Sacai source code based on file organization described below:
 #	- inc: Folder with all headers.
 #	- src: Folder with implementations of headers.
 #	- bin: The binary file will be put on this folder.
 #	- obj: Objects file of project. 
-#Basically this Makefile first generate all the object files and next generate
-#the binary file. This Makefile has a target for compile unitary tests.
+# Basically this Makefile first generate all the object files and next generate
+# the binary file.
 
-# Initialize the variables used
+# Initialize variables
 
 #Folders
-BINPACK		= 	bin
-INCPACK		=	inc
-SRCPACK		=	src
-MODELPACK	=	$(SRCPACK)/model
-VIEWPACK	=	$(SRCPACK)/view
-CONTROLPACK	=	$(SRCPACK)/control
-UTILPACK	=	$(SRCPACK)/util
-OBJPACK		=	obj
-OTHERPACK	= 	others
-TESTPACK	= 	test
+BINPACK		:= 	bin
+INCPACK		:=	inc
+SRCPACK		:=	src
+MODELPACK	:=	src/model
+VIEWPACK	:=	src/view
+CONTROLPACK	:=	src/control
+UTILPACK	:=	src/util
+OBJPACK		:=	obj
+OTHERPACK	:= 	others
+TESTPACK	:= 	test
 
 #Flags
-#-pedantic: Restrict to ISO C++
-#-Wextra: Extra warming
-#-Wshadow: if attribute and local variable has the same name
-#-Wredundant-decls: Warn if anything is declared more than once in the same scope
-CC			= g++ -Wall -Wextra -pedantic -Wshadow -Wredundant-decls -Woverloaded-virtual -Wsynth
-IFLAG		= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
-CVFLAG		= `pkg-config --cflags --libs opencv`
-CPPUNITFLAG	= -lcppunit -ldl
+CC		:= g++ -Wall -Wextra -pedantic -Wshadow -Wredundant-decls -Woverloaded-virtual -Wsynth
+IFLAG		:= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
+CVFLAG		:= `pkg-config --cflags --libs opencv`
+CPPUNITFLAG	:= -lcppunit -ldl
 #Create one list with all sources
-MODELSOURCES	= $(wildcard src/model/*cpp)
-VIEWSOURCES		= $(wildcard src/view/*cpp)
-CONTROLSOURCES	= $(wildcard src/control/*cpp)
-UTILSSOURCES	= $(wildcard src/util/*cpp)
-TESTSOURCE		= $(wildcard test/*cpp)
+MODELSOURCES	= $(wildcard src/model/*.cpp)
+VIEWSOURCES	= $(wildcard src/view/*.cpp)
+CONTROLSOURCES	= $(wildcard src/control/*.cpp)
+UTILSSOURCES	= $(wildcard src/util/*.cpp)
+TESTSOURCE	= $(wildcard test/*.cpp)
 
 # TRAGETS
 
 all: sacai
 
-# Main target, whose the objective is generate binary files. 
 # Dependencies are inserted by: $(CSOURCES:src/%.c=obj/%.o)
-#	*Basically capture all the elements of list and change the pieces
-#	 with "src/%.c" by "obj/%.o".
 sacai: modelObj controllerObj viewObj utilObj
-	$(CC) $(IFLAG) $(CVFLAG) obj/*.o src/main.cpp -o bin/app/$@ $(IFLAG)
+	$(CC) obj/*.o src/main.cpp -o bin/app/$@ $(IFLAG) $(CVFLAG) 
 
 # Model
 modelObj: $(MODELSOURCES:src/model/%.cpp=obj/%.o)
-
 obj/%.o: src/model/%.cpp
 	$(CC) -c $< -o $@ $(IFLAG)
 
