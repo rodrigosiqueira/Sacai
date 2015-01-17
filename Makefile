@@ -11,22 +11,23 @@
 # Initialize variables
 
 #Folders
-BINPACK		:= 	bin
-INCPACK		:=	inc
-SRCPACK		:=	src
-MODELPACK	:=	src/model
-VIEWPACK	:=	src/view
-CONTROLPACK	:=	src/control
-UTILPACK	:=	src/util
-OBJPACK		:=	obj
-OTHERPACK	:= 	others
-TESTPACK	:= 	test
+BINPACK		:= bin
+INCPACK		:= inc
+SRCPACK		:= src
+MODELPACK	:= src/model
+VIEWPACK	:= src/view
+CONTROLPACK	:= src/control
+UTILPACK	:= src/util
+OBJPACK		:= obj
+OTHERPACK	:=  others
+TESTPACK	:=  test
 
 #Flags
 CC		:= g++ -Wall -Wextra -pedantic -Wshadow -Wredundant-decls -Woverloaded-virtual -Wsynth
 IFLAG		:= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
 CVFLAG		:= `pkg-config --cflags --libs opencv`
 CPPUNITFLAG	:= -lcppunit -ldl
+
 #Create one list with all sources
 MODELSOURCES	= $(wildcard src/model/*.cpp)
 VIEWSOURCES	= $(wildcard src/view/*.cpp)
