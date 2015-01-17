@@ -1,5 +1,7 @@
 # SACAI
 
+[![Build Status](https://travis-ci.org/rodrigosiqueira/Sacai.svg)](https://travis-ci.org/rodrigosiqueira/Sacai)
+
 ----
 # What is Sacai?
 
