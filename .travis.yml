@@ -1,12 +1,13 @@
 language: cpp
 compiler: gcc
 install:
-- sudo apt-get -y install build-essential checkinstall cmake pkg-config yasm
+- sudo apt-get -y install build-essential checkinstall cmake pkg-config yasm unzip
 - sudo apt-get -y install libtiff4-dev libjpeg-dev libjasper-dev
 - sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev
 - sudo apt-get install python-dev python-numpy
 - sudo apt-get install libqt4-dev libgtk2.0-dev
-- wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.10/opencv-2.4.10.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fopencvlibrary%2Ffiles%2Fopencv-unix%2F2.4.10%2Fopencv-2.4.10.zip%2Fdownload%3Fuse_mirror%3Dufpr%26r%3Dhttp%253A%252F%252Fopencv.org%252Fdownloads.html%26use_mirror%3Dufpr&ts=1421529406&use_mirror=ufpr
+- git clone https://github.com/rodrigosiqueira/Sacai.git
+- cd Sacai/others/
 - unzip opencv-2.4.10.zip
 - cd opencv-2.4.10/
 - mkdir build/
@@ -30,9 +31,7 @@ install:
 - sudo cp -a include/gtest /usr/include
 - cd ..
 - rm gtest-1.7.0.zip
-- git clone https://github.com/rodrigosiqueira/Sacai.git
-- cd Sacai
-
+- cd ../
 script:
 - make clean
 - make
