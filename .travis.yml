@@ -1,6 +1,7 @@
 language: cpp
 compiler: gcc
 install:
+- sudo apt-get update
 - sudo apt-get -y install build-essential checkinstall cmake pkg-config yasm unzip
 - sudo apt-get -y install libtiff4-dev libjpeg-dev libjasper-dev
 - sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev
