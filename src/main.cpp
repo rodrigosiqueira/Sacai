@@ -11,13 +11,12 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include <SacaiModel.hpp>
-#include <SacaiController.hpp>
+#include "SacaiModel.hpp"
+#include "SacaiController.hpp"
 
 using namespace cv;
 using namespace std;
 
-//int argc, char* argv[]
 int main()
 {
   SacaiModel * _model = new SacaiModel();

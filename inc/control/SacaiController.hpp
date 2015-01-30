@@ -7,39 +7,39 @@
 
 #include <opencv2/core/core.hpp>
 
-#include <SacaiModel.hpp>
-#include <ControllerInterface.hpp>
-#include <CameraView.hpp>
+#include "SacaiModel.hpp"
+#include "ControllerInterface.hpp"
+#include "CameraView.hpp"
 
 /**
  * @class SacaiController
- * @brief Keeps the reference for model class for execute actions. Note
- * that interface view call the methods of this class.
+ * @brief The interface view calls the methods of the model class.
  * @see ControllerInterface
  **/
 class SacaiController : public ControllerInterface
 {
-	public:
-		/**
-		 * @param _model Reference for model layer.
-		 **/
-		SacaiController(SacaiModel * _model);
-		virtual ~SacaiController();
+  public:
+    /**
+    * @param _model Reference for model layer.
+    **/
+    SacaiController(SacaiModel * _model);
+    virtual ~SacaiController();
 
-		/**
-		 *@see ControllerInterface
-		 **/
-		virtual bool callCalibration();
-		/**
-		 *@see ControllerInterface
-		 **/
-		virtual bool callFindCircle();
+    /**
+    *@see ControllerInterface
+    **/
+    virtual bool callCalibration();
 
-		virtual bool showWindow(bool _show);
-		virtual bool callResetPoint();
+    /**
+    *@see ControllerInterface
+    **/
+    virtual bool callFindCircle();
 
-	private:
-		CameraView * viewSacai;
+    virtual bool showWindow(bool _show);
+    virtual bool callResetPoint();
+
+  private:
+    CameraView * viewSacai;
 };
 
 #endif
