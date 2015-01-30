@@ -16,9 +16,9 @@ using namespace std;
 
 CameraView :: CameraView(ControllerInterface * _control, ModelInterface * _model) : settings(Setting::getInstance())
 {
-	bool rc = false;
+  bool rc = false;
 
-	this->modelView = _model;
+  this->modelView = _model;
 	this->controlView = _control;
 	nameWindow = "SACAI";
 
