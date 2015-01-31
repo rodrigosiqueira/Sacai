@@ -17,23 +17,24 @@
  **/
 class InputPattern
 {
-	public:
-		InputPattern()
+  public:
+    InputPattern()
 		{}
-		virtual ~InputPattern()
-		{}
-		/**
-		 * @param[in] _source Receive the target frame for operation.
-		 * @param[out] _output Output with points found in image.
-		 * @param _sizePattern Size of the patters showed.
-		 * @return Return true if pattern was found, otherwise return false.
-		 * @brief This abtract method implements the operation of find
-		 * 	geometry for calibration.
-		 **/
-		virtual bool findGeometry(
-						cv::Mat& _source,
-						std::vector<cv::Point2f>& _output,
-						cv::Size& _sizePattern) = 0;
+
+    virtual ~InputPattern()
+    {}
+
+    /**
+    * @param[in] _source Receive the target frame for operation.
+    * @param[out] _output Output with points found in image.
+    * @param _sizePattern Size of the patters showed.
+    * @return Return true if pattern was found, otherwise return false.
+    * @brief This abtract method implements the operation of find
+    * 	geometry for calibration.
+    **/
+    virtual bool findGeometry(cv::Mat& _source, 
+                              std::vector<cv::Point2f>& _output,
+                              cv::Size& _sizePattern) = 0;
 };
 
 #endif

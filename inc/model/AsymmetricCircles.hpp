@@ -6,7 +6,7 @@
 
 #include <opencv2/core/core.hpp>
 
-#include <InputPattern.hpp>
+#include "InputPattern.hpp"
 
 /**
  * @class AsymmetricCircles
@@ -15,13 +15,12 @@
  **/
 class AsymmetricCircles : public InputPattern
 {
-	public:
-		AsymmetricCircles();
-		virtual ~AsymmetricCircles();
-		virtual bool findGeometry(
-						cv::Mat& _source,
-						std::vector<cv::Point2f>& _output,
-						cv::Size& _sizePattern);
+  public:
+    AsymmetricCircles();
+    virtual ~AsymmetricCircles();
+    virtual bool findGeometry(cv::Mat& _source, 
+                              std::vector<cv::Point2f>& _output,
+                              cv::Size& _sizePattern);
 };
 
 #endif

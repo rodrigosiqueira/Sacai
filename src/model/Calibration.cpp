@@ -9,375 +9,368 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include <dataType.hpp>
-#include <Setting.hpp>
-#include <Calibration.hpp>
-#include <InputPattern.hpp>
-#include <ChessBoard.hpp>
+#include "dataType.hpp"
+#include "Setting.hpp"
+#include "Calibration.hpp"
+#include "InputPattern.hpp"
+#include "ChessBoard.hpp"
 
 using namespace std;
 
-Calibration :: Calibration(string _pathConfigFile) : settings(Setting::getInstance())
+Calibration :: Calibration(string _pathConfigFile) : 
+                    settings(Setting::getInstance())
 {
-	bool rc = false;
-	this->previousTimeStamp = 0;
-	rc = this->settings.loadCalibrationFile(_pathConfigFile);
-	if(!rc)
-	{
-		this->settings.loadCalibrationFile(util::CONFIG_CALIB_DEFAULT);
-	}
-	this->setInputPatter();
-	this->calibrationDone = false;
-	//Initial mode
-	this->mode = util::CAPTURING;
+  bool rc = false;
+  this->previousTimeStamp = 0;
+  rc = this->settings.loadCalibrationFile(_pathConfigFile);
+  if(!rc)
+  {
+    this->settings.loadCalibrationFile(util::CONFIG_CALIB_DEFAULT);
+  }
 
-	this->frameElapsed = 0;
+  this->setInputPatter();
+  this->calibrationDone = false;
+  //Initial mode
+  this->mode = util::CAPTURING;
+
+  this->frameElapsed = 0;
 }
 
 Calibration :: ~Calibration()
 {
-	delete this->recognitionPattern;
+  delete this->recognitionPattern;
 }
 
 //bool Calibration :: executeCalibration(cv::Mat * _view)
-bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, int * _frameElapsed)
+bool Calibration :: executeCalibration(int * _mode, cv::Mat * _view, 
+                                        int * _frameElapsed)
 {
-	bool found = false, blinkOutput = false;
+  bool found = false, blinkOutput = false;
 
-	if(!_view)
-	{
-		return false;
-	}
+  if(!_view)
+  {
+    return false;
+  }
 
-	//Conditions for stop calibration  
-	if(this->mode == util::CAPTURING &&
-	this->imagePoints.size() >= (unsigned)this->settings.numFrameForCalibration)
-	{
-		if(this->runCalibrationAndSave())
-		{
-			this->mode = util::CALIBRATED;
-			this->calibrationDone = true;
-		}
-		else
-		{
-			this->mode = util::DETECTION;
-		}
-	}
-	//Verify if no more images
-	if(_view->empty())
-	{
-		if(this->imagePoints.size() > 0)
-		{
-			this->runCalibrationAndSave();
-		}
-		return false;
-	}
+  //Conditions for stop calibration  
+  if(this->mode == util::CAPTURING &&
+  this->imagePoints.size() >= (unsigned)this->settings.numFrameForCalibration)
+  {
+    if(this->runCalibrationAndSave())
+    {
+      this->mode = util::CALIBRATED;
+      this->calibrationDone = true;
+    }
+    else
+    {
+      this->mode = util::DETECTION;
+    }
+  }
 
-	this->imageSize = _view->size();
-	if(this->settings.flipAroundHorizonAxis)
-	{
-		cv::flip(*(_view), *(_view), 0);
-	}
+  //Verify if no more images
+  if(_view->empty())
+  {
+    if(this->imagePoints.size() > 0)
+    {
+      this->runCalibrationAndSave();
+    }
+    return false;
+  }
 
-	vector<cv::Point2f> detectedGeometry;
-	found = this->recognitionPattern->findGeometry(
-				*(_view),
-				detectedGeometry,
-				this->settings.boardSize);
-	//Draw the chessboard
-	if(found)
-	{
-		if(this->mode == util::CAPTURING &&
-			(!this->settings.inputCapture.isOpened() ||
-			clock() - this->previousTimeStamp >
-			this->settings.delayForVideoInput * 1e-3*CLOCKS_PER_SEC))
-		{
-			this->imagePoints.push_back(detectedGeometry);
-			this->previousTimeStamp = clock();
-			blinkOutput = this->settings.inputCapture.isOpened();
-		}
-		cv::drawChessboardCorners(*(_view), this->settings.boardSize, cv::Mat(detectedGeometry), found);
-	}
+  this->imageSize = _view->size();
+  if(this->settings.flipAroundHorizonAxis)
+  {
+    cv::flip(*(_view), *(_view), 0);
+  }
 
-	this->frameElapsed = (int)this->imagePoints.size();
+  vector<cv::Point2f> detectedGeometry;
+  found = this->recognitionPattern->findGeometry(*(_view), detectedGeometry,
+				                                  this->settings.boardSize);
+  //Draw the chessboard
+  if(found)
+  {
+    if(this->mode == util::CAPTURING && 
+      (!this->settings.inputCapture.isOpened() ||
+      clock() - this->previousTimeStamp >
+      this->settings.delayForVideoInput * 1e-3*CLOCKS_PER_SEC))
+    {
+      this->imagePoints.push_back(detectedGeometry);
+      this->previousTimeStamp = clock();
+      blinkOutput = this->settings.inputCapture.isOpened();
+    }
+    cv::drawChessboardCorners(*(_view), this->settings.boardSize, 
+                              cv::Mat(detectedGeometry), found);
+  }
 
-	if(blinkOutput)
-	{
-		cv::bitwise_not(*(_view), *(_view));
-	}
+  this->frameElapsed = (int)this->imagePoints.size();
 
-	//Video capture  output  undistorted --- CREATE ONE METHOD FOR THIS
-	if(this->mode == util::CALIBRATED && this->settings.showUndistorsed)
-	{
-		cv::Mat temp = _view->clone();
-		cv::undistort(temp, *(_view), this->cameraMatrix, this->distortionCoefficients);
-	}
+  if(blinkOutput)
+  {
+    cv::bitwise_not(*(_view), *(_view));
+  }
 
-	return true;
+  //Video capture  output  undistorted --- CREATE ONE METHOD FOR THIS
+  if(this->mode == util::CALIBRATED && this->settings.showUndistorsed)
+  {
+    cv::Mat temp = _view->clone();
+    cv::undistort(temp, *(_view), this->cameraMatrix, 
+                  this->distortionCoefficients);
+  }
+
+  return true;
 }
 
 inline bool Calibration :: runCalibrationAndSave()
 {
-	vector<cv::Mat> rotationVector, translationVector;
-	vector<float> reprojectionError;
-	double totalAverageError = 0;
-	bool rc = false;
-	string message = ". avg reprojection error = ";
+  vector<cv::Mat> rotationVector, translationVector;
+  vector<float> reprojectionError;
+  double totalAverageError = 0;
+  bool rc = false;
+  string message = ". avg reprojection error = ";
 
-	rc = this->runCalibration(
-				rotationVector,
-				translationVector,
-				reprojectionError,
-				totalAverageError);
+  rc = this->runCalibration(rotationVector, translationVector, 
+                            reprojectionError, totalAverageError);
 
-	message += totalAverageError;
-	if(rc)
-	{
-		cout << "Calibration succeeded" << message << endl;
-		this->saveCameraParams(
-				rotationVector,
-				translationVector,
-				reprojectionError,
-				totalAverageError);
-	}
-	else
-	{
-		cout << "Calibration failed" << message << endl;
-	}
+  message += totalAverageError;
+  if(rc)
+  {
+    cout << "Calibration succeeded" << message << endl;
+    this->saveCameraParams(rotationVector, translationVector, 
+                          reprojectionError, totalAverageError);
+  }
+  else
+  {
+    cout << "Calibration failed" << message << endl;
+  }
 
-	return rc;
+  return rc;
 }
 
 void Calibration :: resetPoint()
 {
-	this->imagePoints.clear();
-	this->calibrationDone = false;
+  this->imagePoints.clear();
+  this->calibrationDone = false;
 }
 
 inline double Calibration :: computeReprojectionErrors(
-				const vector<vector<cv::Point3f> >& _objectPoint,
-				const vector<vector<cv::Point2f> >& _imagePoint,
-				const vector<cv::Mat>& _rotationVector,
-				const vector<cv::Mat>& _translationVector,
-				vector<float>& _perViewErrors)
+        const vector<vector<cv::Point3f> >& _objectPoint,
+        const vector<vector<cv::Point2f> >& _imagePoint,
+        const vector<cv::Mat>& _rotationVector,
+        const vector<cv::Mat>& _translationVector,
+        vector<float>& _perViewErrors)
 {
-	vector<cv::Point2f> imagePoints2;
-	register int i = 0;
-	int totalPoints = 0, numPoint = 0;
-	double totalError = 0, partialError = 0;
-	_perViewErrors.resize(_objectPoint.size());
+  vector<cv::Point2f> imagePoints2;
+  register int i = 0;
+  int totalPoints = 0, numPoint = 0;
+  double totalError = 0, partialError = 0;
+  _perViewErrors.resize(_objectPoint.size());
 
-	for(i = 0; i < (int)_objectPoint.size(); ++i)
-	{
-		cv::projectPoints(
-			cv::Mat(_objectPoint[i]),
-			_rotationVector[i],
-			_translationVector[i],
-			this->cameraMatrix,
-			this->distortionCoefficients,
-			imagePoints2);
-		partialError = cv::norm(cv::Mat(_imagePoint[i]), cv::Mat(imagePoints2), CV_L2);
+  for(i = 0; i < (int)_objectPoint.size(); ++i)
+  {
+	  cv::projectPoints(cv::Mat(_objectPoint[i]), _rotationVector[i],
+                              _translationVector[i], this->cameraMatrix,
+                              this->distortionCoefficients, imagePoints2);
+		partialError = cv::norm(cv::Mat(_imagePoint[i]), 
+                            cv::Mat(imagePoints2), CV_L2);
 
-		numPoint = (int)_objectPoint[i].size();
-		_perViewErrors[i] = (float) std::sqrt(partialError * partialError / numPoint);
-		totalError += partialError * partialError;
-		totalPoints += numPoint;
-	}
+    numPoint = (int)_objectPoint[i].size();
+    _perViewErrors[i] = (float) 
+                            std::sqrt(partialError * partialError / numPoint);
+    totalError += partialError * partialError;
+    totalPoints += numPoint;
+  }
 
-	return std::sqrt(totalError/totalPoints);
+  return std::sqrt(totalError/totalPoints);
 }
 
-inline void Calibration :: calcBoardCornerPositions(vector<cv::Point3f>& _corners)
+inline void Calibration :: calcBoardCornerPositions(
+                                                vector<cv::Point3f>& _corners)
 {
-	register int i = 0, j = 0;
-	float xCoordinate = 0.0, yCoordinate = 0.0;
-	_corners.clear();
+  register int i = 0, j = 0;
+  float xCoordinate = 0.0, yCoordinate = 0.0;
+  _corners.clear();
 
-	switch(this->settings.calibrationPattern)
-	{
-		case util::CHESSBOARD:
-		case util::CIRCLES_GRID:
-			for(i = 0; i < this->settings.boardSize.height; ++i)
-			{
-				for(j = 0; j < this->settings.boardSize.width; ++j)
-				{
-					xCoordinate = j * this->settings.squareSize;
-					yCoordinate = i * this->settings.squareSize;
-					_corners.push_back(cv::Point3f(xCoordinate, yCoordinate, 0));
-				}
-			}
-			break;
+  switch(this->settings.calibrationPattern)
+  {
+    case util::CHESSBOARD:
+    case util::CIRCLES_GRID:
+      for(i = 0; i < this->settings.boardSize.height; ++i)
+      {
+        for(j = 0; j < this->settings.boardSize.width; ++j)
+        {
+          xCoordinate = j * this->settings.squareSize;
+          yCoordinate = i * this->settings.squareSize;
+          _corners.push_back(cv::Point3f(xCoordinate, yCoordinate, 0));
+        }
+      }
+      break;
 
-		case util::ASYMMETRIC_CIRCLES_GRID:
-			for(i = 0; i < this->settings.boardSize.height; i++ )
-			{
-				for(j = 0; j < this->settings.boardSize.width; j++ )
-				{
-					xCoordinate = (2 * j + i % 2) * this->settings.squareSize;
-					yCoordinate = i * this->settings.squareSize;
-					_corners.push_back(cv::Point3f(xCoordinate, yCoordinate, 0));
-				}
-			}
-			break;
+    case util::ASYMMETRIC_CIRCLES_GRID:
+      for(i = 0; i < this->settings.boardSize.height; i++ )
+      {
+        for(j = 0; j < this->settings.boardSize.width; j++ )
+        {
+          xCoordinate = (2 * j + i % 2) * this->settings.squareSize;
+          yCoordinate = i * this->settings.squareSize;
+          _corners.push_back(cv::Point3f(xCoordinate, yCoordinate, 0));
+        }
+      }
+      break;
 
-		default:
-			break;
-	}
+    default:
+      break;
+  }
 
-	return;
+  return;
 }
 
-inline bool Calibration :: runCalibration(
-			vector<cv::Mat>& _rotationVector,
-			vector<cv::Mat>& _translationVector,
-			vector<float>& _reprojErrs,
-			double& _totalAvgErr)
+inline bool Calibration :: runCalibration(vector<cv::Mat>& _rotationVector,
+                                          vector<cv::Mat>& _translationVector,
+                                          vector<float>& _reprojErrs,
+                                          double& _totalAvgErr)
 {
-	double reprojCalibError = 0.0;
-	bool checkCameraMatrix = false, checkDistortionMatrix = false;
-	this->cameraMatrix = cv::Mat::eye(3, 3, CV_64F);
+  double reprojCalibError = 0.0;
+  bool checkCameraMatrix = false, checkDistortionMatrix = false;
+  this->cameraMatrix = cv::Mat::eye(3, 3, CV_64F);
 
-	if(this->settings.flag && CV_CALIB_FIX_ASPECT_RATIO)
-	{
-		//Set 1.0 for the first element of camera matrix.
-		this->cameraMatrix.at<double>(0,0) = 1.0;
-	}
+  if(this->settings.flag && CV_CALIB_FIX_ASPECT_RATIO)
+  {
+    //Set 1.0 for the first element of camera matrix.
+    this->cameraMatrix.at<double>(0,0) = 1.0;
+  }
 
-	this->distortionCoefficients = cv::Mat::zeros(8, 1, CV_64F);
+  this->distortionCoefficients = cv::Mat::zeros(8, 1, CV_64F);
 
-	vector<vector<cv::Point3f> > objectPoints(1);
-	this->calcBoardCornerPositions(objectPoints[0]);
+  vector<vector<cv::Point3f> > objectPoints(1);
+  this->calcBoardCornerPositions(objectPoints[0]);
 
-	objectPoints.resize(this->imagePoints.size(), objectPoints[0]);
+  objectPoints.resize(this->imagePoints.size(), objectPoints[0]);
 
-	//Find intrinsic and extrinsic camera parameters
-	reprojCalibError = cv::calibrateCamera(
-				objectPoints,
-				this->imagePoints,
-				this->imageSize,
-				this->cameraMatrix,
-				this->distortionCoefficients,
-				_rotationVector,
-				_translationVector,
-				this->settings.flag | CV_CALIB_FIX_K4 | CV_CALIB_FIX_K5);
+  //Find intrinsic and extrinsic camera parameters
+  reprojCalibError = cv::calibrateCamera(objectPoints, this->imagePoints,
+                        this->imageSize, this->cameraMatrix, 
+                        this->distortionCoefficients,	_rotationVector,
+                        _translationVector,
+                      this->settings.flag | CV_CALIB_FIX_K4 | CV_CALIB_FIX_K5);
 
-	cout << "Re-projection error reported by calibrateCamera: "<< reprojCalibError << endl;
-	//Check every element of cameraMatrix input array for invalid values
-	checkCameraMatrix = cv::checkRange(this->cameraMatrix);
-	checkDistortionMatrix = cv::checkRange(this->distortionCoefficients);
+  cout << "Re-projection error reported by calibrateCamera: "<< reprojCalibError << endl;
+  //Check every element of cameraMatrix input array for invalid values
+  checkCameraMatrix = cv::checkRange(this->cameraMatrix);
+  checkDistortionMatrix = cv::checkRange(this->distortionCoefficients);
 
-	_totalAvgErr = this->computeReprojectionErrors(
-					objectPoints,
-					this->imagePoints,
-					_rotationVector,
-					_translationVector,
-					_reprojErrs);
+  _totalAvgErr = this->computeReprojectionErrors(
+          objectPoints,
+          this->imagePoints,
+          _rotationVector,
+          _translationVector,
+          _reprojErrs);
 
-	return (checkCameraMatrix && checkDistortionMatrix);
+  return (checkCameraMatrix && checkDistortionMatrix);
 }
 
 inline void Calibration :: saveCameraParams(
-			const vector<cv::Mat>& _rotationVector,
-			const vector<cv::Mat>& _translationVector,
-			const vector<float>& _reprojErrs,
-			double _totalAvgErr)
+      const vector<cv::Mat>& _rotationVector,
+      const vector<cv::Mat>& _translationVector,
+      const vector<float>& _reprojErrs,
+      double _totalAvgErr)
 {
-	cv::FileStorage fs(this->settings.outputFileName, cv::FileStorage::WRITE );
+  cv::FileStorage fs(this->settings.outputFileName, cv::FileStorage::WRITE );
 
-	time_t tm;
-	time(&tm);
-	struct tm *t2 = localtime(&tm);
-	char buf[1024];
-	strftime( buf, sizeof(buf)-1, "%c", t2 );
+  time_t tm;
+  time(&tm);
+  struct tm *t2 = localtime(&tm);
+  char buf[1024];
+  strftime( buf, sizeof(buf)-1, "%c", t2 );
 
-	fs << "calibration_Time" << buf;
+  fs << "calibration_Time" << buf;
 
-	if(!_rotationVector.empty() || !_reprojErrs.empty())
-	{
-		fs << "nrOfFrames" << (int)std::max(_rotationVector.size(), _reprojErrs.size());
+  if(!_rotationVector.empty() || !_reprojErrs.empty())
+  {
+    fs << "nrOfFrames" << (int)std::max(_rotationVector.size(), 
+                                        _reprojErrs.size());
+  }
+
+  fs << "image_Width" << this->imageSize.width;
+  fs << "image_Height" << this->imageSize.height;
+  fs << "board_Width" << this->settings.boardSize.width;
+  fs << "board_Height" << this->settings.boardSize.height;
+  fs << "square_Size" << this->settings.squareSize;
+
+  if(this->settings.flag & CV_CALIB_FIX_ASPECT_RATIO )
+  {
+    fs << "FixAspectRatio" << this->settings.aspectRatio;
+  }
+
+  if(this->settings.flag)
+  {
+    sprintf( buf, "flags: %s%s%s%s",
+      this->settings.flag & CV_CALIB_USE_INTRINSIC_GUESS ? " +use_intrinsic_guess" : "",
+      this->settings.flag & CV_CALIB_FIX_ASPECT_RATIO ? " +fix_aspectRatio" : "",
+      this->settings.flag & CV_CALIB_FIX_PRINCIPAL_POINT ? " +fix_principal_point" : "",
+      this->settings.flag & CV_CALIB_ZERO_TANGENT_DIST ? " +zero_tangent_dist" : "" );
+    cvWriteComment(*fs, buf, 0);
+  }
+
+  fs << "flagValue" << this->settings.flag;
+
+  fs << "Camera_Matrix" << this->cameraMatrix;
+  fs << "Distortion_Coefficients" << this->distortionCoefficients;
+
+  fs << "Avg_Reprojection_Error" << _totalAvgErr;
+  if(!_reprojErrs.empty())
+  {
+    fs << "Per_View_Reprojection_Errors" << cv::Mat(_reprojErrs);
+  }
+
+  if(!_rotationVector.empty() && !_translationVector.empty())
+  {
+    CV_Assert(_rotationVector[0].type() == _translationVector[0].type());
+    cv::Mat bigmat((int)_rotationVector.size(), 6, _rotationVector[0].type());
+    for(int i = 0; i < (int)_rotationVector.size(); i++)
+    {
+      cv::Mat r = bigmat(cv::Range(i, i+1), cv::Range(0,3));
+      cv::Mat t = bigmat(cv::Range(i, i+1), cv::Range(3,6));
+
+      CV_Assert(_rotationVector[i].rows == 3 && _rotationVector[i].cols == 1);
+      CV_Assert(_translationVector[i].rows == 3 && _translationVector[i].cols == 1);
+      //*.t() is MatExpr (not Mat) so we can use assignment operator
+      r = _rotationVector[i].t();
+      t = _translationVector[i].t();
+    }
+    cvWriteComment( *fs, "a set of 6-tuples (rotation vector + translation vector) for each view", 0 );
+    fs << "Extrinsic_Parameters" << bigmat;
 	}
 
-	fs << "image_Width" << this->imageSize.width;
-	fs << "image_Height" << this->imageSize.height;
-	fs << "board_Width" << this->settings.boardSize.width;
-	fs << "board_Height" << this->settings.boardSize.height;
-	fs << "square_Size" << this->settings.squareSize;
+  if(!this->imagePoints.empty())
+  {
+    cv::Mat imagePtMat((int)this->imagePoints.size(), (int)this->imagePoints[0].size(), CV_32FC2);
+    for(int i = 0; i < (int)this->imagePoints.size(); i++)
+    {
+      cv::Mat r = imagePtMat.row(i).reshape(2, imagePtMat.cols);
+      cv::Mat imgpti(imagePoints[i]);
+      imgpti.copyTo(r);
+    }
+    fs << "Image_points" << imagePtMat;
+  }
 
-	if(this->settings.flag & CV_CALIB_FIX_ASPECT_RATIO )
-	{
-		fs << "FixAspectRatio" << this->settings.aspectRatio;
-	}
-
-	if(this->settings.flag)
-	{
-		sprintf( buf, "flags: %s%s%s%s",
-			this->settings.flag & CV_CALIB_USE_INTRINSIC_GUESS ? " +use_intrinsic_guess" : "",
-			this->settings.flag & CV_CALIB_FIX_ASPECT_RATIO ? " +fix_aspectRatio" : "",
-			this->settings.flag & CV_CALIB_FIX_PRINCIPAL_POINT ? " +fix_principal_point" : "",
-			this->settings.flag & CV_CALIB_ZERO_TANGENT_DIST ? " +zero_tangent_dist" : "" );
-		cvWriteComment(*fs, buf, 0);
-	}
-
-	fs << "flagValue" << this->settings.flag;
-
-	fs << "Camera_Matrix" << this->cameraMatrix;
-	fs << "Distortion_Coefficients" << this->distortionCoefficients;
-
-	fs << "Avg_Reprojection_Error" << _totalAvgErr;
-	if(!_reprojErrs.empty())
-	{
-		fs << "Per_View_Reprojection_Errors" << cv::Mat(_reprojErrs);
-	}
-
-	if(!_rotationVector.empty() && !_translationVector.empty())
-	{
-		CV_Assert(_rotationVector[0].type() == _translationVector[0].type());
-		cv::Mat bigmat((int)_rotationVector.size(), 6, _rotationVector[0].type());
-		for(int i = 0; i < (int)_rotationVector.size(); i++)
-		{
-			cv::Mat r = bigmat(cv::Range(i, i+1), cv::Range(0,3));
-			cv::Mat t = bigmat(cv::Range(i, i+1), cv::Range(3,6));
-
-			CV_Assert(_rotationVector[i].rows == 3 && _rotationVector[i].cols == 1);
-			CV_Assert(_translationVector[i].rows == 3 && _translationVector[i].cols == 1);
-			//*.t() is MatExpr (not Mat) so we can use assignment operator
-			r = _rotationVector[i].t();
-			t = _translationVector[i].t();
-		}
-		cvWriteComment( *fs, "a set of 6-tuples (rotation vector + translation vector) for each view", 0 );
-		fs << "Extrinsic_Parameters" << bigmat;
-	}
-
-	if(!this->imagePoints.empty())
-	{
-		cv::Mat imagePtMat((int)this->imagePoints.size(), (int)this->imagePoints[0].size(), CV_32FC2);
-		for(int i = 0; i < (int)this->imagePoints.size(); i++)
-		{
-			cv::Mat r = imagePtMat.row(i).reshape(2, imagePtMat.cols);
-			cv::Mat imgpti(imagePoints[i]);
-			imgpti.copyTo(r);
-		}
-		fs << "Image_points" << imagePtMat;
-	}
-
-	return;
+  return;
 }
 
 inline bool Calibration :: setInputPatter()
 {
-	switch(this->settings.calibrationPattern)
-	{
-		case util::CHESSBOARD:
-			this->recognitionPattern = new ChessBoard();
+  switch(this->settings.calibrationPattern)
+  {
+    case util::CHESSBOARD:
+      this->recognitionPattern = new ChessBoard();
 
-		case util::CIRCLES_GRID:
-			break;
+    case util::CIRCLES_GRID:
+      break;
 
-		case util::ASYMMETRIC_CIRCLES_GRID:
-				break;
+    case util::ASYMMETRIC_CIRCLES_GRID:
+      break;
 
-		default:
-			return false;
-	}
-	return true;
+    default:
+      return false;
+  }
+  return true;
 }
