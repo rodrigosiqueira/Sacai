@@ -12,81 +12,80 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include <dataType.hpp>
+#include "dataType.hpp"
 
 using namespace std;
 
 //namespace util
 //{
-	/**
-	 * @class Setting
-	 * @brief This class handle the input file with configuration, write one file with
-	 * settings, and make some configurations.
-	 **/
-	class Setting
-	{
-		public:
-			cv::Size boardSize;				/**< Number of inner corners per a item row and column.*/
-			util::Pattern calibrationPattern; 	/**< Can be: Chessboard, circles, or asymmetric.*/
-			float squareSize;			/**< The size of square in your defined unit.*/
-			int numFrameForCalibration;	/**< The number of frames to use from the input for calibration. */
-			float aspectRatio;
-			int delayForVideoInput;
-			bool writePoint;			/**< Write to the output file the feature points.*/
-			bool writeExtrinsics;
-			bool calibZeroTangDistortion;
-			bool calibFixPrincipalPoint;
-			bool flipAroundHorizonAxis;
-			string outputFileName;
-			bool showUndistorsed;
-			string input;
-			
-			int cameraId;
-			vector<string> imageList;
-			int atImageList;
-			cv::VideoCapture inputCapture;
-			util::InputType inputType;
-			bool goodInput;				/**< Just test if all right with input.*/
-			int flag;
+  /**
+  * @class Setting
+  * @brief Handling the input file with configuration, write one file with
+  * settings, and make some configurations.
+  **/
+  class Setting
+  {
+    public:
+      cv::Size boardSize; /**< Number of inner corners per a item row and column.*/
+      util::Pattern calibrationPattern; /**< Chessboard, circles, or asymmetric.*/
+      float squareSize; /**< The size of square in your defined unit.*/
+      int numFrameForCalibration; /**< Number of frames to use from the input for calibration. */
+      float aspectRatio;
+      int delayForVideoInput;
+      bool writePoint; /**< Write to the output file the feature points.*/
+      bool writeExtrinsics;
+      bool calibZeroTangDistortion;
+      bool calibFixPrincipalPoint;
+      bool flipAroundHorizonAxis;
+      string outputFileName;
+      bool showUndistorsed;
+      string input;
 
-			//PENSAR EM UMA MANEIRA DE TORNAR ESTE CONSTRUTOR PRIVADO
-			virtual ~Setting();
+      int cameraId;
+      vector<string> imageList;
+      int atImageList;
+      cv::VideoCapture inputCapture;
+      util::InputType inputType;
+      bool goodInput; /**< Test if everything is all right with input.*/
+      int flag;
 
-			static Setting& getInstance()
-			{
-				static Setting instance;
-				return instance;
-			}
+      virtual ~Setting();
 
-			bool loadCalibrationFile(string _path);
+      static Setting& getInstance()
+      {
+        static Setting instance;
+        return instance;
+      }
 
-			/**
-			 * @param
-			 * @brief
-			 **/
-			void write(cv::FileStorage& _fileStorage) const;
+      bool loadCalibrationFile(string _path);
 
-			/**
-			 * @param
-			 * @brief
-			 **/
-			void read(const cv::FileNode& _node);
+      /**
+      * @param
+      * @brief
+      **/
+      void write(cv::FileStorage& _fileStorage) const;
 
-			/**
-			 * @return Return next frame.
-			 * @brief Capture the next frame and return it.
-			 **/
-			cv::Mat nextImage();
+      /**
+      * @param
+      * @brief
+      **/
+      void read(const cv::FileNode& _node);
 
-		private:
-			Setting();
-			string patternToUse;
+      /**
+      * @return Return next frame.
+      * @brief Capture the next frame and return it.
+      **/
+      cv::Mat nextImage();
 
-			/**
-			 * @brief
-			 **/
-			void interpret();
-	};
+    private:
+      Setting();
+      string patternToUse;
+
+      /**
+      * @brief
+      **/
+      void interpret();
+  };
 //};
 
 #endif
