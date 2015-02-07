@@ -11,22 +11,27 @@
 # Initialize variables
 
 #Folders
-BINPACK		:= bin
-INCPACK		:= inc
-SRCPACK		:= src
-MODELPACK	:= src/model
-VIEWPACK	:= src/view
-CONTROLPACK	:= src/control
-UTILPACK	:= src/util
-OBJPACK		:= obj
-OTHERPACK	:=  others
-TESTPACK	:=  test
+BINPACK := bin
+INCPACK := inc
+SRCPACK := src
+MODELPACK := src/model
+VIEWPACK := src/view
+CONTROLPACK := src/control
+UTILPACK := src/util
+OBJPACK := obj
+OTHERPACK :=  others
+
+TESTPACK :=  test
+MODELTESTCPPFILES = $(wildcard test/model/*cpp)
+VIEWTESTCPPFILES = $(wildcard test/view/*cpp)
+CNTLTESTCPPFILES = $(wildcard test/controller/*cpp)
+UTILTESTCPPFILES = $(wildcard test/util/*cpp)
 
 #Flags
-CC		:= g++ -Wall -Wextra -pedantic -Wshadow -Wredundant-decls -Woverloaded-virtual -Wsynth
-IFLAG		:= -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
-CVFLAG		:= `pkg-config --cflags --libs opencv`
-CPPUNITFLAG	:= -lcppunit -ldl
+CC := g++ -Wall -Wextra -pedantic -Wshadow -Wredundant-decls -Woverloaded-virtual -Wsynth
+IFLAG := -I./$(INCPACK)/model -I./$(INCPACK)/view -I./$(INCPACK)/control -I./$(INCPACK)/util 
+CVFLAG := `pkg-config --cflags --libs opencv`
+GOOGLETESTFLAG := -lgtest -lgtest_main
 
 #Create one list with all sources
 MODELSOURCES	= $(wildcard src/model/*.cpp)
@@ -63,20 +68,41 @@ utilObj: $(UTILSSOURCES:src/util/%.cpp=obj/%.o)
 obj/%.o: src/util/%.cpp
 	$(CC) -c $< -o $@ $(IFLAG)
 
-#####################################
-#Test
-obj/mainTest.o: test/mainTest.cpp
-	$(CC) -c $< -o $@ $(IFLAG) $(CPPUNITFLAG)
-	
-settingTest: test/SettingTest.cpp
-	$(CC) $(FLAGS) -c $< -o obj/$@ $(IFLAG) $(CPPUNITFLAG)
-	$(CC) $(IFLAG) $^ obj/mainTest.o obj/Setting.o -o bin/test/$@ $(CPPUNITFLAG) $(CVFLAG)
+#=============================================================================
+# Testing
+# About: The command test compile all tests and put it in the folder bin/test.
+#       You should have a file in the src folder mapped into test. To make it
+#       organized, you should keep the same folder structure in test folder.
+# Example:
+#               make test  -> Compile all the tests
+#               make testModel -> Compile all the tests in model folder.
+#==============================================================================
 
-calibrationTest: test/CalibrationTest.cpp
-	$(CC) $(FLAGS) -c $< -o obj/$@ $(IFLAG) $(CPPUNITFLAG)
-	$(CC) $(IFLAGS) $^ obj/mainTest.o obj/Calibration.o obj/Setting.o -o bin/test/$@ $(CPPUNITFLAG) $(CVFLAG)
+test: testModel testView testController testUtil
 
-tests: obj/mainTest.o $(CSOURCES:src/%.cpp=obj/%.o) settingTest calibrationTest
+# Test Model
+testModel: $(MODELTESTCPPFILES:test/model/%Test.cpp=bin/test/%)
+
+bin/test/%: test/model/%Test.cpp src/model/%.cpp
+	$(GPP) $^ -o $@ $(IFLAG) $(GOOGLETESTFLAG)
+
+#Test View
+testView: $(VIEWTESTCPPFILES:test/view/%Test.cpp=bin/test/%)
+
+bin/test/%: test/view/%Test.cpp src/view/%.cpp
+	$(GPP) $^ -o $@ $(IFLAG) $(GOOGLETESTFLAG)
+
+#Test Controller
+testController: $(MODELTESTCPPFILES:test/controller/%Test.cpp=bin/test/%)
+
+bin/test/%: test/controller/%Test.cpp src/controller/%.cpp
+	$(GPP) $^ -o $@ $(IFLAG) $(GOOGLETESTFLAG)
+
+#Test Util
+testUtil: $(UTILTESTCPPFILES:test/util/%Test.cpp=bin/test/%)
+
+bin/test/%: test/util/%Test.cpp src/util/%.cpp
+	$(GPP) $^ -o $@ $(IFLAG) $(GOOGLETESTFLAG)
 
 clean:
 	rm -f obj/*
