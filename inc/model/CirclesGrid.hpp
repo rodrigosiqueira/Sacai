@@ -13,13 +13,13 @@
  **/
 class CirclesGrid : public InputPattern
 {
-	public:
-		CirclesGrid();
-		virtual ~CirclesGrid();
-		virtual bool findGeometry(
-					cv::Mat& _source,
-					std::vector<cv::Point2f>& _output,
-					cv::Size& _sizePattern);
+  public:
+    CirclesGrid();
+      virtual ~CirclesGrid();
+      virtual bool findGeometry(
+        cv::Mat& _source,
+        std::vector<cv::Point2f>& _output,
+        cv::Size& _sizePattern);
 };
 
 #endif

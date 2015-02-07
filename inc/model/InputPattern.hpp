@@ -19,7 +19,7 @@ class InputPattern
 {
   public:
     InputPattern()
-		{}
+    {}
 
     virtual ~InputPattern()
     {}
@@ -32,7 +32,7 @@ class InputPattern
     * @brief This abtract method implements the operation of find
     * 	geometry for calibration.
     **/
-    virtual bool findGeometry(cv::Mat& _source, 
+    virtual bool findGeometry(cv::Mat& _source,
                               std::vector<cv::Point2f>& _output,
                               cv::Size& _sizePattern) = 0;
 };

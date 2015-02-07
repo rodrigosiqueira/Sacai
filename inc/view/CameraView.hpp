@@ -8,10 +8,10 @@
 
 #include <opencv2/core/core.hpp>
 
-#include <ViewInterface.hpp>
-#include <ControllerInterface.hpp>
-#include <ModelInterface.hpp>
-#include <Setting.hpp>
+#include "ViewInterface.hpp"
+#include "ControllerInterface.hpp"
+#include "ModelInterface.hpp"
+#include "Setting.hpp"
 
 /**
  * @class CameraView
@@ -20,33 +20,34 @@
  **/
 class CameraView : public ViewInterface
 {
-	public:
-		/**
-		 * @param _control Reference for control class. This parameter is
-		 * used for doing interface action.
-		 * @param _model Reference for model. This keeps interface updated.
-		 * @brief This construct receives the maily elements for doing interface
-		 * operation.
-		 **/
-		CameraView(ControllerInterface * _control, ModelInterface * _model);
-		virtual ~CameraView();
+  public:
+    /**
+    * @param _control Reference for control class. This parameter is
+    * used for doing interface action.
+    * @param _model Reference for model. This keeps interface updated.
+    * @brief This construct receives the maily elements for doing interface
+    * operation.
+    **/
+    CameraView(ControllerInterface * _control, ModelInterface * _model);
 
-		/**
-		 * @see ViewInterface
-		 **/
-		virtual bool display();
-		virtual void update(cv::Mat& _view);
+    virtual ~CameraView();
 
-		virtual cv::Mat * getFrame()
-		{
-			return &(this->frameView);
-		}
+    /**
+    * @see ViewInterface
+    **/
+    virtual bool display();
+    virtual void update(cv::Mat& _view);
 
-	private:
-		std::string nameWindow;
-		std::string message;
-		cv::Mat frameView;
-		Setting& settings;
+    virtual cv::Mat * getFrame()
+    {
+      return &(this->frameView);
+    }
+
+  private:
+    std::string nameWindow;
+    std::string message;
+    cv::Mat frameView;
+    Setting& settings;
 };
 
 #endif

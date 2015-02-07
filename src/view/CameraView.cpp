@@ -112,7 +112,7 @@ bool CameraView :: display()
     if(detectCircle)
     {
       this->controlView->callFindCircle();
-		}
+    }
 
     //Output text
     stringMenu(this->frameView,	mode, frameElapsed, 
@@ -141,7 +141,7 @@ bool CameraView :: display()
       calibStart = true;
       this->controlView->callResetPoint();
     }
-		
+
     //Circle detect
     if(key == 'c')
     {

@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#include <InputPattern.hpp>
+#include "InputPattern.hpp"
 
 /**
  * @class ChessBoard
@@ -14,13 +14,13 @@
  **/
 class ChessBoard : public InputPattern
 {
-	public:
-		ChessBoard();
-		virtual ~ChessBoard();
-		virtual bool findGeometry(
-					cv::Mat& _source,
-					std::vector<cv::Point2f>& _output,
-					cv::Size& _sizePattern);
+  public:
+    ChessBoard();
+    virtual ~ChessBoard();
+    virtual bool findGeometry(
+      cv::Mat& _source,
+      std::vector<cv::Point2f>& _output,
+      cv::Size& _sizePattern);
 };
 
 #endif

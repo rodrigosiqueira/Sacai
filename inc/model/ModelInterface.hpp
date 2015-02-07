@@ -17,7 +17,7 @@ class ViewInterface;
 /**
  * @class ModelInterface
  * @brief Interface for model with methods for pattern Observer. This
- * class represent the Subject in pattern observer. 
+ * class represent the Subject in pattern observer.
  **/
 class ModelInterface
 {
